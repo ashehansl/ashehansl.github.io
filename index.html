@@ -250,11 +250,11 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     <!--pop-up notification for disclaimer-->
 <div id="disclaimer-popup" class="disclaimer-overlay">
     <div class="disclaimer-box">
-        <h3>⚠️ Disclaimer </h3>
+        <h3>⚠️ Disclaimer (වගකීමෙන් නිදහස් වීම)</h3>
         <p>
             The information provided on this blog is for educational and informational purposes only. 
             It should not be considered as financial or investment advice. Investing in financial markets 
-            involves risk. Please consult with a certified financial 
+            and various assets involves significant risk. Please consult with a certified financial 
             advisor before making any investment decisions. 
             <br><br>
             <strong>Investment decisions are at your own risk.</strong>
@@ -281,7 +281,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     transition: opacity 0.4s ease;
 }
 
-/* Pop-up එක active වුණාම පේන විදිහ */
 .disclaimer-overlay.show {
     opacity: 1;
     pointer-events: auto;
@@ -306,7 +305,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 .disclaimer-box h3 {
     margin-top: 0;
-    color: #d9534f; /* රතු/තැඹිලි පාට අනතුරු ඇඟවීමේ පාටක් */
+    color: #d9534f; 
     font-size: 22px;
 }
 
@@ -319,7 +318,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 }
 
 .disclaimer-btn {
-    background: #28a745; /* කොළ පාට බටන් එකක් */
+    background: #28a745; 
     color: white;
     border: none;
     padding: 12px 30px;
@@ -338,9 +337,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // කලින් යූසර් බටන් එක ක්ලික් කරලා තියෙනවාද බලන්න (Local Storage)
     if (!localStorage.getItem("disclaimerAccepted")) {
-        // ක්ලික් කරලා නැත්නම් තත්පර 1කට පසු Pop-up එක පෙන්වන්න
         setTimeout(function() {
             document.getElementById("disclaimer-popup").classList.add("show");
         }, 1000);
@@ -348,7 +345,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function closeDisclaimer() {
-    // බටන් එක ක්ලික් කළාම බැනර් එක වසා දමා බ්‍රවුසර් එකේ සේව් කරන්න
     document.getElementById("disclaimer-popup").classList.remove("show");
     localStorage.setItem("disclaimerAccepted", "true");
 }
