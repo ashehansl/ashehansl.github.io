@@ -32,7 +32,7 @@
     "title": "Bonds",
     "desc": "භාණ්ඩාගාර බිල්පත් හා බැදුම්කරවලට අදාළ තොරතුරු ",
     "articles": [
-      { "name": "1. Data about Treasury Bonds,T-bills", "short": "", "file": "bond1.txt" }
+      { "name": "1. Data about Treasury Bonds,T-bills", "short": "", "file": "bond1.html" }
     ]
   },
   "crypto": {
