@@ -659,115 +659,101 @@
 
     <!--start the code for cse news widget for my dear users-->
 
-    <div class="cse-news-container">
+    <div class="multi-news-wrapper">
     <div class="news-header">
-        <h2>CSE Real-Time News & Announcements 🔔</h2>
-        <button class="refresh-btn" onclick="fetchCseNews()">🔄 Refresh</button>
+        <h2>Live Finance & Market Insights 🔔</h2>
+        <span class="live-indicator">● LIVE UPDATE</span>
     </div>
-    
-    <div id="news-feed-list" class="news-list">
-        <div class="news-loading">⏳ අලුත්ම පුවත් ලබාගනිමින් පවතී... කරුණාකර රැඳී සිටින්න.</div>
+    <div id="combined-news-list" class="news-grid">
+        <div class="news-loading">⏳ වෙබ් අඩවි වල පුවත් සජීවීව එක්රැස් කරමින් පවතී...</div>
     </div>
 </div>
 
-
 <style>
-    .cse-news-container {
+    .multi-news-wrapper {
         max-width: 1100px;
         margin: 30px auto;
-        background: #ffffff;
+        background: #ffffff; /* පිරිසිදු ලා සුදු පසුබිම */
         border: 1px solid #e2e8f0;
         border-radius: 16px;
         padding: 24px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     }
     .news-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 20px;
         border-bottom: 2px solid #f1f5f9;
         padding-bottom: 15px;
-        margin-bottom: 20px;
     }
-    .news-header h2 {
-        font-size: 1.4rem;
+    .news-header h2 { 
+        font-size: 1.4rem; 
+        color: #0f172a; /* තද කළු අකුරු */
+        margin: 0; 
         font-weight: 700;
-        color: #0f172a;
-        margin: 0;
     }
-    .refresh-btn {
-        background: #f1f5f9;
-        border: 1px solid #cbd5e1;
-        color: #475569;
-        padding: 8px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.2s ease;
+    .live-indicator {
+        color: #dc2626; /* රතු පාට LIVE ටැග් එක */
+        font-weight: 800;
+        font-size: 0.85rem;
+        background: #fee2e2;
+        padding: 4px 10px;
+        border-radius: 20px;
+        animation: blink 1.5s infinite;
     }
-    .refresh-btn:hover {
-        background: #cbd5e1;
-        color: #0f172a;
-    }
-    
-    /* News List & Items */
-    .news-list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        max-height: 500px; /* ලිපි ගොඩක් තිබුණොත් Scroll වෙන්න */
+    .news-grid { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 15px; 
+        max-height: 550px; /* ලිපි ගොඩක් තිබුණොත් Scroll වෙන්න */
         overflow-y: auto;
         padding-right: 5px;
     }
-    .news-item {
-        background: #f8fafc;
+    
+    /* ඔයාගේම Custom Template එක */
+    .custom-news-card {
+        background: #f8fafc; /* ලා අළු පසුබිම */
         border: 1px solid #e2e8f0;
         border-radius: 12px;
         padding: 16px;
-        transition: transform 0.2s ease, border-color 0.2s ease;
-        text-decoration: none; /* Link එකක් හින්දා underline අයින් කරන්න */
+        text-decoration: none;
         display: block;
+        transition: all 0.2s ease;
     }
-    .news-item:hover {
-        transform: translateY(-2px);
-        border-color: #38bdf8; /* හෝවර් වෙද්දී ලා නිල් පාට border එකක් */
+    .custom-news-card:hover {
+        border-color: #38bdf8; /* Hover වෙද්දී ලා නිල් Border එකක් */
         background: #ffffff;
+        transform: translateX(6px); /* දකුණට පොඩ්ඩක් Slide වෙනවා */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     }
-    .news-meta {
-        display: flex;
-        gap: 15px;
-        font-size: 0.8rem;
+    .source-tag {
+        font-size: 0.75rem;
         font-weight: 700;
-        color: #64748b;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-    }
-    .news-tag {
-        color: #dc2626; /* වැදගත් Tag එක රතු පාටින් */
-        background: #fee2e2;
-        padding: 2px 8px;
+        background: #e2e8f0;
+        color: #334155;
+        padding: 3px 8px;
         border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
-    .news-time {
-        display: flex;
-        align-items: center;
-        color: #64748b;
+    /* CSE නිව්ස් නම් රතු පාටින් Tag එක පෙන්වන්න */
+    .source-tag.cse-tag {
+        background: #fee2e2;
+        color: #dc2626;
     }
-    .news-title {
-        font-size: 1.05rem;
+    .news-title-text {
+        font-size: 1.1rem;
         font-weight: 600;
         color: #0f172a;
-        margin: 0 0 5px 0;
+        margin: 8px 0 4px 0;
         line-height: 1.4;
     }
-    .news-desc {
-        font-size: 0.9rem;
-        color: #475569;
-        margin: 0;
-        line-height: 1.5;
+    .news-time-text { 
+        font-size: 0.8rem; 
+        color: #64748b; 
+        font-weight: 600;
     }
     
     .news-loading {
@@ -777,68 +763,81 @@
         font-weight: 600;
     }
     
-    /* Scrollbar Style */
-    .news-list::-webkit-scrollbar { width: 6px; }
-    .news-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
-    .news-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    /* Scrollbar හැඩගැන්වීම */
+    .news-grid::-webkit-scrollbar { width: 6px; }
+    .news-grid::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+    .news-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    
+    @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 </style>
 
-
 <script>
-    async function fetchCseNews() {
-        const newsContainer = document.getElementById('news-feed-list');
-        newsContainer.innerHTML = '<div class="news-loading">⏳ අලුත්ම පුවත් ලබාගනිමින් පවතී...</div>';
-        
-        // CSE එකේ නිල RSS Feed URL එක
-        const cseRssUrl = 'https://www.cse.lk/api/corporate-announcements-rss'; 
-        
-        // RSS Feed එක කෙලින්ම Browser එකෙන් කියවන්න බැරි නිසා (CORS Error එන හින්දා) නොමිලේ දෙන RSS2JSON සේවාව පාවිච්චි කරනවා
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(cseRssUrl)}`;
+    // 🌐 ඔයාට Live එකතු කරගන්න ඕන වෙබ් අඩවි වල Feeds මෙතනට දාන්න
+    const newsSources = [
+        { name: 'CSE Announcement', url: 'https://www.cse.lk/api/corporate-announcements-rss' },
+        { name: 'Daily FT', url: 'https://www.ft.lk/rss/financial-news' },
+        { name: 'Ada Derana Biz', url: 'http://biz.adaderana.lk/feed/' }
+    ];
 
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
+    async function fetchAllNews() {
+        const listContainer = document.getElementById('combined-news-list');
+        let allArticles = [];
 
-            if (data.status === 'ok' && data.items.length > 0) {
-                let htmlContent = '';
-
-                data.items.forEach(item => {
-                    // දිනය සහ වෙලාව ලස්සනට සකස් කර ගැනීම
-                    const pubDate = new Date(item.pubDate);
-                    const formattedDate = pubDate.toLocaleDateString('en-US', { 
-                        month: 'short', day: '2-digit', year: 'numeric' 
+        // සේරම සයිට් වලට එකවර Requests යැවීම
+        const fetchPromises = newsSources.map(async (source) => {
+            try {
+                // GitHub Pages වල එන CORS Error එක නැති කරන්න rss2json API Proxy එක පාවිච්චි කරනවා
+                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`);
+                const data = await res.json();
+                
+                if (data.status === 'ok') {
+                    data.items.forEach(item => {
+                        allArticles.push({
+                            title: item.title,
+                            link: item.link,
+                            date: new Date(item.pubDate),
+                            source: source.name
+                        });
                     });
-                    const formattedTime = pubDate.toLocaleTimeString('en-US', { 
-                        hour: '2-digit', minute: '2-digit' 
-                    });
-
-                    // RSS එකෙන් එන Description එක පිරිසිදු කර ගැනීම
-                    let cleanDesc = item.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...';
-
-                    htmlContent += `
-                        <a href="${item.link}" target="_blank" class="news-item">
-                            <div class="news-meta">
-                                <span class="news-tag">CSE Announcement</span>
-                                <span class="news-time">📅 ${formattedDate} | ⏰ ${formattedTime}</span>
-                            </div>
-                            <h3 class="news-title">${item.title}</h3>
-                            <p class="news-desc">${cleanDesc}</p>
-                        </a>
-                    `;
-                });
-
-                newsContainer.innerHTML = htmlContent;
-            } else {
-                newsContainer.innerHTML = '<div class="news-loading" style="color:#dc2626;">❌ පුවත් ලෝඩ් කිරීමට නොහැකි විය. කරුණාකර පසුව උත්සාහ කරන්න.</div>';
+                }
+            } catch (e) {
+                console.log(`Error fetching from ${source.name}`);
             }
-        } catch (error) {
-            console.error('Error fetching CSE RSS feed:', error);
-            newsContainer.innerHTML = '<div class="news-loading" style="color:#dc2626;">❌ සර්වර් සම්බන්ධතාවය බිඳවැටී ඇත. (Server Connection Failed)</div>';
+        });
+
+        // සේරම සයිට් වලින් දත්ත ඇදලා ඉවර වෙනකම් බලා සිටීම
+        await Promise.all(fetchPromises);
+
+        // ⏱️ පුවත් ලැබුණු වෙලාව (Date/Time) අනුව අලුත්ම ඒවා උඩට එන්න Sort කිරීම
+        allArticles.sort((a, b) => b.date - a.date);
+
+        // අපේ ලා පාට Template එකට HTML එක සකස් කිරීම
+        if(allArticles.length > 0) {
+            let html = '';
+            // මුල් පුවත් 12 විතරක් සයිට් එකේ පෙන්වන්න සීමා කිරීම
+            allArticles.slice(0, 12).forEach(article => {
+                // CSE ඒවාට විශේෂ රතු ටැග් එකක් දැමීම
+                const tagClass = article.source === 'CSE Announcement' ? 'source-tag cse-tag' : 'source-tag';
+                
+                html += `
+                    <a href="${article.link}" target="_blank" class="custom-news-card">
+                        <span class="${tagClass}">${article.source}</span>
+                        <div class="news-title-text">${article.title}</div>
+                        <div class="news-time-text">📅 ${article.date.toLocaleDateString('en-US', {month: 'short', day: '2-digit', year: 'numeric'})} | ⏰ ${article.date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                    </a>
+                `;
+            });
+            listContainer.innerHTML = html;
+        } else {
+            listContainer.innerHTML = '<div class="news-loading" style="color: #dc2626;">❌ සර්වර් සම්බන්ධතාවය බිඳවැටී ඇත. පසුව උත්සාහ කරන්න.</div>';
         }
     }
 
-    // පේජ් එක ලෝඩ් වෙද්දීම රන් වෙන්න දාන්න
-    document.addEventListener("DOMContentLoaded", fetchCseNews);
+    // පේජ් එක ලෝඩ් වෙද්දීම පුවත් ටික පෙන්නන්න රන් කිරීම
+    document.addEventListener("DOMContentLoaded", fetchAllNews);
+    
+    // 🔄 හැම තත්පර 60කට වරක්ම (විනාඩියෙන් විනාඩියට) පසුබිමෙන් පුවත් Auto Refresh වීම
+    setInterval(fetchAllNews, 60000); 
 </script>
     <!--end of the code for cse real time news for my dear users-->
 
