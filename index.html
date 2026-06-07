@@ -429,6 +429,51 @@ function closeDisclaimer() {
     margin-top: 15px !important;
 }
 </style>
-    <!--footer code end-->    
+    <!--footer code end-->   
+
+    <!--chatbot styles start-->
+<style>
+/* Chat Bot Floating Button */
+#chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #007bff;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#chat-window {
+    display: none; /* මුලින් බොට් පේන්නේ නැහැ */
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 15px;
+    color: white;
+}
+</style>
+
+<div id="chat-toggle" onclick="toggleChat()">💬</div>
+<div id="chat-window">
+    <div id="chat-messages" style="height:250px; overflow-y:auto; margin-bottom:10px;"></div>
+    <input type="text" id="user-input" placeholder="ප්‍රශ්නයක් අහන්න..." style="width:100%;">
+    <button onclick="sendMessage()" style="width:100%; margin-top:5px;">යවන්න</button>
+</div>
+
+<script>
+function toggleChat() {
+    const win = document.getElementById('chat-window');
+    win.style.display = win.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+    <!--chatbot styles end-->
+    
 </body>
 </html>
