@@ -293,29 +293,43 @@ button { background:none; border:none; color:#007bff; font-weight:bold; padding:
 </style>
 
     <script>
-function toggleChat() {
-    const w = document.getElementById('chat-widget');
-    w.style.display = (w.style.display === 'flex') ? 'none' : 'flex';
-}
-
 async function sendMessage() {
     const input = document.getElementById('user-input');
     const msgs = document.getElementById('chat-messages');
-    if(!input.value) return;
-
-    msgs.innerHTML += `<p style="text-align:right"><b>You:</b> ${input.value}</p>`;
- 
-    const res = await fetch('http://ashehansl-github-io.vercel.app/', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ message: input.value })
-    });
-    const data = await res.json();
+    const message = input.value;
     
-    if(data.candidates) {
-        msgs.innerHTML += `<p class="bot-msg"><b>Bot:</b> ${data.candidates[0].content.parts[0].text}</p>`;
-    }
+    if(!message) return;
+
+    // 1. යූසර්ගේ මැසේජ් එක UI එකේ පෙන්වන්න
+    msgs.innerHTML += `<p class="user-msg" style="text-align:right; color:#007bff;"><b>You:</b> ${message}</p>`;
     input.value = '';
+    
+    // 2. බොට් උත්තර දෙනකන් "Loading..." කියලා පෙන්වන්න
+    const loadingId = "loading-" + Date.now();
+    msgs.innerHTML += `<p id="${loadingId}" class="bot-msg">Bot is thinking...</p>`;
+    msgs.scrollTop = msgs.scrollHeight;
+
+    try {
+        const res = await fetch('http://ashehansl-github-io.vercel.app/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ message: message })
+        });
+        
+        const data = await res.json();
+        
+        // 3. ලෝඩින් මැසේජ් එක අයින් කරලා බොට්ගේ උත්තරේ දාන්න
+        document.getElementById(loadingId).remove();
+        
+        if(data.candidates && data.candidates[0].content.parts[0].text) {
+            msgs.innerHTML += `<p class="bot-msg"><b>Bot:</b> ${data.candidates[0].content.parts[0].text}</p>`;
+        } else {
+            msgs.innerHTML += `<p class="bot-msg" style="color:red;">Error: Bot didn't respond.</p>`;
+        }
+    } catch (e) {
+        document.getElementById(loadingId).remove();
+        msgs.innerHTML += `<p class="bot-msg" style="color:red;">Error: Server connection failed.</p>`;
+    }
     msgs.scrollTop = msgs.scrollHeight;
 }
 </script>
