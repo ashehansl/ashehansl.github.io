@@ -271,6 +271,34 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 #user-input { border:none; padding:15px; border-top:1px solid #eee; outline:none; }
 button { background:none; border:none; color:#007bff; font-weight:bold; padding:10px; cursor:pointer; }
 </style>
+
+    <script>
+function toggleChat() {
+    const w = document.getElementById('chat-widget');
+    w.style.display = (w.style.display === 'flex') ? 'none' : 'flex';
+}
+
+async function sendMessage() {
+    const input = document.getElementById('user-input');
+    const msgs = document.getElementById('chat-messages');
+    if(!input.value) return;
+
+    msgs.innerHTML += `<p style="text-align:right"><b>You:</b> ${input.value}</p>`;
+ 
+    const res = await fetch('http://ashehansl-github-io.vercel.app/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ message: input.value })
+    });
+    const data = await res.json();
+    
+    if(data.candidates) {
+        msgs.innerHTML += `<p class="bot-msg"><b>Bot:</b> ${data.candidates[0].content.parts[0].text}</p>`;
+    }
+    input.value = '';
+    msgs.scrollTop = msgs.scrollHeight;
+}
+</script>
     <!--chatbot code end-->
 
     <!--pop-up notification for disclaimer-->
