@@ -1,9 +1,3 @@
 baseURL = 'https://ashehanSL.github.io/'
 languageCode = 'en-us'
-title = 'My Awesome Blog'
-theme = 'PaperMod'
-
-[params]
-    env = 'production'
-    title = 'My Awesome Blog'
-    description = 'Welcome to my blog'
+title = 'Finance & Tech Blog'
