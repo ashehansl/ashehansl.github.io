@@ -7,7 +7,7 @@
       { "name": "2. Technical Indicators 📊", "short": "RSI, MACD පාවිච්චි කරන හැටි.", "file": "ta-indicators.txt" }
     ]
   },
-  "corporate-finance": {
+  "Fundamental Analysis": {
     "title": "Fundamental Analysis  💼",
     "desc": "මුල්‍ය අනුපාත සහ වාර්තා විශ්ලේෂණය.",
     "articles": [
