@@ -1,3 +1,6 @@
+---
+layout: default
+---
 <!DOCTYPE html>
 <html lang="si">
 <head>
@@ -5,45 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance & Tech Blog</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-            background: #2d2d2d;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        h1 {
-            color: #00ffcc;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #cccccc;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #1a1a1a; color: #ffffff; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 800px; width: 100%; background: #2d2d2d; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h1 { color: #00ffcc; text-align: center; }
+        .post { background: #3a3a3a; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #00ffcc; }
+        .post h2 { color: #00ffcc; margin-top: 0; }
+        .post-date { color: #888; font-size: 0.85rem; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Finance & Tech Blog 🚀</h1>
-        <p style="color: #00ffcc; font-size: 0.9rem;">Update කළ දිනය: 2026-06-07</p>
-        <hr style="border: 1px solid #444; margin: 20px 0;">
+        <p style="text-align:center; color:#aaa;">Welcome to my personal space</p>
+        <hr style="border: 1px solid #444; margin: 30px 0;">
 
-        <article style="text-align: left; margin-bottom: 40px;">
-            <h2 style="color: #00ffcc;">Corporate Finance සහ Data Science අතර තියෙන බැඳීම 📊</h2>
-            <p>වර්තමාන ව්‍යාපාරික ලෝකයේ සාර්ථක තීරණ ගන්න නම් දත්ත (Data) නිවැරදිව විශ්ලේෂණය කිරීම අත්‍යවශ්‍යයි. විශේෂයෙන්ම මූල්‍ය ක්ෂේත්‍රයේ (Finance) ඉදිරියට යන්න බලන කෙනෙක්ට Data Science කියන්නේ සුපිරිම මෙවලමක්...</p>
-        </article>
-
-        </div>
+        {% for post in site.posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <div class="post-date">ලියා ඇති දිනය: {{ post.date | date: "%Y-%m-%d" }}</div>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
