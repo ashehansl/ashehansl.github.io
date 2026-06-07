@@ -246,6 +246,114 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 });
 </script>
 <!--End of the user message section-->
+
+    <!--pop-up notification for disclaimer-->
+<div id="disclaimer-popup" class="disclaimer-overlay">
+    <div class="disclaimer-box">
+        <h3>⚠️ Disclaimer (වගකීමෙන් නිදහස් වීම)</h3>
+        <p>
+            The information provided on this blog is for educational and informational purposes only. 
+            It should not be considered as financial or investment advice. Investing in financial markets 
+            and the Colombo Stock Exchange (CSE) involves risk. Please consult with a certified financial 
+            advisor before making any investment decisions. 
+            <br><br>
+            <strong>Investment decisions are at your own risk.</strong>
+        </p>
+        <button onclick="closeDisclaimer()" class="disclaimer-btn">I Understand & Agree</button>
+    </div>
+</div>
+
+<style>
+.disclaimer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* පසුබිම අඳුරු කරන්න */
+    backdrop-filter: blur(5px); /* පිටුපස තියෙන ඒවා බ්ලර් කරන්න */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* හැමදේටම උඩින් පේන්න */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Pop-up එක active වුණාම පේන විදිහ */
+.disclaimer-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.disclaimer-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transform: translateY(-20px);
+    transition: transform 0.4s ease;
+}
+
+.disclaimer-overlay.show .disclaimer-box {
+    transform: translateY(0);
+}
+
+.disclaimer-box h3 {
+    margin-top: 0;
+    color: #d9534f; /* රතු/තැඹිලි පාට අනතුරු ඇඟවීමේ පාටක් */
+    font-size: 22px;
+}
+
+.disclaimer-box p {
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 20px 0;
+}
+
+.disclaimer-btn {
+    background: #28a745; /* කොළ පාට බටන් එකක් */
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.disclaimer-btn:hover {
+    background: #218838;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // කලින් යූසර් බටන් එක ක්ලික් කරලා තියෙනවාද බලන්න (Local Storage)
+    if (!localStorage.getItem("disclaimerAccepted")) {
+        // ක්ලික් කරලා නැත්නම් තත්පර 1කට පසු Pop-up එක පෙන්වන්න
+        setTimeout(function() {
+            document.getElementById("disclaimer-popup").classList.add("show");
+        }, 1000);
+    }
+});
+
+function closeDisclaimer() {
+    // බටන් එක ක්ලික් කළාම බැනර් එක වසා දමා බ්‍රවුසර් එකේ සේව් කරන්න
+    document.getElementById("disclaimer-popup").classList.remove("show");
+    localStorage.setItem("disclaimerAccepted", "true");
+}
+</script>
+    <!--end of the pop-up notification-->
     
 </body>
 </html>
