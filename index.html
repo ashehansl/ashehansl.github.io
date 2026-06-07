@@ -110,14 +110,25 @@
     </script>
 
 <!--Add user message section -->
-<div class="modern-form-container" style="position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 20px; margin-top: 50px; border: 1px solid rgba(56, 189, 248, 0.2); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); overflow: hidden;">
+<div class="modern-form-container" style="
+    max-width: 600px; 
+    margin: 50px auto 60px auto; /* auto දැමීමෙන් දෙපැත්තෙන් මැදට (Centered) වෙනවා, 60px වලින් යටින් ඉඩ හැදෙනවා */
+    position: relative; 
+    background: linear-gradient(145deg, #1e293b, #0f172a); 
+    padding: 35px; 
+    border-radius: 24px; /* තවත් Flexible සහ වටකුරු කර ඇත */
+    border: 1px solid rgba(56, 189, 248, 0.25); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); /* පාවෙන පෙනුම දෙන Shadow එක */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
     
     <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
 
-    <h3 style="color: var(--accent); margin-top: 0; font-size: 1.6rem; font-weight: 700; letter-spacing: 0.5px; display: flex; align-items: center; gap: 10px;">
+    <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px;">
         අප වෙත අදහස් යොමු කරන්න <span style="animation: pulse 2s infinite;">💬</span>
     </h3>
-    <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.95rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ Google Sheet එකට යොමු කරන්න.</p>
+    <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.9rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ Google Sheet එකට යොමු කරන්න.</p>
     
     <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
         <div style="position: relative;">
@@ -148,14 +159,12 @@
 </div>
 
 <style>
-/* Input එකක් ක්ලික් කරද්දී බෝඩරය නිල් පාට වී ලස්සන වීම */
 #contactForm input:focus, #contactForm textarea:focus {
     border-color: #38bdf8 !important;
     box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
     background: #0f172a !important;
 }
 
-/* Floating Label එකේ මැජික් එක (ටයිප් කරද්දී අකුරු උඩට යාම) */
 .floating-label {
     position: absolute;
     left: 14px;
@@ -181,14 +190,10 @@
     font-weight: bold;
 }
 
-/* Submit බටන් එක උඩට මවුස් එක ගෙනිද්දී Glow වීම */
 .submit-glow-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 25px rgba(0, 166, 255, 0.6);
     letter-spacing: 0.5px;
-}
-.submit-glow-btn:active {
-    transform: translateY(-1px);
 }
 
 @keyframes pulse {
@@ -210,13 +215,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const formData = {
         name: document.getElementById('formName').value,
         email: document.getElementById('formEmail').value,
-        subject: document.getElementById('formSubject').value, // අලුතින් එකතු කළා
+        subject: document.getElementById('formSubject').value,
         message: document.getElementById('formMessage').value
     };
-    };
     
-    // මෙතන තියෙන URL එක වෙනුවට කලින් පියවරේදී ගත්ත ඔයාගේ Google Web App URL එක දාන්න
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbyG0RT51Z1YbzzkCoyycdqQe9Hd0h2RxH30t1M0WXGbnC15z9oAroVsDBOLxSJI_Eq0rA/exec';
+    // මෙතන තියෙන URL එක වෙනුවට ඔයාගේ Google Web App URL එක දාන්න
+    const webAppUrl = 'ඔයාගේ_GOOGLE_APPS_SCRIPT_WEB_APP_URL_එක_මෙතනට_දාන්න';
     
     fetch(webAppUrl, {
         method: 'POST',
@@ -226,12 +230,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     })
     .then(() => {
         statusText.style.color = '#4ade80';
-        statusText.innerText = '🎉 ස්තූතියි! ඔබගේ දත්ත සාර්ථකව Google Sheet එකට ඇතුළත් වුණා. ✅';
+        statusText.innerText = '🎉 ස්තූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅';
         document.getElementById('contactForm').reset();
     })
     .catch(() => {
         statusText.style.color = '#ef4444';
-        statusText.innerText = '❌ අයියෝ! දත්ත යැවීමේදී දෝෂයක් සිදු වුණා. නැවත උත්සාහ කරන්න.';
+        statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.';
     });
 });
 </script>
