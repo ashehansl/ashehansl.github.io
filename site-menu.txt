@@ -1,4 +1,11 @@
 {
+  "introduction-investing": {
+    "title": "Introduction to Investing 💰",
+    "desc": "ආයෝජනයට අවශ්‍යවන මුලික දැනුම ලබාදීම.",
+    "articles": [
+      { "name": "1. ආයෝජනය යනු කුමක්ද?", "short": "මුදල් ඉතිරි කිරීම සහ ආයෝජනය.", "file": "inv-basics.txt" }
+    ]
+  },
   "technical-analysis": {
     "title": "Technical Analysis 📈",
     "desc": "ප්‍රස්ථාර (Charts), Indicators සහ Trend හඳුනාගැනීම.",
@@ -12,13 +19,6 @@
     "desc": "මුල්‍ය අනුපාත සහ වාර්තා විශ්ලේෂණය.",
     "articles": [
       { "name": "1. Financial Statements 📑", "short": "Income Statement, Balance Sheet කියවීම.", "file": "FA1.txt" }
-    ]
-  },
-  "introduction-investing": {
-    "title": "Introduction to Investing 💰",
-    "desc": "ආයෝජනයට අවශ්‍යවන මුලික දැනුම ලබාදීම.",
-    "articles": [
-      { "name": "1. ආයෝජනය යනු කුමක්ද?", "short": "මුදල් ඉතිරි කිරීම සහ ආයෝජනය.", "file": "inv-basics.txt" }
     ]
   },
   "Stocks": {
