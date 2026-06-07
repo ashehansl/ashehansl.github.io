@@ -14,35 +14,35 @@
       { "name": "2. Technical Indicators 📊", "short": "RSI, MACD පාවිච්චි කරන හැටි.", "file": "ta-indicators.txt" }
     ]
   },
-  "Fundamental-Analysis": {
+  "fundamental-analysis": {
     "title": "Fundamental Analysis 💼",
     "desc": "මුල්‍ය අනුපාත සහ වාර්තා විශ්ලේෂණය.",
     "articles": [
       { "name": "1. What are the Ratios ?", "short": "මුල්‍ය අනුපාත කියන්නේ මොනවාද සහ හදුනාගැනීම.", "file": "FA1.txt" }
     ]
   },
-  "Stocks": {
+  "stocks": {
     "title": "Stocks 📊",
     "desc": "සමාගම් මූල්‍ය කළමනාකරණය හා කොටස් වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
       { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "stock1.txt" }
     ]
   },
-  "Crypto": {
+  "crypto": {
     "title": "Crypto🏆",
     "desc": "Crypto වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
       { "name": "1. Introduction to Crypto Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "crypto1.txt" }
     ]
   },
-  "Government-Reports": {
+  "government-reports": {
     "title": "Government Reports",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ රජයේ වාර්තා",
     "articles": [
-      { "name": "1. Central Bank Report Sri Lanka.", "short": "මහබන්කුවෙහි වාර්ෂික හා වෙනත් වාර්තා සදහා මෙතනින් පිවිසෙන්න.", "file": "centralbanksl.txt" }
+      { "name": "1. Central Bank Report Sri Lanka.", "short": "මහဘන්කුවෙහි වාර්ෂික හා වෙනත් වාර්තා සදහා මෙතනින් පිවිසෙන්න.", "file": "centralbanksl.txt" }
     ]
   },
-  "E-Books": {
+  "e-books": {
     "title": "E-Books",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ දැනුමට අවශ්‍ය පොත්",
     "articles": [
