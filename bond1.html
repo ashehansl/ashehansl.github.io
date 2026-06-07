@@ -4,7 +4,7 @@
             <h2>Government Securities Yield Curve 🏛️</h2>
             <p class="curve-subtitle">Treasury Bills & Bonds Yield Rates (%)</p>
         </div>
-        <span class="market-tag">Central Bank / WealthTrust Data</span>
+        <span class="market-tag">Capital Alliance (CAL) Market Data</span>
     </div>
 
     <div class="curve-chart-container">
@@ -13,24 +13,24 @@
 
     <div class="yield-data-grid">
         <div class="yield-data-box">
-            <span class="tenor-label">3 Months</span>
-            <span class="yield-rate">12.50%</span>
+            <span class="tenor-label">3 Months (T-Bill)</span>
+            <span class="yield-rate" id="cal-3m">12.25%</span>
         </div>
         <div class="yield-data-box">
-            <span class="tenor-label">1 Year</span>
-            <span class="yield-rate">13.20%</span>
+            <span class="tenor-label">1 Year (T-Bill)</span>
+            <span class="yield-rate" id="cal-1y">13.10%</span>
         </div>
         <div class="yield-data-box">
-            <span class="tenor-label">5 Years</span>
-            <span class="yield-rate">14.10%</span>
+            <span class="tenor-label">5 Years (T-Bond)</span>
+            <span class="yield-rate" id="cal-5y">13.95%</span>
         </div>
         <div class="yield-data-box">
-            <span class="tenor-label">10 Years</span>
-            <span class="yield-rate">14.85%</span>
+            <span class="tenor-label">10 Years (T-Bond)</span>
+            <span class="yield-rate" id="cal-10y">14.60%</span>
         </div>
         <div class="yield-data-box">
-            <span class="tenor-label">20 Years</span>
-            <span class="yield-rate">15.20%</span>
+            <span class="tenor-label">20 Years (T-Bond)</span>
+            <span class="yield-rate" id="cal-20y">15.10%</span>
         </div>
     </div>
 </div>
@@ -69,23 +69,19 @@
     .market-tag {
         font-size: 0.75rem;
         font-weight: 700;
-        background: #f1f5f9;
-        color: #475569;
+        background: #fff1f2; /* CAL Brand එකට ගැලපෙන ලා රතු/රෝස පැහැති Tag එකක් */
+        color: #e11d48;
         padding: 6px 12px;
         border-radius: 20px;
         text-transform: uppercase;
-        border: 1px solid #e2e8f0;
+        border: 1px solid #ffe4e6;
     }
-    
-    /* Chart Styling */
     .curve-chart-container {
         position: relative;
         width: 100%;
         height: 350px;
         margin-bottom: 25px;
     }
-
-    /* Bottom Grid Styling */
     .yield-data-grid {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -112,8 +108,6 @@
         font-weight: 700;
         color: #0f172a;
     }
-
-    /* Responsive Design */
     @media (max-width: 768px) {
         .curve-header { flex-direction: column; gap: 10px; }
         .market-tag { align-self: flex-start; }
@@ -125,32 +119,33 @@
     document.addEventListener("DOMContentLoaded", function() {
         const ctx = document.getElementById('yieldCurveChart').getContext('2d');
         
-        // ලස්සන Smooth Line එකක් ගන්න Background Gradient එකක් හදාගන්නවා
         const gradient = ctx.createLinearGradient(0, 0, 0, 350);
-        gradient.addColorStop(0, 'rgba(56, 189, 248, 0.25)'); // ලා නිල් පාට
-        gradient.addColorStop(1, 'rgba(56, 189, 248, 0.0)');
+        gradient.addColorStop(0, 'rgba(225, 29, 72, 0.15)'); // CAL theme එකට මැච් වෙන්න ලා රතු Gradient එකක්
+        gradient.addColorStop(1, 'rgba(225, 29, 72, 0.0)');
 
-        // කාල සීමාවන් (X-AxisLabels) සහ වත්මන් ආදර්ශ Yield Rates (Y-Axis Data)
-        const labels = ['3 Months', '6 Months', '1 Year', '2 Years', '5 Years', '10 Years', '15 Years', '20 Years', '30 Years'];
-        const yieldData = [12.50, 12.85, 13.20, 13.60, 14.10, 14.85, 15.05, 15.20, 15.40]; // Normal Upward Sloping Curve එකක්
+        // 📝 X-Axis: CAL එකේ බහුලවම පාවිච්චි වෙන කාලසීමාවන් (Maturities)
+        const labels = ['3 Months', '6 Months', '1 Year', '2 Years', '3 Years', '5 Years', '6 Years', '8 Years', '10 Years', '20 Years'];
+        
+        // 📈 Y-Axis: CAL Secondary Market Yield Rates (ආදර්ශ දත්ත - ඔයාට CAL සයිට් එක බලාගෙන මේවා වෙනස් කරන්න පුළුවන්)
+        const calYieldData = [12.25, 12.65, 13.10, 13.40, 13.65, 13.95, 14.15, 14.40, 14.60, 15.10];
 
         new Chart(ctx, {
             type: 'line',
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Current Yield (%)',
-                    data: yieldData,
-                    borderColor: '#0284c7', // තද නිල් පාට Line එක
+                    label: 'CAL Yield Rate (%)',
+                    data: calYieldData,
+                    borderColor: '#e11d48', // CAL Brand එක නිරූපණය වන තද රතු/රෝස Line එකක්
                     borderWidth: 3,
                     pointBackgroundColor: '#ffffff',
-                    pointBorderColor: '#0284c7',
+                    pointBorderColor: '#e11d48',
                     pointBorderWidth: 2,
                     pointRadius: 5,
                     pointHoverRadius: 7,
                     fill: true,
                     backgroundColor: gradient,
-                    tension: 0.3 // වක්‍රය Smooth කරන්න (Curve Effect)
+                    tension: 0.3 // Smooth Curve Effect
                 }]
             },
             options: {
@@ -161,7 +156,7 @@
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return ` Yield: ${context.parsed.y.toFixed(2)}%`;
+                                return ` CAL Yield: ${context.parsed.y.toFixed(2)}%`;
                             }
                         }
                     }
@@ -170,7 +165,7 @@
                     x: {
                         grid: { display: false },
                         ticks: { color: '#64748b', font: { size: 11, weight: '600' } },
-                        title: { display: true, text: 'Time to Maturity (Tenor)', color: '#475569', font: { size: 12, weight: '700' } }
+                        title: { display: true, text: 'Maturity Period (Tenor)', color: '#475569', font: { size: 12, weight: '700' } }
                     },
                     y: {
                         grid: { color: '#f1f5f9' },
