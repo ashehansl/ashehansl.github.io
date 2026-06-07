@@ -25,7 +25,7 @@
     "title": "Stocks 📊",
     "desc": "කොටස් වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
-      { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "stock1.txt" }
+      { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "crypto1.txt" }
     ]
   },
 "Crypto ": {
