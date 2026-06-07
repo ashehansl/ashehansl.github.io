@@ -53,7 +53,7 @@
       { "name": "5. MONEY Master the Game by Tony Robbins", "short": "මුදල් සමග මිනිස් මනසේ හැසිරීම", "file": "ebook5.html" },
       { "name": "6. Principles of Economics by N. GREGORY MANKIW - HARVARD UNIVERSITY", "short": "ආර්ථික විද්‍යාවේ හරය", "file": "ebook6.html" },
       { "name": "7. Technical Analysis of the Financial Markets by John J.Murphy", "short": "තාක්ෂණික විශ්ලේෂණයේ වැදගත්ම කොටස්", "file": "ebook7.html" },
-      { "name": "8. The Almanack of Naval Ravikant by Eric Jorgenson", "short": , "file": "ebook8.html" }
+      { "name": "8. The Almanack of Naval Ravikant by Eric Jorgenson", "short": , "file": "ebook8.html" },
     ]
   }
 }
