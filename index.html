@@ -39,10 +39,9 @@
             <input 
                 type="text" 
                 id="blog-search-input" 
-                placeholder="Search articles, financial analysis or CSE companies..." 
-                oninput="handleSearch()"
+                placeholder="Type CSE Company Name or Ticker (e.g., JKH, COMB, SAMP)..." 
+                oninput="searchCseCompanies()"
                 onfocus="expandCapsule()"
-                onblur="collapseCapsule()"
                 autocomplete="off"
             >
             <button id="clear-search-btn" onmousedown="clearSearch(event)">✕</button>
@@ -52,244 +51,197 @@
     <div id="search-results-dropdown" class="fluid-results-box" style="display: none;"></div>
 </div>
 
+<div class="chart-section-wrapper" id="chart-section" style="display: none;">
+    <div class="chart-header">
+        <h3 id="selected-company-name">John Keells Holdings PLC (JKH)</h3>
+        <button class="close-chart-btn" onclick="closeChart()">✕ Close Chart</button>
+    </div>
+    <div id="tradingview-widget-container"></div>
+</div>
+
 <style>
     .fluid-search-container {
         max-width: 1100px;
         margin: 20px auto;
         position: relative;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         display: flex;
-        justify-content: center; /* මැදටම සෙට් කරන්න */
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
     }
-
-    /* 💧 වතුර බින්දුවේ ප්‍රධාන Capsule හැඩය */
+    /* 💧 වතුර බින්දුවක් වැනි කැප්සියුල හැඩය */
     .fluid-capsule {
-        width: 180px; /* සාමාන්‍ය වෙලාවට පොඩියට Dynamic Island එකක් වගේ තියෙන්නේ */
+        width: 220px;
         height: 46px;
-        background: #0f172a; /* Apple Dynamic Island වගේ තද කළු/Slate පාටක් මුලින් තියෙන්නේ */
+        background: #0f172a;
         border-radius: 30px;
         padding: 0 16px;
         display: flex;
         align-items: center;
-        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic බවුන්ස් ඇනිමේෂන් එක */
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Bounce Animation */
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         overflow: hidden;
     }
-
-    /* 🌊 ක්ලික් කළාම වතුර බින්දුවක් විහිදෙනවා වගේ ලා පාටට දිග ඇරෙන හැඩය */
     .fluid-capsule.expanded {
-        width: 100%; /* සම්පූර්ණයෙන්ම දෙපැත්තට විහිදී යනවා */
-        background: #ffffff; /* ලා පාට Light Mode එකට මාරු වෙනවා */
-        border: 2px solid #0284c7; /* ලස්සන නිල් Border එකක් එනවා */
+        width: 100%;
+        background: #ffffff;
+        border: 2px solid #0284c7;
         box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
     }
-
-    .search-inner-content {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    .fluid-search-icon {
-        font-size: 1.2rem;
-        color: #94a3b8;
-        cursor: pointer;
-        transition: color 0.3s ease;
-        margin-right: 12px;
-    }
-    .fluid-capsule.expanded .fluid-search-icon {
-        color: #0284c7; /* Expand වුණාම අයිකන් එක නිල් වෙනවා */
-    }
-
+    .search-inner-content { display: flex; align-items: center; width: 100%; height: 100%; }
+    .fluid-search-icon { font-size: 1.2rem; color: #94a3b8; cursor: pointer; margin-right: 12px; }
+    .fluid-capsule.expanded .fluid-search-icon { color: #0284c7; }
     #blog-search-input {
-        border: none;
-        outline: none;
-        width: 100%;
-        font-size: 1rem;
-        font-weight: 600;
-        background: transparent;
-        color: #ffffff; /* මුලින් සුදු අකුරු */
-        transition: color 0.3s ease;
+        border: none; outline: none; width: 100%; font-size: 1rem;
+        font-weight: 600; background: transparent; color: #ffffff;
     }
+    .fluid-capsule.expanded #blog-search-input { color: #0f172a; }
+    #blog-search-input::placeholder { color: #64748b; }
+    #clear-search-btn { background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; display: none; }
 
-    /* Expand වුණාම input එක ඇතුළේ අකුරු කළු වෙනවා */
-    .fluid-capsule.expanded #blog-search-input {
-        color: #0f172a;
-    }
-
-    #blog-search-input::placeholder {
-        color: #64748b;
-        opacity: 0.7;
-    }
-    .fluid-capsule.expanded #blog-search-input::placeholder {
-        color: #94a3b8;
-    }
-
-    #clear-search-btn {
-        background: none;
-        border: none;
-        color: #94a3b8;
-        font-size: 1.1rem;
-        cursor: pointer;
-        padding: 4px;
-        display: none;
-    }
-    .fluid-capsule.expanded #clear-search-btn {
-        color: #64748b;
-    }
-
-    /* Dropdown Table Styling */
+    /* Results Dropdown Box */
     .fluid-results-box {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        margin-top: 12px;
-        max-height: 380px;
-        overflow-y: auto;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        z-index: 9999;
-        animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); /* Dropdown එකත් බවුන්ස් වෙලා පාත් වෙන්නේ */
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;
+        margin-top: 12px; max-height: 300px; overflow-y: auto;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); z-index: 9999;
+        animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
-
-    @keyframes fluidOpen {
-        0% { transform: translateY(-10px); opacity: 0; }
-        100% { transform: translateY(0); opacity: 1; }
-    }
-
-    .result-group-title {
-        background: #f8fafc;
-        padding: 10px 18px;
-        font-size: 0.75rem;
-        font-weight: 800;
-        color: #64748b;
-        text-transform: uppercase;
-        letter-spacing: 0.6px;
-        border-bottom: 1px solid #f1f5f9;
-    }
+    @keyframes fluidOpen { 0% { transform: translateY(-10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    
     .result-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 14px 18px;
-        text-decoration: none;
-        color: #1e293b;
-        border-bottom: 1px solid #f1f5f9;
-        transition: background 0.2s ease;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 14px 18px; text-decoration: none; color: #1e293b;
+        border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.2s;
     }
     .result-item:hover { background: #f0f9ff; }
     .result-title { font-size: 0.95rem; font-weight: 600; color: #0f172a; }
-    .result-meta { font-size: 0.8rem; color: #64748b; }
-    .badge { font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
-    .badge.company { background: #e0f2fe; color: #0369a1; }
-    .badge.article { background: #f0fdf4; color: #166534; }
-    .no-results { padding: 25px; text-align: center; color: #64748b; font-weight: 600; }
+    .result-ticker { font-size: 0.8rem; color: #64748b; font-weight: 700; }
+    .badge-cse { background: #e0f2fe; color: #0369a1; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+
+    /* 📊 TradingView Chart Box Styles */
+    .chart-section-wrapper {
+        max-width: 1100px; margin: 30px auto;
+        background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;
+        padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        font-family: 'Segoe UI', sans-serif;
+        animation: fluidOpen 0.5s ease;
+    }
+    .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+    .chart-header h3 { margin: 0; color: #0f172a; font-size: 1.2rem; font-weight: 700; }
+    .close-chart-btn {
+        background: #fee2e2; border: 1px solid #fecaca; color: #dc2626;
+        padding: 6px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .close-chart-btn:hover { background: #dc2626; color: #ffffff; }
+    #tradingview-widget-container { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; }
 </style>
 
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
 <script>
-    // 🏢 CSE Listed Companies Data
-    const cseCompanies = [
-        { title: "John Keells Holdings PLC", ticker: "JKH.N0000", url: "/companies/jkh" },
-        { title: "Commercial Bank of Ceylon PLC", ticker: "COMB.N0000", url: "/companies/comb" },
-        { title: "Sampath Bank PLC", ticker: "SAMP.N0000", url: "/companies/sampath" },
-        { title: "Galadari Hotels (Lanka) PLC", ticker: "GHLL.N0000", url: "/companies/galadari" },
-        { title: "Acme Printing & Packaging PLC", ticker: "ACME.N0000", url: "/companies/acme" }
-    ];
-
-    // 📰 Blog Articles Data
-    const blogArticles = [
-        { title: "How to Analyze an Annual Report: A Beginner's Guide", category: "Education", url: "/blog/annual-report-analysis" },
-        { title: "John Keells Hotels PLC: 5-Year Financial Review", category: "Hotel Sector", url: "/blog/jkh-hotels-review" }
-    ];
-
     const capsule = document.getElementById('search-capsule');
     const dropdown = document.getElementById('search-results-dropdown');
     const searchInput = document.getElementById('blog-search-input');
     const clearBtn = document.getElementById('clear-search-btn');
 
-    // 💧 Capsule එක වතුර බින්දුවක් වගේ දිග හරින Function එක
-    function expandCapsule() {
-        capsule.classList.add('expanded');
-    }
+    function expandCapsule() { capsule.classList.add('expanded'); }
+    function focusSearch() { searchInput.focus(); }
 
-    // 💧 Capsule එක ආපසු කුඩා කරන Function එක
-    function collapseCapsule() {
-        // යූසර් ටයිප් කරලා නැත්නම් විතරක් කුඩා කරන්න
-        if (searchInput.value.trim().length === 0) {
-            capsule.classList.remove('expanded');
-            dropdown.style.display = 'none';
-            clearBtn.style.display = 'none';
-        }
-    }
-
-    function focusSearch() {
-        searchInput.focus();
-    }
-
-    // 🔍 Live Filtering
-    function handleSearch() {
-        const query = searchInput.value.toLowerCase().trim();
-
-        if (query.length === 0) {
+    // 🔍 TradingView API එක හරහා ලංකාවේ (CSE) සමාගම් සෙවීම
+    async function searchCseCompanies() {
+        const query = searchInput.value.trim();
+        if (query.length < 2) {
             dropdown.style.display = 'none';
             clearBtn.style.display = 'none';
             return;
         }
-
         clearBtn.style.display = 'block';
 
-        const matchedCompanies = cseCompanies.filter(c => 
-            c.title.toLowerCase().includes(query) || c.ticker.toLowerCase().includes(query)
-        );
-        const matchedArticles = blogArticles.filter(a => 
-            a.title.toLowerCase().includes(query) || a.category.toLowerCase().includes(query)
-        );
+        try {
+            // TradingView එකෙන් ලංකාවේ (COL) මාකට් එකේ මැච් වෙන සමාගම් සේරම Live ඇදලා ගැනීම
+            const response = await fetch(`https://symbol-search.tradingview.com/symbol_search/?text=${encodeURIComponent(query)}&exchange=COL`);
+            const data = await response.json();
 
-        let htmlContent = '';
-
-        if (matchedCompanies.length > 0) {
-            htmlContent += `<div class="result-group-title">CSE Listed Companies</div>`;
-            matchedCompanies.forEach(c => {
-                htmlContent += `
-                    <a href="${c.url}" class="result-item">
-                        <div><div class="result-title">${c.title}</div><div class="result-meta">Ticker: ${c.ticker}</div></div>
-                        <span class="badge company">Company</span>
-                    </a>
-                `;
-            });
+            if (data && data.length > 0) {
+                let htmlContent = '';
+                data.forEach(item => {
+                    // TradingView එකේ ලංකාවේ Ticker එක එන්නේ "JKH" විදිහට (COL:JKH)
+                    htmlContent += `
+                        <div class="result-item" onclick="openTradingViewChart('${item.symbol}', '${item.description}')">
+                            <div>
+                                <div class="result-title">${item.description}</div>
+                                <div class="result-ticker">Ticker: ${item.symbol} | COLOMBO</div>
+                            </div>
+                            <span class="badge-cse">CSE Stock</span>
+                        </div>
+                    `;
+                });
+                dropdown.innerHTML = htmlContent;
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.innerHTML = `<div style="padding:20px; text-align:center; color:#64748b; font-weight:600;">❌ No CSE companies found for "${query}"</div>`;
+                dropdown.style.display = 'block';
+            }
+        } catch (error) {
+            console.error("TradingView Symbol Search Error:", error);
         }
+    }
 
-        if (matchedArticles.length > 0) {
-            htmlContent += `<div class="result-group-title">Blog Articles</div>`;
-            matchedArticles.forEach(a => {
-                htmlContent += `
-                    <a href="${a.url}" class="result-item">
-                        <div><div class="result-title">${a.title}</div><div class="result-meta">Category: ${a.category}</div></div>
-                        <span class="badge article">Article</span>
-                    </a>
-                `;
-            });
-        }
+    // 📊 ක්ලික් කරපු සැනින් බ්ලොග් එක ඇතුළේ Chart එක Embed කරන Function එක
+    function openTradingViewChart(ticker, companyName) {
+        dropdown.style.display = 'none';
+        document.getElementById('selected-company-name').innerText = `${companyName} (${ticker})`;
+        document.getElementById('chart-section').style.display = 'block';
 
-        if (matchedCompanies.length === 0 && matchedArticles.length === 0) {
-            htmlContent = `<div class="no-results">❌ No results found for "${query}"</div>`;
-        }
+        // TradingView Interactive Chart එක බ්ලොග් එක ඇතුළේ Create කිරීම
+        new TradingView.widget({
+            "width": "100%",
+            "height": 500,
+            "symbol": `COL:${ticker}`, // ලංකාවේ CSE මාකට් එක නිරූපණය කිරීමට "COL:" බාවිතා කරයි
+            "interval": "D", // Daily Chart
+            "timezone": "Asia/Colombo", // ලංකාවේ වෙලාවට සෙට් කිරීම
+            "theme": "light", // ඔයා ඉල්ලපු Clean Light Mode එක
+            "style": "1", // Candle Stick Chart එකක්
+            "locale": "en",
+            "toolbar_bg": "#f1f5f9",
+            "enable_publishing": false,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": false,
+            "container_id": "tradingview-widget-container",
+            "studies": [
+                "RSI@tv-basicstudies", // Basic Indicators 2කුත් දාලම දුන්නා මචං
+                "MASimple@tv-basicstudies"
+            ]
+        });
 
-        dropdown.innerHTML = htmlContent;
-        dropdown.style.display = 'block';
+        // සර්ච් බාර් එක ආපහු සාමාන්‍ය තත්ත්වයට පත් කිරීම
+        capsule.classList.remove('expanded');
+    }
+
+    function closeChart() {
+        document.getElementById('chart-section').style.display = 'none';
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
     }
 
     function clearSearch(event) {
-        event.preventDefault(); // Input blur වෙන එක නවත්තන්න
+        event.preventDefault();
         searchInput.value = '';
         dropdown.style.display = 'none';
         clearBtn.style.display = 'none';
         searchInput.focus();
     }
+
+    // සයිට් එකේ පිටත ක්ලික් කළොත් සර්ච් එක වැසීම
+    document.addEventListener('click', function(event) {
+        const container = document.querySelector('.fluid-search-container');
+        if (!container.contains(event.target)) {
+            dropdown.style.display = 'none';
+            if (searchInput.value.trim().length === 0) {
+                capsule.classList.remove('expanded');
+            }
+        }
+    });
 </script>
     <!--end of the code for search bar-->
 
