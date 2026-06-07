@@ -1,6 +1,3 @@
----
-layout: default
----
 <!DOCTYPE html>
 <html lang="si">
 <head>
@@ -10,25 +7,39 @@ layout: default
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #1a1a1a; color: #ffffff; margin: 0; padding: 20px; display: flex; justify-content: center; }
         .container { max-width: 800px; width: 100%; background: #2d2d2d; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        h1 { color: #00ffcc; text-align: center; }
-        .post { background: #3a3a3a; padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 5px solid #00ffcc; }
-        .post h2 { color: #00ffcc; margin-top: 0; }
-        .post-date { color: #888; font-size: 0.85rem; }
+        h1 { color: #00ffcc; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
+        .post { background: #3a3a3a; padding: 25px; border-radius: 8px; margin-bottom: 25px; border-left: 5px solid #00ffcc; white-space: pre-wrap; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Finance & Tech Blog 🚀</h1>
-        <p style="text-align:center; color:#aaa;">Welcome to my personal space</p>
-        <hr style="border: 1px solid #444; margin: 30px 0;">
+        <div class="subtitle">Welcome to my personal space</div>
+        <hr style="border: 1px solid #444; margin-bottom: 30px;">
 
-        {% for post in site.posts %}
-            <div class="post">
-                <h2>{{ post.title }}</h2>
-                <div class="post-date">ලියා ඇති දිනය: {{ post.date | date: "%Y-%m-%d" }}</div>
-                <p>{{ post.content }}</p>
-            </div>
-        {% endfor %}
+        <div id="blog-content">
+            <p style="text-align:center; color:#888;">ලිපිය ලෝඩ් වෙමින් පවතී...</p>
+        </div>
     </div>
+
+    <script>
+        // ඔයා දාන ලිපියේ text file එක මෙතනින් කියවනවා
+        fetch('my-post.txt')
+            .then(response => {
+                if (!response.ok) { throw new Error('File not found'); }
+                return response.text();
+            })
+            .then(text => {
+                document.getElementById('blog-content').innerHTML = `
+                    <div class="post">${text}</div>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('blog-content').innerHTML = `
+                    <p style="text-align:center; color:#ff4444;">තාමත් ලිපියක් දාලා නැහැ. කරුණාකර 'my-post.txt' ෆයිල් එක හදන්න.</p>
+                `;
+            });
+    </script>
 </body>
 </html>
