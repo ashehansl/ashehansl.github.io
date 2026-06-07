@@ -145,6 +145,11 @@
             <input type="text" id="formSubject" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
             <label class="floating-label">විෂය (Subject)</label>
         </div>
+
+         <div style="position: relative;">
+            <input type="text" id="formPhno" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+            <label class="floating-label">දුරකථන අංකය (Contact Number )</label>
+        </div>
         
         <div style="position: relative;">
             <textarea id="formMessage" rows="4" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
@@ -216,6 +221,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         name: document.getElementById('formName').value,
         email: document.getElementById('formEmail').value,
         subject: document.getElementById('formSubject').value,
+        contact-no: document.getElementById('formPhno').value,
         message: document.getElementById('formMessage').value
     };
     
