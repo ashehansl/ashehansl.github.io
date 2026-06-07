@@ -30,6 +30,269 @@
         <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
     </header>
 
+    <!--adding search bar code-->
+
+    <div class="fluid-search-container">
+    <div class="fluid-capsule" id="search-capsule">
+        <div class="search-inner-content">
+            <span class="fluid-search-icon" onclick="focusSearch()">🔍</span>
+            <input 
+                type="text" 
+                id="blog-search-input" 
+                placeholder="Search articles, financial analysis or CSE companies..." 
+                oninput="handleSearch()"
+                onfocus="expandCapsule()"
+                onblur="collapseCapsule()"
+                autocomplete="off"
+            >
+            <button id="clear-search-btn" onmousedown="clearSearch(event)">✕</button>
+        </div>
+    </div>
+    
+    <div id="search-results-dropdown" class="fluid-results-box" style="display: none;"></div>
+</div>
+
+<style>
+    .fluid-search-container {
+        max-width: 1100px;
+        margin: 20px auto;
+        position: relative;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center; /* මැදටම සෙට් කරන්න */
+    }
+
+    /* 💧 වතුර බින්දුවේ ප්‍රධාන Capsule හැඩය */
+    .fluid-capsule {
+        width: 180px; /* සාමාන්‍ය වෙලාවට පොඩියට Dynamic Island එකක් වගේ තියෙන්නේ */
+        height: 46px;
+        background: #0f172a; /* Apple Dynamic Island වගේ තද කළු/Slate පාටක් මුලින් තියෙන්නේ */
+        border-radius: 30px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic බවුන්ස් ඇනිමේෂන් එක */
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    /* 🌊 ක්ලික් කළාම වතුර බින්දුවක් විහිදෙනවා වගේ ලා පාටට දිග ඇරෙන හැඩය */
+    .fluid-capsule.expanded {
+        width: 100%; /* සම්පූර්ණයෙන්ම දෙපැත්තට විහිදී යනවා */
+        background: #ffffff; /* ලා පාට Light Mode එකට මාරු වෙනවා */
+        border: 2px solid #0284c7; /* ලස්සන නිල් Border එකක් එනවා */
+        box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
+    }
+
+    .search-inner-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .fluid-search-icon {
+        font-size: 1.2rem;
+        color: #94a3b8;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        margin-right: 12px;
+    }
+    .fluid-capsule.expanded .fluid-search-icon {
+        color: #0284c7; /* Expand වුණාම අයිකන් එක නිල් වෙනවා */
+    }
+
+    #blog-search-input {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 600;
+        background: transparent;
+        color: #ffffff; /* මුලින් සුදු අකුරු */
+        transition: color 0.3s ease;
+    }
+
+    /* Expand වුණාම input එක ඇතුළේ අකුරු කළු වෙනවා */
+    .fluid-capsule.expanded #blog-search-input {
+        color: #0f172a;
+    }
+
+    #blog-search-input::placeholder {
+        color: #64748b;
+        opacity: 0.7;
+    }
+    .fluid-capsule.expanded #blog-search-input::placeholder {
+        color: #94a3b8;
+    }
+
+    #clear-search-btn {
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 1.1rem;
+        cursor: pointer;
+        padding: 4px;
+        display: none;
+    }
+    .fluid-capsule.expanded #clear-search-btn {
+        color: #64748b;
+    }
+
+    /* Dropdown Table Styling */
+    .fluid-results-box {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        margin-top: 12px;
+        max-height: 380px;
+        overflow-y: auto;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); /* Dropdown එකත් බවුන්ස් වෙලා පාත් වෙන්නේ */
+    }
+
+    @keyframes fluidOpen {
+        0% { transform: translateY(-10px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .result-group-title {
+        background: #f8fafc;
+        padding: 10px 18px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        border-bottom: 1px solid #f1f5f9;
+    }
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        text-decoration: none;
+        color: #1e293b;
+        border-bottom: 1px solid #f1f5f9;
+        transition: background 0.2s ease;
+    }
+    .result-item:hover { background: #f0f9ff; }
+    .result-title { font-size: 0.95rem; font-weight: 600; color: #0f172a; }
+    .result-meta { font-size: 0.8rem; color: #64748b; }
+    .badge { font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; }
+    .badge.company { background: #e0f2fe; color: #0369a1; }
+    .badge.article { background: #f0fdf4; color: #166534; }
+    .no-results { padding: 25px; text-align: center; color: #64748b; font-weight: 600; }
+</style>
+
+<script>
+    // 🏢 CSE Listed Companies Data
+    const cseCompanies = [
+        { title: "John Keells Holdings PLC", ticker: "JKH.N0000", url: "/companies/jkh" },
+        { title: "Commercial Bank of Ceylon PLC", ticker: "COMB.N0000", url: "/companies/comb" },
+        { title: "Sampath Bank PLC", ticker: "SAMP.N0000", url: "/companies/sampath" },
+        { title: "Galadari Hotels (Lanka) PLC", ticker: "GHLL.N0000", url: "/companies/galadari" },
+        { title: "Acme Printing & Packaging PLC", ticker: "ACME.N0000", url: "/companies/acme" }
+    ];
+
+    // 📰 Blog Articles Data
+    const blogArticles = [
+        { title: "How to Analyze an Annual Report: A Beginner's Guide", category: "Education", url: "/blog/annual-report-analysis" },
+        { title: "John Keells Hotels PLC: 5-Year Financial Review", category: "Hotel Sector", url: "/blog/jkh-hotels-review" }
+    ];
+
+    const capsule = document.getElementById('search-capsule');
+    const dropdown = document.getElementById('search-results-dropdown');
+    const searchInput = document.getElementById('blog-search-input');
+    const clearBtn = document.getElementById('clear-search-btn');
+
+    // 💧 Capsule එක වතුර බින්දුවක් වගේ දිග හරින Function එක
+    function expandCapsule() {
+        capsule.classList.add('expanded');
+    }
+
+    // 💧 Capsule එක ආපසු කුඩා කරන Function එක
+    function collapseCapsule() {
+        // යූසර් ටයිප් කරලා නැත්නම් විතරක් කුඩා කරන්න
+        if (searchInput.value.trim().length === 0) {
+            capsule.classList.remove('expanded');
+            dropdown.style.display = 'none';
+            clearBtn.style.display = 'none';
+        }
+    }
+
+    function focusSearch() {
+        searchInput.focus();
+    }
+
+    // 🔍 Live Filtering
+    function handleSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+
+        if (query.length === 0) {
+            dropdown.style.display = 'none';
+            clearBtn.style.display = 'none';
+            return;
+        }
+
+        clearBtn.style.display = 'block';
+
+        const matchedCompanies = cseCompanies.filter(c => 
+            c.title.toLowerCase().includes(query) || c.ticker.toLowerCase().includes(query)
+        );
+        const matchedArticles = blogArticles.filter(a => 
+            a.title.toLowerCase().includes(query) || a.category.toLowerCase().includes(query)
+        );
+
+        let htmlContent = '';
+
+        if (matchedCompanies.length > 0) {
+            htmlContent += `<div class="result-group-title">CSE Listed Companies</div>`;
+            matchedCompanies.forEach(c => {
+                htmlContent += `
+                    <a href="${c.url}" class="result-item">
+                        <div><div class="result-title">${c.title}</div><div class="result-meta">Ticker: ${c.ticker}</div></div>
+                        <span class="badge company">Company</span>
+                    </a>
+                `;
+            });
+        }
+
+        if (matchedArticles.length > 0) {
+            htmlContent += `<div class="result-group-title">Blog Articles</div>`;
+            matchedArticles.forEach(a => {
+                htmlContent += `
+                    <a href="${a.url}" class="result-item">
+                        <div><div class="result-title">${a.title}</div><div class="result-meta">Category: ${a.category}</div></div>
+                        <span class="badge article">Article</span>
+                    </a>
+                `;
+            });
+        }
+
+        if (matchedCompanies.length === 0 && matchedArticles.length === 0) {
+            htmlContent = `<div class="no-results">❌ No results found for "${query}"</div>`;
+        }
+
+        dropdown.innerHTML = htmlContent;
+        dropdown.style.display = 'block';
+    }
+
+    function clearSearch(event) {
+        event.preventDefault(); // Input blur වෙන එක නවත්තන්න
+        searchInput.value = '';
+        dropdown.style.display = 'none';
+        clearBtn.style.display = 'none';
+        searchInput.focus();
+    }
+</script>
+    <!--end of the code for search bar-->
+
     <!--trying to create a slideshow-->
 
 <div id="home-slideshow-wrapper">
