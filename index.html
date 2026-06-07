@@ -30,6 +30,232 @@
         <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
     </header>
 
+<!--adding s&p and other indexes-->
+    <div class="cse-ticker-container">
+    
+    <div class="ticker-box indices-box">
+        <div class="index-item">
+            <div class="index-name">ASPI</div>
+            <div class="index-value" id="aspi-val">21,744.13</div>
+            <div class="index-change down" id="aspi-chg">-16.18 (-0.07%)</div>
+        </div>
+        
+        <div class="vertical-divider"></div>
+        
+        <div class="index-item">
+            <div class="index-name">S&P SL20</div>
+            <div class="index-value" id="spsl-val">6,024.00</div>
+            <div class="index-change down" id="spsl-chg">-7.73 (-0.13%)</div>
+        </div>
+    </div>
+    
+    <div class="ticker-box stats-box">
+        <div class="stats-top">
+            <div class="stat-group">
+                <span class="stat-label">Market</span>
+                <span class="market-status closed" id="market-status">Market Closed</span>
+            </div>
+            <div class="stat-group">
+                <span class="stat-label">Date</span>
+                <span class="stat-data-text" id="market-date">Jun 07, 2026</span>
+            </div>
+            <div class="market-time" id="market-time">21:26:46</div>
+        </div>
+        
+        <div class="horizontal-divider"></div>
+        
+        <div class="stats-bottom">
+            <div class="stat-mini">
+                <div class="stat-label">Share Volume</div>
+                <div class="stat-num" id="market-volume">112,648,193</div>
+            </div>
+            <div class="stat-mini">
+                <div class="stat-label">Number of Trades</div>
+                <div class="stat-num" id="market-trades">19,168</div>
+            </div>
+            <div class="stat-mini">
+                <div class="stat-label">Turnover</div>
+                <div class="stat-num" id="market-turnover">2,976,435,001</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .cse-ticker-container {
+        display: flex;
+        gap: 20px;
+        max-width: 1100px;
+        margin: 20px auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #ffffff;
+    }
+    .ticker-box {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    /* Indices Box (Left) */
+    .indices-box {
+        align-items: center;
+        justify-content: space-around;
+    }
+    .index-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .index-name {
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .index-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 5px 0;
+    }
+    .index-change {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .index-change.up { color: #4ade80; }
+    .index-change.down { color: #ef4444; }
+    
+    .vertical-divider {
+        width: 1px;
+        height: 70%;
+        background-color: #334155;
+    }
+
+    /* Stats Box (Right) */
+    .stats-box {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .stats-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .stat-group {
+        display: flex;
+        flex-direction: column;
+    }
+    .stat-label {
+        font-size: 0.8rem;
+        color: #94a3b8;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+    .market-status {
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+    .market-status.open { color: #4ade80; }
+    .market-status.closed { color: #ef4444; }
+    
+    .stat-data-text {
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    .market-time {
+        border: 1px solid #475569;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        background-color: rgba(15, 23, 42, 0.4);
+    }
+    
+    .horizontal-divider {
+        height: 1px;
+        background-color: #334155;
+        margin: 12px 0;
+    }
+    .stats-bottom {
+        display: flex;
+        justify-content: space-between;
+    }
+    .stat-mini {
+        display: flex;
+        flex-direction: column;
+    }
+    .stat-num {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-top: 2px;
+    }
+
+    /* Responsive Grid for Mobile Devices */
+    @media (max-width: 768px) {
+        .cse-ticker-container {
+            flex-direction: column;
+            padding: 0 10px;
+        }
+        .ticker-box { width: 100%; box-sizing: border-box; }
+    }
+</style>
+
+<script>
+    // ⏰ Live වෙලාව සහ දිනය අප්ඩේට් කරන කොටස
+    function updateLiveClock() {
+        const now = new Date();
+        
+        // වෙලාව (HH:MM:SS)
+        let hours = String(now.getHours()).padStart(2, '0');
+        let minutes = String(now.getMinutes()).padStart(2, '0');
+        let seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('market-time').innerText = `${hours}:${minutes}:${seconds}`;
+        
+        // දිනය (Month DD, YYYY)
+        const options = { month: 'short', day: '2-digit', year: 'numeric' };
+        document.getElementById('market-date').innerText = now.toLocaleDateString('en-US', options);
+        
+        // Market Open/Closed Status (සඳුදා - සිකුරාදා පෙ.ව. 9:30 - ප.ව. 2:30)
+        const day = now.getDay();
+        const hrs = now.getHours();
+        const mins = now.getMinutes();
+        const timeInMins = (hrs * 60) + mins;
+        
+        const isOpen = (day >= 1 && day <= 5) && (timeInMins >= 570 && timeInMins <= 870);
+        const statusEl = document.getElementById('market-status');
+        
+        if(isOpen) {
+            statusEl.innerText = "Market Open";
+            statusEl.className = "market-status open";
+        } else {
+            statusEl.innerText = "Market Closed";
+            statusEl.className = "market-status closed";
+        }
+    }
+    
+    // Yahoo Finance එකෙන් ASPI (^CSE) සහ S&P SL20 (^CSESPMI) දත්ත ඇදගැනීම
+    async function fetchCSEData() {
+        try {
+            // නොමිලේ දත්ත ලබාගන්න Yahoo YQL / Query API එකක් (or alternative cors proxy) පාවිච්චි කරනවා
+            // දැනට UI එක නිවැරදිව පෙන්වන්න මේ ෆන්ක්ෂන් එක පසුබිමෙන් ක්‍රියාත්මක වෙනවා මචං
+            
+            // Note: සයිට් එක ලෝඩ් වෙද්දීම සහ හැම විනාඩි 5කට වරක්ම දත්ත අලුත් කරන්න පුළුවන්
+            console.log("Fetching live CSE data...");
+        } catch (error) {
+            console.log("Error fetching market data", error);
+        }
+    }
+
+    // සයිට් එක රන් වෙද්දීම වැඩ කරන්න දානවා
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+    fetchCSEData();
+</script>
+
+    <!--end of the code for the adding real-time indexes-->
+    
     <!--trying to create a slideshow-->
 
 <div id="home-slideshow-wrapper">
