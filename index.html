@@ -247,6 +247,27 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 </script>
 <!--End of the user message section-->
 
+    <!--chatbot code start-->
+<div id="chat-box" style="position:fixed; bottom:20px; right:20px; width:300px; height:400px; background:white; border:1px solid #ccc; display:flex; flex-direction:column;">
+    <div id="chat-messages" style="flex:1; overflow-y:auto; padding:10px;"></div>
+    <input type="text" id="user-input" placeholder="ප්‍රශ්නයක් අහන්න...">
+    <button onclick="sendMessage()">යවන්න</button>
+</div>
+
+<script>
+async function sendMessage() {
+    const input = document.getElementById('user-input').value;
+    const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input })
+    });
+    const data = await response.json();
+    document.getElementById('chat-messages').innerHTML += `<p>Bot: ${data.candidates[0].content.parts[0].text}</p>`;
+}
+</script>
+    <!--chatbot code end-->
+
     <!--pop-up notification for disclaimer-->
 <div id="disclaimer-popup" class="disclaimer-overlay">
     <div class="disclaimer-box">
