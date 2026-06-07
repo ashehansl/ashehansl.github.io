@@ -210,7 +210,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const formData = {
         name: document.getElementById('formName').value,
         email: document.getElementById('formEmail').value,
+        subject: document.getElementById('formSubject').value, // අලුතින් එකතු කළා
         message: document.getElementById('formMessage').value
+    };
     };
     
     // මෙතන තියෙන URL එක වෙනුවට කලින් පියවරේදී ගත්ත ඔයාගේ Google Web App URL එක දාන්න
