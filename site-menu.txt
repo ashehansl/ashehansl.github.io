@@ -28,7 +28,7 @@
       { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "crypto1.txt" }
     ]
   },
-  "Crypto ": {
+  "Crypto": {
     "title": "Crypto🏆",
     "desc": "Crypto වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
