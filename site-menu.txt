@@ -46,7 +46,8 @@
     "title": "E-Books",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ දැනුමට අවශ්‍ය පොත්",
     "articles": [
-      { "name": "1.The Intelligent Investor by Benjamin Graham", "short": "බුද්ධිමත් ආයෝජනයකට සැරසෙන ඔබට.", "file": "ebook1.html" }
+      { "name": "1.The Intelligent Investor by Benjamin Graham", "short": "බුද්ධිමත් ආයෝජනයකට සැරසෙන ඔබට.", "file": "ebook1.html" },
+      { "name": "2. The Millionaire FASTLANE", "short": "මිලියනපතියන්ගේ තීරණ ගැනීමේ කලාව අවබෝධයට.", "file": "ebook2.html" }
     ]
   }
 }
