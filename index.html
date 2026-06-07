@@ -472,6 +472,26 @@ function toggleChat() {
     const win = document.getElementById('chat-window');
     win.style.display = win.style.display === 'none' ? 'block' : 'none';
 }
+    async function sendMessage() {
+    const input = document.getElementById('user-input').value;
+    const chatMessages = document.getElementById('chat-messages');
+
+    // මෙන්න මෙතනට තමයි ඔයාගේ Vercel ලින්ක් එක දාන්න ඕනේ
+    const response = await fetch('http://ashehansl-github-io.vercel.app/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input })
+    });
+    
+    const data = await response.json();
+    
+    // බොට්ගෙන් එන උත්තරේ චැට් බොක්ස් එකට එකතු කරන තැන
+    if (data.candidates && data.candidates[0].content.parts[0].text) {
+        chatMessages.innerHTML += `<p><b>Bot:</b> ${data.candidates[0].content.parts[0].text}</p>`;
+    } else {
+        chatMessages.innerHTML += `<p><b>Bot:</b> සොරි මචං, පොඩ්ඩක් ඉඳලා ට්‍රයි කරපන්.</p>`;
+    }
+}
 </script>
     <!--chatbot styles end-->
     
