@@ -39,7 +39,7 @@
     "title": "Government Reports",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ රජයේ වාර්තා",
     "articles": [
-      { "name": "1. මහබැංකු වාර්තා ", "short": "මහබන්කුවෙහි වාර්ෂික හා වෙනත් වාර්තා සදහා මෙතනින් පිවිසෙන්න.", "file": "centralbanksl.txt" }
+      { "name": "1. Central Bank Report Sri Lanka.", "short": "මහබන්කුවෙහි වාර්ෂික හා වෙනත් වාර්තා සදහා මෙතනින් පිවිසෙන්න.", "file": "centralbanksl.txt" }
     ]
   },
 }
