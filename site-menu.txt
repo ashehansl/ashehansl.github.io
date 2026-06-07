@@ -19,6 +19,7 @@
     "desc": "ආයෝජනයට අවශ්‍යවන මුලික දැනුම ලබාදීම.",
     "articles": [
       { "name": "1. ආයෝජනය යනු කුමක්ද?", "short": "මුදල් ඉතිරි කිරීම සහ ආයෝජනය.", "file": "inv-basics.txt" }
+      { "name": "2. Power of Compounding 🔄", "short": "චක්‍රවර්ධී පොලී ක්‍රමය.", "file": "inv-compounding.txt" }
     ]
   }
 }
