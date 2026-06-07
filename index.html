@@ -108,5 +108,69 @@
                 .catch(() => { document.getElementById('post-body').innerHTML = "<h3 style='color:red;'>ලිපිය තවම ලියා නැත!</h3><p>GitHub එකේ " + fileName + " නමින් ෆයිල් එකක් සාදන්න.</p>"; });
         }
     </script>
+
+<!--Add user message section -->
+<div style="background-color: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid #334155; margin-top: 40px;">
+    <h3 style="color: var(--accent); margin-top: 0;">අප වෙත අදහස් යොමු කරන්න 💬</h3>
+    <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
+        <div>
+            <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">ඔබගේ නම (Name):</label>
+            <input type="text" id="formName" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: var(--bg-color); color: var(--text-main); box-sizing: border-box;">
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">අදාළ මාතෘකාව (Subject ):</label>
+            <input type="text" id="formSub" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: var(--bg-color); color: var(--text-main); box-sizing: border-box;">
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">විද්‍යුත් ලිපිය (Email):</label>
+            <input type="email" id="formEmail" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: var(--bg-color); color: var(--text-main); box-sizing: border-box;">
+        </div>
+        <div>
+            <label style="display: block; margin-bottom: 5px; color: var(--text-muted);">පණිවිඩය (Message):</label>
+            <textarea id="formMessage" rows="4" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: var(--bg-color); color: var(--text-main); box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
+        <button type="submit" style="background: var(--accent); color: var(--bg-color); padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Submit කරන්න 🚀</button>
+    </form>
+    <p id="formStatus" style="margin-top: 15px; display: none; font-weight: bold;"></p>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const statusText = document.getElementById('formStatus');
+    statusText.style.display = 'block';
+    statusText.style.color = 'var(--accent)';
+    statusText.innerText = 'දත්ත ඇතුළත් කරමින්... කරුණාකර රැඳී සිටින්න.';
+    
+    const formData = {
+        name: document.getElementById('formName').value,
+        subject :document.getElementById('formSub ').value,
+        email: document.getElementById('formEmail').value,
+        message: document.getElementById('formMessage').value,
+    };
+    
+    // මෙතන තියෙන URL එක වෙනුවට පියවර 1 දී ඔයාට ලැබුණු Web app URL එක දාන්න
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbwAp8yhOjthkCgXznQBrET-HqS3gUTIJH2gkJAwtIQO-d1ZA2Qli04_qoezd3UOUvgf_Q/exec';
+    
+    fetch(webAppUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Cross-Origin අවුල් මඟහරවා ගැනීමට
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then(() => {
+        statusText.style.color = '#4ade80';
+        statusText.innerText = 'ස්තූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅';
+        document.getElementById('contactForm').reset();
+    })
+    .catch(() => {
+        statusText.style.color = '#ef4444';
+        statusText.innerText = 'දත්ත යොමුකිරීමේදී දෝෂයක් ඇති විය.නැවත උත්සාහ කරන්න. ❌';
+    });
+});
+</script>
+<!--End of the user message section-->
+    
 </body>
 </html>
