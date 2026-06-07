@@ -147,8 +147,8 @@
         </div>
 
          <div style="position: relative;">
-            <input type="text" id="formPhno" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-            <label class="floating-label">දුරකථන අංකය (Contact Number )</label>
+            <input type="tel" id="formPhone" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+            <label class="floating-label">දුරකථන අංකය (Phone Number)</label>
         </div>
         
         <div style="position: relative;">
@@ -221,12 +221,12 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         name: document.getElementById('formName').value,
         email: document.getElementById('formEmail').value,
         subject: document.getElementById('formSubject').value,
-        contact-no: document.getElementById('formPhno').value,
+        phone: document.getElementById('formPhone').value,
         message: document.getElementById('formMessage').value
     };
     
     // මෙතන තියෙන URL එක වෙනුවට ඔයාගේ Google Web App URL එක දාන්න
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbyRMKVgmSdaDwmPNwpZm52s8xaU-9GKNx4cPRXKkpnh4mMbffYPNPtm7KHJ9a3PYSeIpQ/exec';
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbyw5b5TqK0ve-eDvMbIWD8GdMGC7cwTCAqT5DMZkasYpOXdfQ6IrG8gZArLLcn2lVFaRQ/exec';
     
     fetch(webAppUrl, {
         method: 'POST',
