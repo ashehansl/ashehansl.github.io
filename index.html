@@ -22,22 +22,6 @@
         .back-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 20px; }
         .back-btn:hover { background: var(--accent); color: var(--bg-color); }
         .article-content { white-space: pre-wrap; line-height: 1.7; font-size: 1.1rem; }
-
-        /* 🌟 ස්ලයිඩ්ෂෝ එක ලස්සනට පේන්න එකතු කරපු අලුත් CSS */
-        .mySwiper {
-            width: 100%;
-            max-width: 1100px;
-            height: 350px; /* ඔයාට කැමති ගාණකට මේ උස වෙනස් කරන්න පුළුවන් */
-            margin: 20px auto;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* ඉමේජ් එක ඇද නොවී ලස්සනට කොටුවට ෆිට් වෙන්න */
-        }
     </style>
 </head>
 <body>
@@ -47,58 +31,8 @@
         <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
     </header>
 
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="https://drive.google.com/uc?export=view&id=1MyFtoUmUo1QWInMOLyXE47wBYejKQoX3"></div>
-            <div class="swiper-slide"><img src="https://drive.google.com/uc?export=view&id=1BcBvmkGKSbC7UOV9nuE3TNo6_WTc4sB5"></div>
-            <div class="swiper-slide"><img src="https://drive.google.com/uc?export=view&id=1MyFtoUmUo1QWInMOLyXE47wBYejKQoX3"></div>
-            <div class="swiper-slide"><img src="https://drive.google.com/uc?export=view&id=1BcBvmkGKSbC7UOV9nuE3TNo6_WTc4sB5"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
     <div class="main-container">
         <div id="main-view">
             <h2 id="view-title">ප්‍රධාන විෂය පථයන් (Main Topics)</h2>
             <div id="menu-grid" class="grid-view"></div>
         </div>
-
-        <div id="article-view" class="content-section">
-            <button id="back-btn" class="back-btn">← ආපසු</button>
-            <div id="post-body" class="article-content">ලෝඩ් වෙමින්...</div>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: {
-          delay: 3000, 
-          disableOnInteraction: false,
-        },
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
-    </script>
-
-    <script>
-        let siteData = {};
-        let currentLevel = 'main'; 
-        let currentTopicId = '';
-
-        fetch('site-menu.txt')
-            .then(res => res.json())
-            .then(data => {
-                siteData = data;
-                renderMainMenu();
-            })
-            .catch(() => {
-                document.getElementById('menu-grid').innerHTML = "<p style='color:red;'>site-menu.txt ෆයිල් එක කියවීමට නොහැක!</p>";
-            });
-
-        function renderMainMenu() {
