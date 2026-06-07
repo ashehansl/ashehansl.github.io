@@ -25,14 +25,14 @@
     "title": "Stocks 📊",
     "desc": "සමාගම් මූල්‍ය කළමනාකරණය හා කොටස් වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
-      { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "crypto1.txt" }
+      { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "stock1.txt" }
     ]
   },
   "Crypto": {
     "title": "Crypto🏆",
     "desc": "Crypto වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
-      { "name": "1. Introduction to Share Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "stock1.txt" }
+      { "name": "1. Introduction to Share Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "crypto1.txt" }
     ]
   }
 }
