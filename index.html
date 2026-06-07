@@ -321,7 +321,7 @@ async function sendMessage() {
     
     try {
         // මෙතන අර ලින්ක් එක හරියටම බලන්න
-        const res = await fetch('http://ashehansl-github-io.vercel.app/api/chat', {
+        const res = await fetch('https://ashehansl-github-io.vercel.app/api/chat', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ message: userQuery })
