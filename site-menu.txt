@@ -14,6 +14,16 @@
       { "name": "1. Financial Statements 📑", "short": "Income Statement, Balance Sheet කියවීම.", "file": "cf-statements.txt" }
     ]
   },
+
+"Stocks ": {
+    "title": "Stocks",
+    "desc": "කොටස් වෙළෙදපොළට අදාලව දැනුම මෙමගින් ලබාගැනීමට ඔබට හැකිය.",
+    "articles": [
+      { "name": "1. Introduction to Share Market ", "short": "කොටස් වෙළෙදපොල යනු කුමක්ද ?", "file": "stock1.txt" }
+    ]
+  },
+
+
   "introduction-investing": {
     "title": "Introduction to Investing 💰",
     "desc": "ආයෝජනයට අවශ්‍යවන මුලික දැනුම ලබාදීම.",
