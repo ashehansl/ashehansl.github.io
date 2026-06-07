@@ -11,7 +11,7 @@
     "title": "Fundamental Analysis  💼",
     "desc": "මුල්‍ය අනුපාත සහ වාර්තා විශ්ලේෂණය.",
     "articles": [
-      { "name": "1. Financial Statements 📑", "short": "Income Statement, Balance Sheet කියවීම.", "file": "cf-statements.txt" }
+      { "name": "1. Financial Statements 📑", "short": "Income Statement, Balance Sheet කියවීම.", "file": "FA1.txt" }
     ]
   },
   "introduction-investing": {
