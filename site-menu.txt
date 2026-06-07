@@ -41,5 +41,12 @@
     "articles": [
       { "name": "1. Central Bank Report Sri Lanka.", "short": "මහබන්කුවෙහි වාර්ෂික හා වෙනත් වාර්තා සදහා මෙතනින් පිවිසෙන්න.", "file": "centralbanksl.txt" }
     ]
+  },
+"E-Books": {
+    "title": "E-Books",
+    "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ දැනුමට අවශ්‍ය පොත්",
+    "articles": [
+      { "name": "1.The Intelligent Investor by Benjamin Graham", "short": "බුද්ධිමත් ආයෝජනයකට සැරසෙන ඔබට.", "file": "ebook.txt" }
+    ]
   }
 }
