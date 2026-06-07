@@ -661,19 +661,29 @@
 
     <div class="multi-news-wrapper">
     <div class="news-header">
-        <h2>Live Finance & Market Insights 🔔</h2>
+        <div class="header-left">
+            <h2>Financial Market News 🔔</h2>
+            <select id="news-source-select" onchange="changeSource()">
+                <option value="ALL">All Sources (සියල්ල)</option>
+                <option value="CSE">CSE Announcements</option>
+                <option value="FT">Daily FT</option>
+                <option value="DERANA">Ada Derana Biz</option>
+            </select>
+        </div>
         <span class="live-indicator">● LIVE UPDATE</span>
     </div>
+    
     <div id="combined-news-list" class="news-grid">
         <div class="news-loading">⏳ වෙබ් අඩවි වල පුවත් සජීවීව එක්රැස් කරමින් පවතී...</div>
     </div>
 </div>
 
+
 <style>
     .multi-news-wrapper {
         max-width: 1100px;
         margin: 30px auto;
-        background: #ffffff; /* පිරිසිදු ලා සුදු පසුබිම */
+        background: #ffffff;
         border: 1px solid #e2e8f0;
         border-radius: 16px;
         padding: 24px;
@@ -688,14 +698,38 @@
         border-bottom: 2px solid #f1f5f9;
         padding-bottom: 15px;
     }
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
     .news-header h2 { 
         font-size: 1.4rem; 
-        color: #0f172a; /* තද කළු අකුරු */
+        color: #0f172a; 
         margin: 0; 
         font-weight: 700;
     }
+    
+    /* Dropdown Style */
+    #news-source-select {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #334155;
+        background-color: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.2s ease;
+    }
+    #news-source-select:hover {
+        background-color: #e2e8f0;
+        color: #0f172a;
+    }
+    
     .live-indicator {
-        color: #dc2626; /* රතු පාට LIVE ටැග් එක */
+        color: #dc2626;
         font-weight: 800;
         font-size: 0.85rem;
         background: #fee2e2;
@@ -707,14 +741,14 @@
         display: flex; 
         flex-direction: column; 
         gap: 15px; 
-        max-height: 550px; /* ලිපි ගොඩක් තිබුණොත් Scroll වෙන්න */
+        max-height: 550px; 
         overflow-y: auto;
         padding-right: 5px;
     }
     
-    /* ඔයාගේම Custom Template එක */
+    /* Custom News Card Template */
     .custom-news-card {
-        background: #f8fafc; /* ලා අළු පසුබිම */
+        background: #f8fafc;
         border: 1px solid #e2e8f0;
         border-radius: 12px;
         padding: 16px;
@@ -723,9 +757,9 @@
         transition: all 0.2s ease;
     }
     .custom-news-card:hover {
-        border-color: #38bdf8; /* Hover වෙද්දී ලා නිල් Border එකක් */
+        border-color: #38bdf8;
         background: #ffffff;
-        transform: translateX(6px); /* දකුණට පොඩ්ඩක් Slide වෙනවා */
+        transform: translateX(6px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     }
     .source-tag {
@@ -736,9 +770,7 @@
         padding: 3px 8px;
         border-radius: 4px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
-    /* CSE නිව්ස් නම් රතු පාටින් Tag එක පෙන්වන්න */
     .source-tag.cse-tag {
         background: #fee2e2;
         color: #dc2626;
@@ -755,7 +787,6 @@
         color: #64748b; 
         font-weight: 600;
     }
-    
     .news-loading {
         text-align: center;
         padding: 40px;
@@ -763,31 +794,40 @@
         font-weight: 600;
     }
     
-    /* Scrollbar හැඩගැන්වීම */
-    .news-grid::-webkit-scrollbar { width: 6px; }
-    .news-grid::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
-    .news-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-    
     @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+    /* Responsive Grid for Mobile */
+    @media (max-width: 768px) {
+        .news-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+        .header-left { flex-direction: column; align-items: flex-start; gap: 10px; width: 100%; }
+        #news-source-select { width: 100%; }
+        .live-indicator { align-self: flex-end; }
+    }
 </style>
 
+
 <script>
-    // 🌐 ඔයාට Live එකතු කරගන්න ඕන වෙබ් අඩවි වල Feeds මෙතනට දාන්න
+    // 🌐 Data Sources Setup
     const newsSources = [
-        { name: 'CSE Announcement', url: 'https://www.cse.lk/api/corporate-announcements-rss' },
-        { name: 'Daily FT', url: 'https://www.ft.lk/rss/financial-news' },
-        { name: 'Ada Derana Biz', url: 'http://biz.adaderana.lk/feed/' },
-        { name: 'EconomyNext', url: 'https://economynext.com/' }
+        { id: 'CSE', name: 'CSE Announcement', url: 'https://www.cse.lk/api/corporate-announcements-rss' },
+        { id: 'FT', name: 'Daily FT', url: 'https://www.ft.lk/rss/financial-news' },
+        { id: 'DERANA', name: 'Ada Derana Biz', url: 'http://biz.adaderana.lk/feed/' }
     ];
+
+    // Cache එකක් විදිහට පාවිච්චි කරන්න global array එකක්
+    let cachedArticles = [];
 
     async function fetchAllNews() {
         const listContainer = document.getElementById('combined-news-list');
+        // මුලින්ම ලෝඩ් වෙද්දී විතරක් Loading එක පෙන්වන්න
+        if(cachedArticles.length === 0) {
+            listContainer.innerHTML = '<div class="news-loading">⏳ වෙබ් අඩවි වල පුවත් සජීවීව එක්රැස් කරමින් පවතී...</div>';
+        }
+
         let allArticles = [];
 
-        // සේරම සයිට් වලට එකවර Requests යැවීම
         const fetchPromises = newsSources.map(async (source) => {
             try {
-                // GitHub Pages වල එන CORS Error එක නැති කරන්න rss2json API Proxy එක පාවිච්චි කරනවා
                 const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`);
                 const data = await res.json();
                 
@@ -797,7 +837,8 @@
                             title: item.title,
                             link: item.link,
                             date: new Date(item.pubDate),
-                            source: source.name
+                            sourceName: source.name,
+                            sourceId: source.id
                         });
                     });
                 }
@@ -806,23 +847,35 @@
             }
         });
 
-        // සේරම සයිට් වලින් දත්ත ඇදලා ඉවර වෙනකම් බලා සිටීම
         await Promise.all(fetchPromises);
-
-        // ⏱️ පුවත් ලැබුණු වෙලාව (Date/Time) අනුව අලුත්ම ඒවා උඩට එන්න Sort කිරීම
         allArticles.sort((a, b) => b.date - a.date);
+        
+        // දත්ත Cache එකට සේව් කරගන්නවා පිටුව රීලෝඩ් නොකර ෆිල්ටර් කරන්න
+        cachedArticles = allArticles;
+        
+        // දැනට Dropdown එකේ සිලෙක්ට් වෙලා තියෙන දේ අනුව පෙන්වනවා
+        renderNews();
+    }
 
-        // අපේ ලා පාට Template එකට HTML එක සකස් කිරීම
-        if(allArticles.length > 0) {
+    // 🎯 Dropdown එක වෙනස් වෙද්දී පුවත් Filter කරලා පෙන්වන Function එක
+    function renderNews() {
+        const listContainer = document.getElementById('combined-news-list');
+        const selectedSource = document.getElementById('news-source-select').value;
+        
+        // Dropdown එක අනුව ෆිල්ටර් කිරීම
+        let filteredArticles = cachedArticles;
+        if (selectedSource !== 'ALL') {
+            filteredArticles = cachedArticles.filter(article => article.sourceId === selectedSource);
+        }
+
+        if(filteredArticles.length > 0) {
             let html = '';
-            // මුල් පුවත් 12 විතරක් සයිට් එකේ පෙන්වන්න සීමා කිරීම
-            allArticles.slice(0, 12).forEach(article => {
-                // CSE ඒවාට විශේෂ රතු ටැග් එකක් දැමීම
-                const tagClass = article.source === 'CSE Announcement' ? 'source-tag cse-tag' : 'source-tag';
+            filteredArticles.slice(0, 12).forEach(article => {
+                const tagClass = article.sourceId === 'CSE' ? 'source-tag cse-tag' : 'source-tag';
                 
                 html += `
                     <a href="${article.link}" target="_blank" class="custom-news-card">
-                        <span class="${tagClass}">${article.source}</span>
+                        <span class="${tagClass}">${article.sourceName}</span>
                         <div class="news-title-text">${article.title}</div>
                         <div class="news-time-text">📅 ${article.date.toLocaleDateString('en-US', {month: 'short', day: '2-digit', year: 'numeric'})} | ⏰ ${article.date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
                     </a>
@@ -830,14 +883,20 @@
             });
             listContainer.innerHTML = html;
         } else {
-            listContainer.innerHTML = '<div class="news-loading" style="color: #dc2626;">❌ සර්වර් සම්බන්ධතාවය බිඳවැටී ඇත. පසුව උත්සාහ කරන්න.</div>';
+            listContainer.innerHTML = '<div class="news-loading" style="color: #dc2626;">❌ තෝරාගත් මූලාශ්‍රයෙන් පුවත් ලබාගැනීමට නොහැකි විය.</div>';
         }
     }
 
-    // පේජ් එක ලෝඩ් වෙද්දීම පුවත් ටික පෙන්නන්න රන් කිරීම
+    // Dropdown එක මාරු කරන විට ක්‍රියාත්මක වන ෆන්ක්ෂන් එක
+    function changeSource() {
+        const listContainer = document.getElementById('combined-news-list');
+        listContainer.innerHTML = '<div class="news-loading">⏳ පුවත් පෙරන පවතී (Filtering)...</div>';
+        setTimeout(renderNews, 200); // පොඩි smooth ගතියක් ගන්න delay එකක්
+    }
+
+    // Init load
     document.addEventListener("DOMContentLoaded", fetchAllNews);
-    
-    // 🔄 හැම තත්පර 60කට වරක්ම (විනාඩියෙන් විනාඩියට) පසුබිමෙන් පුවත් Auto Refresh වීම
+    // විනාඩියෙන් විනාඩියට බැක්ග්‍රවුන්ඩ් එකෙන් දත්ත අප්ඩේට් වෙනවා
     setInterval(fetchAllNews, 60000); 
 </script>
     <!--end of the code for cse real time news for my dear users-->
