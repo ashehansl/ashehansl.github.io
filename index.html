@@ -13,68 +13,22 @@
             --accent: #38bdf8;
             --accent-hover: #0ea5e9;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: var(--card-bg);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #334155;
-        }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
+        header { background-color: var(--card-bg); padding: 20px; text-align: center; border-bottom: 2px solid #334155; }
         header h1 { margin: 0; color: var(--accent); font-size: 2.2rem; }
         header p { margin: 5px 0 0 0; color: var(--text-muted); }
+        .main-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         
-        .main-container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        
-        /* Topic Grid */
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .topic-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            cursor: pointer;
-            border: 1px solid #334155;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-        .topic-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-        .topic-card h3 { margin: 0 0 10px 0; color: var(--accent); font-size: 1.4rem; }
-        .topic-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+        /* Dashboard Grids */
+        .grid-view { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .custom-card { background-color: var(--card-bg); padding: 25px; border-radius: 12px; cursor: pointer; border: 1px solid #334155; transition: transform 0.2s, border-color 0.2s; }
+        .custom-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .custom-card h3 { margin: 0 0 10px 0; color: var(--accent); font-size: 1.4rem; }
+        .custom-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
 
-        /* Article Area */
-        .article-section {
-            display: none;
-            background-color: var(--card-bg);
-            padding: 35px;
-            border-radius: 12px;
-            border: 1px solid #334155;
-        }
-        .back-btn {
-            background: none;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+        /* Sections toggling */
+        .content-section { display: none; background-color: var(--card-bg); padding: 35px; border-radius: 12px; border: 1px solid #334155; }
+        .back-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 20px; }
         .back-btn:hover { background: var(--accent); color: var(--bg-color); }
         .article-content { white-space: pre-wrap; line-height: 1.7; font-size: 1.1rem; }
     </style>
@@ -83,71 +37,110 @@
 
     <header>
         <h1>Finance & Tech Insight 📊</h1>
-        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම තුලින් ඔබේම ආයෝජනයන්ට යොමුවෙන්න හොදම තැන</p>
+        <p>Investopedia ස්ටයිල් එකට මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම එකම තැනකින්</p>
     </header>
 
     <div class="main-container">
         
-        <div id="topics-view">
-            <h2 style="margin-bottom: 25px;">විෂය පථයන් (Topics)</h2>
-            <div class="topics-grid">
-
-                <div class="topic-card" onclick="loadArticle('corporate-finance.txt')">
-                    <h3>Introduction to Investing 🧐</h3>
-                    <p>ආයෝජනයට අවශ්‍ය කරන මුලික දැනුම මෙමගින් ඔබට ලබාගැනීමේ හැකියාව පවතී.</p>
-                </div>
-                
-                <div class="topic-card" onclick="loadArticle('corporate-finance.txt')">
+        <div id="main-topics-view">
+            <h2 style="margin-bottom: 25px;">ප්‍රධාන විෂය පථයන් (Main Topics)</h2>
+            <div class="grid-view">
+                <div class="custom-card" onclick="showSubTopics('corporate-finance')">
                     <h3>Corporate Finance 💼</h3>
                     <p>සමාගම් මූල්‍ය කළමනාකරණය, මූල්‍ය ප්‍රකාශන (Financial Statements) සහ අනුපාත විශ්ලේෂණය.</p>
                 </div>
-
-                <div class="topic-card" onclick="loadArticle('technical-analysis.txt')">
+                <div class="custom-card" onclick="showSubTopics('technical-analysis')">
                     <h3>Technical Analysis 📈</h3>
-                    <p>වෙළෙඳපොළ ප්‍රස්ථාර (Charts), Indicators සහ Trend හඳුනාගැනීම පිළිබඳ තාක්ෂණික විශ්ලේෂණය.</p>
+                    <p>ප්‍රස්ථාර (Charts), Indicators සහ Trend හඳුනාගැනීම පිළිබඳ තාක්ෂණික විශ්ලේෂණය.</p>
                 </div>
-
-                <div class="topic-card" onclick="loadArticle('data-science.txt')">
-                    <h3>Crypto 📊</h3>
-                    <p>Crypto ආශ්‍රිත දැනුම වර්ධනය කරගැනීමට හොදම සිංහල තෝතැන්න.</p>
+                <div class="custom-card" onclick="showSubTopics('data-science')">
+                    <h3>Data Science & Analytics 📊</h3>
+                    <p>Excel, Power Query සහ Data Science මෙවලම් මඟින් මූල්‍ය දත්ත සකස් කිරීම.</p>
                 </div>
-
-                <div class="topic-card" onclick="loadArticle('data-science.txt')">
-                    <h3>Stock ✔</h3>
-                    <p>කොටස් වෙළෙදපොල ආශ්‍රිතව පවතින තත්වයන් හා ඒ සදහා ඔබට අවශ්‍ය දැනුම මෙමගින් ලබාගත හැක.</p>
-                </div>
-
             </div>
         </div>
 
-        <div id="article-view" class="article-section">
-            <button class="back-btn" onclick="showTopics()">← ආපසු Topics වෙත</button>
+        <div id="technical-analysis-sub" class="content-section">
+            <button class="back-btn" onclick="showMainDashboard()">← ප්‍රධාන Topics වෙත</button>
+            <h2 style="color: var(--accent); margin-bottom: 25px;">Technical Analysis - බ්ලොග් ලිපි ලැයිස්තුව 📈</h2>
+            <div class="grid-view">
+                <div class="custom-card" onclick="loadArticle('ta-candlesticks.txt', 'technical-analysis')">
+                    <h3>1. Candlestick Patterns 🕯️</h3>
+                    <p>කැන්ඩල්ස්ටික් ප්‍රස්ථාර කියවීම සහ ප්‍රධාන මිල රටාවන් හඳුනාගැනීම.</p>
+                </div>
+                <div class="custom-card" onclick="loadArticle('ta-indicators.txt', 'technical-analysis')">
+                    <h3>2. Technical Indicators 📊</h3>
+                    <p>RSI, MACD සහ Moving Averages පාවිච්චි කරලා නිවැරදිව ට්‍රේඩ් එකක් ගන්නේ කොහොමද?</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="corporate-finance-sub" class="content-section">
+            <button class="back-btn" onclick="showMainDashboard()">← ප්‍රධාන Topics වෙත</button>
+            <h2 style="color: var(--accent); margin-bottom: 25px;">Corporate Finance - බ්ලොග් ලිපි ලැයිස්තුව 💼</h2>
+            <div class="grid-view">
+                <div class="custom-card" onclick="loadArticle('cf-statements.txt', 'corporate-finance')">
+                    <h3>1. Financial Statements 📑</h3>
+                    <p>Income Statement, Balance Sheet සහ Cash Flow කියවීමේ මූලික පියවර.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="data-science-sub" class="content-section">
+            <button class="back-btn" onclick="showMainDashboard()">← ප්‍රධාන Topics වෙත</button>
+            <h2 style="color: var(--accent); margin-bottom: 25px;">Data Science - බ්ලොග් ලිපි ලැයිස්තුව 📊</h2>
+            <div class="grid-view">
+                <div class="custom-card" onclick="loadArticle('ds-powerquery.txt', 'data-science')">
+                    <h3>1. Power Query in Excel 🛠️</h3>
+                    <p>වාර්ෂික වාර්තා වල දත්ත ලේසියෙන්ම Clean කරගන්න Power Query පාවිච්චි කරමු.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="article-view" class="content-section">
+            <button id="article-back-btn" class="back-btn">← ලැයිස්තුව වෙත ආපසු</button>
             <div id="post-body" class="article-content">ලෝඩ් වෙමින් පවතී...</div>
         </div>
 
     </div>
 
     <script>
-        function loadArticle(fileName) {
-            document.getElementById('topics-view').style.display = 'none';
+        let currentParentTopic = '';
+
+        function showMainDashboard() {
+            hideAllSections();
+            document.getElementById('main-topics-view').style.display = 'block';
+        }
+
+        function showSubTopics(topicId) {
+            hideAllSections();
+            document.getElementById(topicId + '-sub').style.display = 'block';
+        }
+
+        function loadArticle(fileName, parentTopic) {
+            currentParentTopic = parentTopic;
+            hideAllSections();
             document.getElementById('article-view').style.display = 'block';
             document.getElementById('post-body').innerHTML = "ලිපිය කියවමින් පවතී, කරුණාකර රැඳී සිටින්න...";
 
+            // පසුපසට යන බටන් එක අදාළ උප-ලැයිස්තුවට සෙට් කිරීම
+            document.getElementById('article-back-btn').onclick = function() {
+                showSubTopics(currentParentTopic);
+            };
+
             fetch(fileName)
-                .then(response => {
-                    if (!response.ok) throw new Error();
-                    return response.text();
-                })
-                .then(text => {
-                    document.getElementById('post-body').innerHTML = text;
-                })
+                .then(response => { if (!response.ok) throw new Error(); return response.text(); })
+                .then(text => { document.getElementById('post-body').innerHTML = text; })
                 .catch(() => {
                     document.getElementById('post-body').innerHTML = `<h3 style='color:#ff4444;'>ලිපිය තවමත් අප්ලෝඩ් කර නැත!</h3><p>කරුණාකර GitHub එකෙහි '${fileName}' නමින් Text ෆයිල් එකක් සාදන්න.</p>`;
                 });
         }
 
-        function showTopics() {
-            document.getElementById('topics-view').style.display = 'block';
+        function hideAllSections() {
+            document.getElementById('main-topics-view').style.display = 'none';
+            document.getElementById('technical-analysis-sub').style.display = 'none';
+            document.getElementById('corporate-finance-sub').style.display = 'none';
+            document.getElementById('data-science-sub').style.display = 'none';
             document.getElementById('article-view').style.display = 'none';
         }
     </script>
