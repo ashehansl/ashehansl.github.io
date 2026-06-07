@@ -15,7 +15,7 @@
     ]
   },
   "Fundamental-Analysis": {
-    "title": "Fundamental Analysis  💼",
+    "title": "Fundamental Analysis 💼",
     "desc": "මුල්‍ය අනුපාත සහ වාර්තා විශ්ලේෂණය.",
     "articles": [
       { "name": "1. What are the Ratios ?", "short": "මුල්‍ය අනුපාත කියන්නේ මොනවාද සහ හදුනාගැනීම.", "file": "FA1.txt" }
@@ -32,17 +32,17 @@
     "title": "Crypto🏆",
     "desc": "Crypto වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
-      { "name": "1. Introduction to Crypto  Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "crypto1.txt" }
+      { "name": "1. Introduction to Crypto Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "crypto1.txt" }
     ]
   },
-"Government-Reports": {
+  "Government-Reports": {
     "title": "Government Reports",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ රජයේ වාර්තා",
     "articles": [
       { "name": "1. Central Bank Report Sri Lanka.", "short": "මහබන්කුවෙහි වාර්ෂික හා වෙනත් වාර්තා සදහා මෙතනින් පිවිසෙන්න.", "file": "centralbanksl.txt" }
     ]
   },
-"E-Books": {
+  "E-Books": {
     "title": "E-Books",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ දැනුමට අවශ්‍ය පොත්",
     "articles": [
@@ -51,9 +51,9 @@
       { "name": "3. The Psychology of Money by Morgan Housel", "short": "මුදල් සමග මිනිස් මනසේ හැසිරීම", "file": "ebook3.html" },
       { "name": "4. Think and Grow Rich by Napoleon Hill", "short": "සැලසුම්සහගත තීරණ මගින් වර්ධනය වන අකාරය", "file": "ebook4.html" },
       { "name": "5. MONEY Master the Game by Tony Robbins", "short": "මුදල් සමග මිනිස් මනසේ හැසිරීම", "file": "ebook5.html" },
-      { "name": "6. Principles of Economics by N. GREGORY MANKIW - HARVARD UNIVERSITY", "short": "ආර්ථික විද්‍යාවේ හරය", "file": "ebook6.html" },
+      { "name": "6. Principles of Economics by N. GREGORY MANKIW", "short": "ආර්ථික විද්‍යාවේ හරය", "file": "ebook6.html" },
       { "name": "7. Technical Analysis of the Financial Markets by John J.Murphy", "short": "තාක්ෂණික විශ්ලේෂණයේ වැදගත්ම කොටස්", "file": "ebook7.html" },
-      { "name": "8. The Almanack of Naval Ravikant by Eric Jorgenson", "short": , "file": "ebook8.html" },
+      { "name": "8. The Almanack of Naval Ravikant by Eric Jorgenson", "short": "නවල් රවිකාන්ත්ගේ දර්ශනය.", "file": "ebook8.html" }
     ]
   }
 }
