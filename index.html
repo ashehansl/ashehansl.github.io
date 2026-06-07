@@ -931,29 +931,24 @@
 
     <!--start the code for cse news widget for my dear users-->
 
-    <div class="multi-news-wrapper">
-    <div class="news-header">
-        <div class="header-left">
-            <h2>Financial Market News 🔔</h2>
-            <select id="news-source-select" onchange="changeSource()">
-                <option value="ALL">All Sources (සියල්ල)</option>
-                <option value="CSE">CSE Announcements</option>
-                <option value="FT">Daily FT</option>
-                <option value="DERANA">Ada Derana Biz</option>
-                <option value="Reuters(Sri Lanka)">Reuters</option>
-            </select>
+   <div class="news-widget-wrapper">
+    <div class="news-widget-header">
+        <div class="news-title-area">
+            <h2>Financial & Business News Feed 🔔</h2>
+            <p class="news-subtitle">Live updates from BBC Sinhala, Reuters & Market Sources</p>
         </div>
-        <span class="live-indicator">● LIVE UPDATE</span>
+        <button class="news-refresh-btn" onclick="fetchLiveBusinessNews()">
+            <span class="refresh-icon">🔄</span> Refresh
+        </button>
     </div>
-    
-    <div id="combined-news-list" class="news-grid">
-        <div class="news-loading">⏳ වෙබ් අඩවි වල පුවත් සජීවීව එක්රැස් කරමින් පවතී...</div>
+
+    <div id="news-feed-container" class="news-feed-body">
+        <div class="news-loading">⚡ Loading latest business news...</div>
     </div>
 </div>
 
-
 <style>
-    .multi-news-wrapper {
+    .news-widget-wrapper {
         max-width: 1100px;
         margin: 30px auto;
         background: #ffffff;
@@ -961,217 +956,221 @@
         border-radius: 16px;
         padding: 24px;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     }
-    .news-header {
+    .news-widget-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
         border-bottom: 2px solid #f1f5f9;
-        padding-bottom: 15px;
+        padding-bottom: 16px;
+        margin-bottom: 20px;
     }
-    .header-left {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-    .news-header h2 { 
-        font-size: 1.4rem; 
-        color: #0f172a; 
-        margin: 0; 
+    .news-title-area h2 {
+        font-size: 1.3rem;
+        color: #0f172a;
+        margin: 0;
         font-weight: 700;
     }
-    
-    /* Dropdown Style */
-    #news-source-select {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #334155;
-        background-color: #f1f5f9;
+    .news-subtitle {
+        font-size: 0.85rem;
+        color: #64748b;
+        margin: 4px 0 0 0;
+        font-weight: 500;
+    }
+    .news-refresh-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: #f1f5f9;
         border: 1px solid #cbd5e1;
+        color: #334155;
+        padding: 8px 16px;
         border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.85rem;
         cursor: pointer;
-        outline: none;
         transition: all 0.2s ease;
     }
-    #news-source-select:hover {
-        background-color: #e2e8f0;
+    .news-refresh-btn:hover {
+        background: #e2e8f0;
         color: #0f172a;
     }
-    
-    .live-indicator {
-        color: #dc2626;
-        font-weight: 800;
-        font-size: 0.85rem;
-        background: #fee2e2;
-        padding: 4px 10px;
-        border-radius: 20px;
-        animation: blink 1.5s infinite;
-    }
-    .news-grid { 
-        display: flex; 
-        flex-direction: column; 
-        gap: 15px; 
-        max-height: 550px; 
+    .news-feed-body {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        max-height: 500px; /* ලිස්ට් එක දිග වැඩි වුණොත් Scroll වෙන්න */
         overflow-y: auto;
-        padding-right: 5px;
+        padding-right: 6px;
     }
     
-    /* Custom News Card Template */
-    .custom-news-card {
+    /* Individual News Card */
+    .news-card {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 14px 18px;
         background: #f8fafc;
         border: 1px solid #e2e8f0;
         border-radius: 12px;
-        padding: 16px;
         text-decoration: none;
-        display: block;
         transition: all 0.2s ease;
     }
-    .custom-news-card:hover {
-        border-color: #38bdf8;
-        background: #ffffff;
-        transform: translateX(6px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    .news-card:hover {
+        background: #f0f9ff;
+        border-color: #bae6fd;
+        transform: translateX(4px); /* Hover වෙද්දී පොඩ්ඩක් දකුණට ඇදෙනවා */
     }
-    .source-tag {
-        font-size: 0.75rem;
+    .news-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    /* Source Badges */
+    .source-badge {
+        font-size: 0.7rem;
         font-weight: 700;
-        background: #e2e8f0;
-        color: #334155;
         padding: 3px 8px;
         border-radius: 4px;
         text-transform: uppercase;
     }
-    .source-tag.cse-tag {
-        background: #fee2e2;
-        color: #dc2626;
+    .source-badge.bbc { background: #fee2e2; color: #b91c1c; } /* BBC රතු */
+    .source-badge.reuters { background: #ffedd5; color: #c2410c; } /* Reuters තැඹිලි */
+    
+    .news-time {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        font-weight: 500;
     }
-    .news-title-text {
-        font-size: 1.1rem;
+    .news-card-title {
+        font-size: 1rem;
         font-weight: 600;
-        color: #0f172a;
-        margin: 8px 0 4px 0;
+        color: #1e293b;
+        margin: 0;
         line-height: 1.4;
     }
-    .news-time-text { 
-        font-size: 0.8rem; 
-        color: #64748b; 
-        font-weight: 600;
-    }
-    .news-loading {
-        text-align: center;
-        padding: 40px;
+    .news-card-desc {
+        font-size: 0.85rem;
         color: #64748b;
-        font-weight: 600;
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* පේළි 2කට වඩා වැඩි නම් තිත් (...) තබයි */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     
-    @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
-
-    /* Responsive Grid for Mobile */
-    @media (max-width: 768px) {
-        .news-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-        .header-left { flex-direction: column; align-items: flex-start; gap: 10px; width: 100%; }
-        #news-source-select { width: 100%; }
-        .live-indicator { align-self: flex-end; }
-    }
+    /* Loading & Errors */
+    .news-loading { padding: 30px; text-align: center; color: #64748b; font-weight: 600; }
+    .news-error { padding: 30px; text-align: center; color: #ef4444; font-weight: 600; }
 </style>
 
-
 <script>
-    // 🌐 Data Sources Setup
-    const newsSources = [
-        { id: 'CSE', name: 'CSE Announcement', url: 'https://www.cse.lk/api/corporate-announcements-rss' },
-        { id: 'FT', name: 'Daily FT', url: 'https://www.ft.lk/rss/financial-news' },
-        { id: 'DERANA', name: 'Ada Derana Biz', url: 'http://biz.adaderana.lk/feed/' },
-        { id: 'Reuters', name: 'Reuters (Sri Lanka) , url: 'https:/www.reuters.com/world/sri-lanka/' }
-    ];
+    // බ්ලොග් එක ලෝඩ් වෙද්දීම News ටිකත් ලෝඩ් වෙන්න සෙට් කිරීම
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchLiveBusinessNews();
+    });
 
-    // Cache එකක් විදිහට පාවිච්චි කරන්න global array එකක්
-    let cachedArticles = [];
+    async function fetchLiveBusinessNews() {
+        const container = document.getElementById('news-feed-container');
+        container.innerHTML = '<div class="news-loading">⚡ Fetching latest updates from BBC Sinhala & Reuters...</div>';
 
-    async function fetchAllNews() {
-        const listContainer = document.getElementById('combined-news-list');
-        // මුලින්ම ලෝඩ් වෙද්දී විතරක් Loading එක පෙන්වන්න
-        if(cachedArticles.length === 0) {
-            listContainer.innerHTML = '<div class="news-loading">⏳ වෙබ් අඩවි වල පුවත් සජීවීව එක්රැස් කරමින් පවතී...</div>';
-        }
+        // CORS Error එක bypass කරන්න පාවිච්චි කරන නොමිලේ දෙන Proxy එකක්
+        const proxyUrl = "https://api.allorigins.win/get?url=";
+        
+        // 📡 BBC Sinhala Business සහ Reuters Business RSS Feeds
+        const bbcFeed = "https://feeds.bbci.co.uk/sinhala/news/business/rss.xml";
+        const reutersFeed = "https://www.reutersagency.com/feed/?best-topics=business&post_type=best";
 
-        let allArticles = [];
+        try {
+            // Feeds දෙකම එකපාර Fetch කර ගැනීම
+            const [bbcResponse, reutersResponse] = await Promise.all([
+                fetch(proxyUrl + encodeURIComponent(bbcFeed)),
+                fetch(proxyUrl + encodeURIComponent(reutersFeed))
+            ]);
 
-        const fetchPromises = newsSources.map(async (source) => {
-            try {
-                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(source.url)}`);
-                const data = await res.json();
+            const bbcData = await bbcResponse.json();
+            const reutersData = await reutersResponse.json();
+
+            let allNewsItems = [];
+
+            // 1. BBC Sinhala පුවත් Parse කිරීම
+            if (bbcData.contents) {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(bbcData.contents, "text/xml");
+                const items = xmlDoc.querySelectorAll("item");
                 
-                if (data.status === 'ok') {
-                    data.items.forEach(item => {
-                        allArticles.push({
-                            title: item.title,
-                            link: item.link,
-                            date: new Date(item.pubDate),
-                            sourceName: source.name,
-                            sourceId: source.id
-                        });
+                items.forEach(item => {
+                    allNewsItems.push({
+                        title: item.querySelector("title")?.textContent || "",
+                        link: item.querySelector("link")?.textContent || "#",
+                        desc: item.querySelector("description")?.textContent || "",
+                        pubDate: new Date(item.querySelector("pubDate")?.textContent || Date.now()),
+                        source: "BBC Sinhala",
+                        badgeClass: "bbc"
                     });
-                }
-            } catch (e) {
-                console.log(`Error fetching from ${source.name}`);
+                });
             }
-        });
 
-        await Promise.all(fetchPromises);
-        allArticles.sort((a, b) => b.date - a.date);
-        
-        // දත්ත Cache එකට සේව් කරගන්නවා පිටුව රීලෝඩ් නොකර ෆිල්ටර් කරන්න
-        cachedArticles = allArticles;
-        
-        // දැනට Dropdown එකේ සිලෙක්ට් වෙලා තියෙන දේ අනුව පෙන්වනවා
-        renderNews();
-    }
-
-    // 🎯 Dropdown එක වෙනස් වෙද්දී පුවත් Filter කරලා පෙන්වන Function එක
-    function renderNews() {
-        const listContainer = document.getElementById('combined-news-list');
-        const selectedSource = document.getElementById('news-source-select').value;
-        
-        // Dropdown එක අනුව ෆිල්ටර් කිරීම
-        let filteredArticles = cachedArticles;
-        if (selectedSource !== 'ALL') {
-            filteredArticles = cachedArticles.filter(article => article.sourceId === selectedSource);
-        }
-
-        if(filteredArticles.length > 0) {
-            let html = '';
-            filteredArticles.slice(0, 12).forEach(article => {
-                const tagClass = article.sourceId === 'CSE' ? 'source-tag cse-tag' : 'source-tag';
+            // 2. Reuters Global Business පුවත් Parse කිරීම
+            if (reutersData.contents) {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(reutersData.contents, "text/xml");
+                const items = xmlDoc.querySelectorAll("item");
                 
-                html += `
-                    <a href="${article.link}" target="_blank" class="custom-news-card">
-                        <span class="${tagClass}">${article.sourceName}</span>
-                        <div class="news-title-text">${article.title}</div>
-                        <div class="news-time-text">📅 ${article.date.toLocaleDateString('en-US', {month: 'short', day: '2-digit', year: 'numeric'})} | ⏰ ${article.date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                items.forEach(item => {
+                    allNewsItems.push({
+                        title: item.querySelector("title")?.textContent || "",
+                        link: item.querySelector("link")?.textContent || "#",
+                        desc: item.querySelector("description")?.textContent || "",
+                        pubDate: new Date(item.querySelector("pubDate")?.textContent || Date.now()),
+                        source: "Reuters",
+                        badgeClass: "reuters"
+                    });
+                });
+            }
+
+            // 🔀 පුවත් සේරම අලුත්ම වෙලාව අනුව පිළිවෙලට සැකසීම (Sort by Date)
+            allNewsItems.sort((a, b) => b.pubDate - a.pubDate);
+
+            // 📊 උපරිම පුවත් 12ක් විතරක් බ්ලොග් එකේ පෙන්වීමට කපා ගැනීම
+            const displayNews = allNewsItems.slice(0, 12);
+
+            if (displayNews.length === 0) {
+                container.innerHTML = '<div class="news-error">❌ No recent news articles found.</div>';
+                return;
+            }
+
+            // HTML එකට Render කිරීම
+            let htmlContent = "";
+            displayNews.forEach(news => {
+                // වෙලාව ලස්සනට පෙන්වීමට format කිරීම
+                const formattedTime = news.pubDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' | ' + news.pubDate.toLocaleDateString();
+                
+                htmlContent += `
+                    <a href="${news.link}" target="_blank" class="news-card">
+                        <div class="news-card-meta">
+                            <span class="source-badge ${news.badgeClass}">${news.source}</span>
+                            <span class="news-time">🕒 ${formattedTime}</span>
+                        </div>
+                        <h4 class="news-card-title">${news.title}</h4>
+                        <p class="news-card-desc">${news.desc}</p>
                     </a>
                 `;
             });
-            listContainer.innerHTML = html;
-        } else {
-            listContainer.innerHTML = '<div class="news-loading" style="color: #dc2626;">❌ තෝරාගත් මූලාශ්‍රයෙන් පුවත් ලබාගැනීමට නොහැකි විය.</div>';
+
+            container.innerHTML = htmlContent;
+
+        } catch (error) {
+            console.error("News Fetch Error:", error);
+            container.innerHTML = `
+                <div class="news-error" style="color: #ef4444; padding: 20px; text-align: center;">
+                    ❌ පුවත් ලෝඩ් කිරීමට නොහැකි විය. (CORS Proxy Timeout). <br>
+                    <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 500;">කරුණාකර Refresh බොත්තම ඔබා නැවත උත්සාහ කරන්න.</span>
+                </div>`;
         }
     }
-
-    // Dropdown එක මාරු කරන විට ක්‍රියාත්මක වන ෆන්ක්ෂන් එක
-    function changeSource() {
-        const listContainer = document.getElementById('combined-news-list');
-        listContainer.innerHTML = '<div class="news-loading">⏳ පුවත් පෙරන පවතී (Filtering)...</div>';
-        setTimeout(renderNews, 200); // පොඩි smooth ගතියක් ගන්න delay එකක්
-    }
-
-    // Init load
-    document.addEventListener("DOMContentLoaded", fetchAllNews);
-    // විනාඩියෙන් විනාඩියට බැක්ග්‍රවුන්ඩ් එකෙන් දත්ත අප්ඩේට් වෙනවා
-    setInterval(fetchAllNews, 60000); 
 </script>
     <!--end of the code for cse real time news for my dear users-->
 
