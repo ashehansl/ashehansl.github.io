@@ -34,5 +34,5 @@
     "articles": [
       { "name": "1. Introduction to Share Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "stock1.txt" }
     ]
-  },
+  }
 }
