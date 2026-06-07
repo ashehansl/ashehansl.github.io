@@ -31,190 +31,160 @@
     </header>
 
     <!--trying to create a slideshow-->
-    <style>
-.slideshow-container {
-  max-width: 900px;
-  width: 90%;
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  background-color: #1e293b;
-}
 
-/* 🖼️ හැම ස්ලයිඩ් එකක්ම සාමාන්‍යයෙන් හංගන්න */
-.mySlides {
-  display: none;
-}
+<div id="home-slideshow-wrapper">
+    <div class="slideshow-area">
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 5</div>
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/057/068/323/small/single-fresh-red-strawberry-on-table-green-background-food-fruit-sweet-macro-juicy-plant-image-photo.jpg" alt="Slide 1">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 5</div>
+            <img src="https://c8.alamy.com/comp/CF4P87/whole-and-halved-strawberries-on-a-white-background-CF4P87.jpg" alt="Slide 2">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 5</div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT783-FgGv6JSmINJ9I-xCc1SgscBgErA-OJQ&s" alt="Slide 3">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">4 / 5</div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwP4ex6oNFCyrEocThmWq5Oji7Oi4fD8BnmA&s" alt="Slide 4">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">5 / 5</div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS653-EfXbCjwCFWnYxUcs3i9RwQCVcUS3j9g&s" alt="Slide 5">
+        </div>
+        
+        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+        <button class="next" onclick="plusSlides(1)">&#10095;</button>
+    </div>
 
-/* ස්ලයිඩ් එක ඇතුළේ තියෙන පින්තූරය */
-.mySlides img {
-  vertical-align: middle;
-  width: 100%;
-  height: auto;
-  border-radius: 16px 16px 0 0;
-}
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span> 
+        <span class="dot" onclick="currentSlide(5)"></span> 
+    </div>
+</div>
 
-/* ⬅️ / ➡️ Previous සහ Next බොත්තම් */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  background-color: rgba(0,0,0,0.3);
-  border: none;
-}
 
-/* Next බොත්තම දකුණු පැත්තට */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* බොත්තම් උඩින් mouse එක යද්දී */
-.prev:hover, .next:hover {
-  background-color: var(--accent-color);
-  color: #0f172a;
-}
-
-/* 🔢 පින්තූරේ අංකය පෙන්නන Text එක (e.g. "1 / 5") */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-  background-color: rgba(0,0,0,0.5);
-  border-radius: 0 0 8px 0;
-}
-
-/* 🟢 පල්ලෙහායින් තියෙන Pagination (Dots) */
-.dots-container {
-  text-align: center;
-  padding: 10px;
-  background-color: #1e293b;
-  border-radius: 0 0 16px 16px;
-}
-
-.dot {
-  cursor: pointer;
-  height: 10px;
-  width: 10px;
-  margin: 0 4px;
-  background-color: #334155;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: var(--accent-color);
-}
-
-/* ✨ CSS Animations */
-.fade {
-  animation-name: fade;
-  animation-duration: 1s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+<style>
+    #home-slideshow-wrapper {
+        max-width: 1100px;
+        width: 100%;
+        margin: 30px auto 10px auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    .slideshow-area {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        background-color: #1e293b;
+    }
+    .mySlides { 
+        display: none; 
+    }
+    .mySlides img { 
+        vertical-align: middle; 
+        width: 100%; 
+        height: 350px; 
+        object-fit: cover; 
+    }
+    .prev, .next { 
+        cursor: pointer; 
+        position: absolute; 
+        top: 50%; 
+        width: auto; 
+        padding: 16px; 
+        margin-top: -22px; 
+        color: white; 
+        font-weight: bold; 
+        font-size: 20px; 
+        transition: 0.6s ease; 
+        background-color: rgba(0,0,0,0.3); 
+        border: none; 
+        z-index: 10; 
+    }
+    .next { 
+        right: 0; 
+    }
+    .prev:hover, .next:hover { 
+        background-color: #38bdf8; 
+        color: #0f172a; 
+    }
+    .numbertext { 
+        color: #f2f2f2; 
+        font-size: 12px; 
+        padding: 8px 12px; 
+        position: absolute; 
+        top: 0; 
+        background-color: rgba(0,0,0,0.5); 
+        border-radius: 0 0 8px 0; 
+    }
+    .dots-container { 
+        text-align: center; 
+        margin-top: 15px;
+        margin-bottom: 30px; 
+    }
+    .dot { 
+        cursor: pointer; 
+        height: 10px; 
+        width: 10px; 
+        margin: 0 4px; 
+        background-color: #334155; 
+        border-radius: 50%; 
+        display: inline-block; 
+        transition: background-color 0.6s ease; 
+    }
+    .active, .dot:hover { 
+        background-color: #38bdf8; 
+    }
+    .fade { 
+        animation-name: slideshowFade; 
+        animation-duration: 1s; 
+    }
+    @keyframes slideshowFade { 
+        from { opacity: .4 } 
+        to { opacity: 1 } 
+    }
 </style>
-    
-<div class="slideshow-container">
 
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 5</div>
-    <img src="pic1.jpg" alt="පින්තූර 1">
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 5</div>
-    <img src="pic2.jpg" alt="පින්තූර 2">
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 5</div>
-    <img src="pic3.jpg" alt="පින්තූර 3">
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">4 / 5</div>
-    <img src="pic4.jpg" alt="පින්තූර 4">
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">5 / 5</div>
-    <img src="pic5.jpg" alt="පින්තූර 5">
-  </div>
-
-  <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-  <button class="next" onclick="plusSlides(1)">&#10095;</button>
-
-</div>
-<br>
-
-<div class="dots-container">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-  <span class="dot" onclick="currentSlide(4)"></span> 
-  <span class="dot" onclick="currentSlide(5)"></span> 
-</div>
 
 <script>
-/* ⚙️ JavaScript: Slideshow එක ක්‍රියාත්මක කරවන ලොජික් එක */
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-let slideIndex = 1;
-showSlides(slideIndex);
+    function plusSlides(n) { 
+        showSlides(slideIndex += n); 
+    }
+    
+    function currentSlide(n) { 
+        showSlides(slideIndex = n); 
+    }
 
-// Next/Previous බොත්තම් ක්‍රියාත්මක කරන ෆන්ක්ෂන් එක
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// තිත් (Dots) ක්‍රියාත්මක කරන ෆන්ක්ෂන් එක
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  
-  // ස්ලයිඩ් එක අන්තිම එකට වඩා වැඩි නම් පළවෙනි එකට යන්න
-  if (n > slides.length) {slideIndex = 1}    
-  // ස්ලයිඩ් එක පළවෙනි එකට වඩා අඩු නම් අන්තිම එකට යන්න
-  if (n < 1) {slideIndex = slides.length}
-  
-  // හැම ස්ලයිඩ් එකක්ම හංගන්න
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  
-  // හැම තිතක්ම 'inactive' කරන්න
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  
-  // දැනට තියෙන ස්ලයිඩ් එක විතරක් පෙන්වන්න
-  slides[slideIndex-1].style.display = "block";  
-  // දැනට තියෙන තිත විතරක් 'active' කරන්න
-  dots[slideIndex-1].className += " active";
-}
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        
+        if (slides.length === 0) return;
+        if (n > slides.length) { slideIndex = 1 }    
+        if (n < 1) { slideIndex = slides.length }
+        
+        for (i = 0; i < slides.length; i++) { 
+            slides[i].style.display = "none"; 
+        }
+        for (i = 0; i < dots.length; i++) { 
+            dots[i].className = dots[i].className.replace(" active", ""); 
+        }
+        
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+    }
 </script>
+    
     <!--end of the code for slideshow-->
     
     <div class="main-container">
