@@ -8,8 +8,8 @@
     ]
   },
   "corporate-finance": {
-    "title": "Corporate Finance 💼",
-    "desc": "සමාගම් මූල්‍ය කළමනාකරණය සහ වාර්තා විශ්ලේෂණය.",
+    "title": "Fundamental Analysis  💼",
+    "desc": "මුල්‍ය අනුපාත සහ වාර්තා විශ්ලේෂණය.",
     "articles": [
       { "name": "1. Financial Statements 📑", "short": "Income Statement, Balance Sheet කියවීම.", "file": "cf-statements.txt" }
     ]
@@ -23,7 +23,7 @@
   },
   "Stocks": {
     "title": "Stocks 📊",
-    "desc": "කොටස් වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
+    "desc": "සමාගම් මූල්‍ය කළමනාකරණය හා කොටස් වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
       { "name": "1. Introduction to Share Market", "short": "කොටස් වෙළෙඳපොළ යනු කුමක්ද ?", "file": "crypto1.txt" }
     ]
