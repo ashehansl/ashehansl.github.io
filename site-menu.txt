@@ -29,7 +29,7 @@
     ]
   },
   "Crypto ": {
-    "title": "Crypto 🏆",
+    "title": "Crypto🏆",
     "desc": "Crypto වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
       { "name": "1. Introduction to Share Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "stock1.txt" }
