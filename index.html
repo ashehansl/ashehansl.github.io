@@ -17,6 +17,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance Insight</title>
     <style>
+
+        /*start the code for smooth cursor effect*/
+
+        /* 🌍 මුළු වෙබ්සයිට් එකේම පසුබිම නියෝන් Fluid එකක් වගේ වෙනස් කිරීම */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f1f5f9; /* අකුරු ලස්සනට කැපිලා පේන්න ලා පැහැයක් */
+    
+    /* 🎨 නියෝන් වතුර ගතිය එන Dark Blue, Deep Purple සහ Cyan කලවම් Gradient එක */
+    background: linear-gradient(135deg, #070b19, #0f172a, #1e1b4b, #090d16);
+    background-size: 400% 400%; /* Gradient එක ලොකුවට තියෙන්න ඕනේ එක එක පැත්තට ගලාගෙන යන්න */
+    
+    /* ⏳ තත්පර 16ක් පුරා සිනිදුවට රවුමට කැරකෙන ඇනිමේෂන් එක */
+    animation: neonFluidFlow 16s ease infinite;
+    background-attachment: fixed; /* Scroll කරද්දී Background එක එක තැනම ස්ථාවරව තියෙන්න */
+}
+
+/* 🌀 Background එක වතුර රැල්ලක් වගේ සිනිදුවට ගලාගෙන යන ඇනිමේෂන් ලොජික් එක */
+@keyframes neonFluidFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 💡 බ්ලොග් එකේ තියෙන Sections වල පසුබිම් (කාඩ්ස් වගේ ඒවා) ඕනෑවට වඩා තද පාට නම්, 
+   මේ Fluid background එක පේන්නේ නැති වෙන නිසා, ඒවායේ පසුබිම හීනියට පෙනෙන (Translucent Glass) ගාණට හදන්න මේක උදව් වෙයි: */
+.news-widget-wrapper, .modern-form-container {
+    background: rgba(15, 23, 42, 0.65) !important; /* Semi-transparent Slate Blue */
+    backdrop-filter: blur(12px); /* Glassmorphism Blur Effect */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(56, 189, 248, 0.15) !important;
+}
+        
+        /*end of the code for smooth cursor effect*/
+        
         :root { --bg-color: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; }
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
         header { background-color: var(--card-bg); padding: 20px; text-align: center; border-bottom: 2px solid #334155; }
