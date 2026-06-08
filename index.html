@@ -1442,15 +1442,52 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     </script>
 
-   <footer class="site-disclaimer-footer">
+    <!--start of the code for footer-->
+
+  <footer class="site-disclaimer-footer">
     <div class="footer-layout-flex">
         
-        <div class="footer-disclaimer-content">
-            <p class="disclaimer-text-left">
-                <span class="disclaimer-badge">Disclaimer</span> 
-                The information provided on this platform is for educational and informational purposes only and should not be construed as professional financial or investment advice. Financial markets involve inherent risks. <strong>Investment decisions are at your own risk.</strong>
-            </p>
-            <p class="copyright-text">© 2026 Finance Insight. All Rights Reserved.</p>
+        <div class="footer-left-side-content">
+            
+            <div class="floating-contact-flexbox">
+                
+                <a href="mailto:your-email@example.com" class="floating-card email-card">
+                    <div class="card-glow-bg"></div>
+                    <div class="card-icon-area">📧</div>
+                    <div class="card-info-area">
+                        <span>Email Us</span>
+                        <p>support@financeinsight.com</p>
+                    </div>
+                </a>
+
+                <a href="https://t.me/yourchannel" target="_blank" class="floating-card telegram-card">
+                    <div class="card-glow-bg"></div>
+                    <div class="card-icon-area">💬</div>
+                    <div class="card-info-area">
+                        <span>Telegram Channel</span>
+                        <p>Join Community</p>
+                    </div>
+                </a>
+
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" class="floating-card linkedin-card">
+                    <div class="card-glow-bg"></div>
+                    <div class="card-icon-area">🌐</div>
+                    <div class="card-info-area">
+                        <span>LinkedIn</span>
+                        <p>Connect Regionally</p>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="footer-disclaimer-content">
+                <p class="disclaimer-text-left">
+                    <span class="disclaimer-badge">Disclaimer</span> 
+                    The information provided on this platform is for educational and informational purposes only and should not be construed as professional financial or investment advice. Financial markets involve inherent risks. <strong>Investment decisions are at your own risk.</strong>
+                </p>
+                <p class="copyright-text">© 2026 Finance Insight. All Rights Reserved.</p>
+            </div>
+
         </div>
 
         <div class="modern-form-container" style="max-width: 600px; width: 100%; position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
@@ -1487,9 +1524,9 @@ document.addEventListener("DOMContentLoaded", function() {
 </footer>
 
 <style>
-    /* 🌍 Footer එක ඇතුළේ දෙපැත්ත බෙදන ප්‍රධාන Flexbox Layout එක */
+    /* 🌍 Main Footer Box */
     .site-disclaimer-footer { 
-        background: #121824; /* ඔයාගේ Form එකේ පසුබිමට ගැලපෙන අඳුරු Premium නිල් පාටක් දුන්නා මචං */
+        background: #090f1c; 
         color: #b3b3b3; 
         padding: 60px 20px; 
         border-top: 1px solid #1e293b; 
@@ -1497,57 +1534,123 @@ document.addEventListener("DOMContentLoaded", function() {
         margin-top: 70px; 
     }
     .footer-layout-flex {
-        max-width: 1200px;
+        max-width: 1250px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
-        align-items: center; /* දෙකම එකම මට්ටමක තියන්න */
-        gap: 50px;
+        align-items: flex-start; /* මුල ඉඳන්ම සමාන්තරව තියන්න */
+        gap: 60px;
     }
 
-    /* 👈 Disclaimer එකට 45% ක වගේ ඉඩක් දීලා වම් පැත්තට බර කිරීම */
-    .footer-disclaimer-content { 
-        flex: 1;
-        text-align: left; /* Center තිබ්බ එක වමට කළා මචං */
+    /* 👈 Left Side Area */
+    .footer-left-side-content {
+        flex: 1.2;
+        display: flex;
+        flex-direction: column;
+        gap: 40px; /* පාවෙන Cards සහ Disclaimer අතර පරතරය */
     }
-    .disclaimer-text-left { 
-        font-size: 13px !important; 
-        line-height: 1.7; 
-        margin: 0 0 15px 0; 
-        text-align: left !important; /* Text එක වමට පෙළගැසීම */
+
+    /* ☁️ 🚀 FLOATING CONTACT CARDS FLEXBOX */
+    .floating-contact-flexbox {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
     }
-    .disclaimer-badge { 
-        background: #d9534f; 
-        color: white; 
-        padding: 3px 7px; 
-        font-size: 10px; 
-        text-transform: uppercase; 
-        font-weight: bold; 
-        border-radius: 3px; 
-        margin-right: 5px; 
-        display: inline-block; 
-        vertical-align: middle; 
+    
+    /* Individual Card Core Style */
+    .floating-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(30, 41, 59, 0.4); /* Glassmorphism translucent effect */
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 16px 20px;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        
+        /* 🎈 පාවෙන (Floating) Soft Animation එක */
+        animation: smoothFloat 4s infinite ease-in-out;
     }
+    
+    /* පාවෙන ඇනිමේෂන් එක කාඩ් එකෙන් කාඩ් එකට වෙනස් වෙලාවන් දීම (Delays) */
+    .floating-card.email-card { animation-delay: 0s; }
+    .floating-card.telegram-card { animation-delay: 0.8s; }
+    .floating-card.linkedin-card { animation-delay: 1.6s; }
+
+    /* Hover Effects */
+    .floating-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        background: rgba(30, 41, 59, 0.7);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    }
+    .floating-card.email-card:hover { border-color: rgba(56, 189, 248, 0.4); }
+    .floating-card.telegram-card:hover { border-color: rgba(0, 166, 255, 0.4); }
+    .floating-card.linkedin-card:hover { border-color: rgba(10, 102, 194, 0.4); }
+
+    /* Card Elements Inside */
+    .card-icon-area {
+        font-size: 1.6rem;
+        z-index: 2;
+    }
+    .card-info-area {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        z-index: 2;
+    }
+    .card-info-area span {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #64748b;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    .card-info-area p {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #f1f5f9;
+        transition: color 0.3s;
+    }
+    .floating-card:hover .card-info-area p {
+        color: #38bdf8; /* Hover වුණාම අකුරු ලස්සනට නිල් වෙනවා */
+    }
+
+    /* 🎈 Floating Keyframe Animation Definition */
+    @keyframes smoothFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); } /* හීනියට උඩට පාවෙන ගතිය */
+    }
+
+    /* 📝 Disclaimer Styles */
+    .footer-disclaimer-content { text-align: left; }
+    .disclaimer-text-left { font-size: 13px !important; line-height: 1.7; margin: 0 0 15px 0; text-align: left !important; color: #94a3b8; }
+    .disclaimer-badge { background: #d9534f; color: white; padding: 3px 7px; font-size: 10px; text-transform: uppercase; font-weight: bold; border-radius: 3px; margin-right: 5px; display: inline-block; vertical-align: middle; }
     .footer-disclaimer-content strong { color: #ffffff; }
-    .copyright-text { font-size: 11px !important; color: #55657e !important; margin-top: 20px !important; text-align: left !important; }
+    .copyright-text { font-size: 11px !important; color: #475569 !important; margin-top: 15px !important; text-align: left !important; }
 
-    /* 👉 Form එකේ styles සහ Floating Label Styles ඒ විදිහටමයි මචං */
+    /* 👉 Form Element Overrides & Floating Labels (පරණ ඒවා එලෙසමයි) */
     #contactForm input:focus, #contactForm textarea:focus { border-color: #38bdf8 !important; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); background: #0f172a !important; }
     .floating-label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; transition: all 0.25s ease; background: #1e293b; padding: 0 5px; border-radius: 4px; }
     #contactForm textarea ~ .floating-label { top: 25px; }
     #contactForm input:focus ~ .floating-label, #contactForm input:not(:placeholder-shown) ~ .floating-label, #contactForm textarea:focus ~ .floating-label, #contactForm textarea:not(:placeholder-shown) ~ .floating-label { top: 0; font-size: 0.8rem; color: #38bdf8; font-weight: bold; }
     .submit-glow-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0, 166, 255, 0.6); letter-spacing: 0.5px; }
 
-    /* 📱 මොබයිල් ෆෝන් වලදී සයිට් එක කැඩෙන්නේ නැතුව එකක් යටට එකක් ලස්සනට සෙට් වෙන්න */
-    @media (max-width: 900px) {
+    /* 📱 Responsive Mobile Adjustments */
+    @media (max-width: 950px) {
         .footer-layout-flex {
             flex-direction: column;
-            gap: 40px;
+            gap: 45px;
         }
-        .footer-disclaimer-content {
-            text-align: center;
+        .footer-left-side-content {
+            width: 100%;
         }
-        .disclaimer-text-left, .copyright-text {
+        .footer-disclaimer-content, .disclaimer-text-left, .copyright-text {
             text-align: center !important;
         }
     }
@@ -1575,6 +1678,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     .catch(() => { statusText.style.color = '#ef4444'; statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.'; });
 });
 </script>
+
+    <!--end of the code for footer-->
     
 </body>
 </html>
