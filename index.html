@@ -1,124 +1,12 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y2M178G7Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7Y2M178G7Y');
-</script>
-    <!--Goodgle tag end-->
     <link rel="icon" type="image/x-icon" href="Gemini_Generated_Image_jtxx2mjtxx2mjtxx.png">
     <meta name="google-adsense-account" content="ca-pub-3669554087716015">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance Insight</title>
     <style>
-
-        /*start the code for smooth cursor effect*/
-
-       <svg class="magic-ui-arrow-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.27 2.451a.993.993 0 0 0-.916.319.967.967 0 0 0-.214.938l4.43 16.54c.125.467.542.791 1.018.794a.994.994 0 0 0 .973-.66l2.87-7.61 7.61-2.87a.99.99 0 0 0 .666-.967c-.003-.476-.327-.893-.794-1.017L3.382 3.51a.986.986 0 0 0-.853-.223l1.741-.836z" fill="#00d2ff"/>
-</svg>
-
-<style>
-    /* ⚡ ලැප්ටොප් සහ PC වලට විතරක් Cursor එක පෙන්වීම (Phones වලට Disable කරයි) */
-    @media (min-width: 769px) {
-        /* සයිට් එකේ පරණ ඩිෆෝල්ට් මවුස් කූර හැංගීම */
-        html, body, a, button, input, textarea, .floating-card {
-            cursor: none !important;
-        }
-
-        /* 🏹 MagicUI Real Arrow Cursor එක හැඩගැන්වීම */
-        .magic-ui-arrow-cursor {
-            width: 20px;
-            height: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999999;
-            pointer-events: none; /* සයිට් එකේ ක්ලික්ස් බ්ලොක් නොවීමට */
-            
-            /* නියෝන් සයන් පාටින් ලස්සනට දිලිසෙන ගතිය (Static Glow) */
-            filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.6));
-            
-            /* MagicUI ස්මූත් ෆිසික්ස් ගතිය එන්න දෙන ට්‍රාන්සිෂන් එක */
-            transition: transform 0.06s cubic-bezier(0.215, 0.610, 0.355, 1),
-                        width 0.2s ease,
-                        height 0.2s ease;
-            
-            /* ඇරෝ එකක් නිසා සාමාන්‍යයෙන් තියෙන අංශක 0 පිහිටීම */
-            transform: translate(0, 0) rotate(0deg);
-            transform-origin: top left;
-        }
-
-        /* 🧲 ලින්ක්ස් හෝ බටන්ස් උඩට ගියාම කර්සර් එක පොඩ්ඩක් ලොකු වෙලා ගැම්මට පේන්න */
-        .magic-ui-arrow-cursor.hovered {
-            width: 26px;
-            height: 26px;
-            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.9));
-        }
-    }
-
-    /* ෆෝන් වලදී Custom මවුස් එක සම්පූර්ණයෙන්ම ඩිසේබල් කිරීම */
-    @media (max-width: 768px) {
-        .magic-ui-arrow-cursor {
-            display: none !important;
-        }
-    }
-</style>
-
-<script>
-    // පරිගණක තිර වලට විතරක් ලොජික් එක ක්‍රියාත්මක කිරීම
-    if (window.innerWidth > 768) {
-        const arrowCursor = document.querySelector('.magic-ui-arrow-cursor');
-
-        // මවුස් එකේ නියමිත පිහිටීම්
-        let mouseX = 0, mouseY = 0;
-        // පස්සෙන් ඇදිලා එන ඇරෝ එකේ පිහිටීම්
-        let arrowX = 0, arrowY = 0;
-
-        // 1. මවුස් එක හොල්ලනකොට පිහිටීම ලබාගැනීම
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // 2. MagicUI Physics Lerp Animation Loop
-        function renderSmoothCursor() {
-            // 🏹 0.16 ක වේගයකින් ඇරෝ එක මවුස් එක පස්සෙන් ස්මූත් එකේ ඇදිලා එනවා
-            arrowX += (mouseX - arrowX) * 0.16;
-            arrowY += (mouseY - arrowY) * 0.16;
-
-            // ඇරෝ කූරේ පිහිටීම තිරය මත අප්ඩේට් කිරීම
-            arrowCursor.style.left = arrowX + 'px';
-            arrowCursor.style.top = arrowY + 'px';
-
-            // දිගටම ලූප් එක රන් කිරීම
-            requestAnimationFrame(renderSmoothCursor);
-        }
-        // ඇනිමේෂන් ලූප් එක ස්ටාර්ට් කිරීම
-        requestAnimationFrame(renderSmoothCursor);
-
-        // 🧲 3. බ්ලොග් එකේ Links/Buttons උඩට ගියාම වෙනස් වන හැඩය (Hover Effects)
-        const clickableItems = document.querySelectorAll('a, button, input, textarea, .floating-card');
-        
-        clickableItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                arrowCursor.classList.add('hovered');
-            });
-            item.addEventListener('mouseleave', () => {
-                arrowCursor.classList.remove('hovered');
-            });
-        });
-    }
-</script>
-        
-        /*end of the code for smooth cursor effect*/
-        
         :root { --bg-color: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; }
         body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
         header { background-color: var(--card-bg); padding: 20px; text-align: center; border-bottom: 2px solid #334155; }
@@ -415,65 +303,6 @@
 </script>
     <!--end of the code for search bar-->
 
-    <!--pop-up notification code started-->
-    <style>
-/* 🔔 Pop-up Styling */
-.feature-pop-up {
-    position: fixed;
-    top: -100px; /* මුලින්ම තිරයෙන් උඩ හැංගිලා තියෙන්නේ */
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
-    border: 2px solid #0284c7; /* Premium Blue Border */
-    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
-    border-radius: 30px; /* Dynamic Island Capsule Shape */
-    padding: 10px 24px;
-    z-index: 10000; /* හැමදේටම උඩින් පෙනෙන්න */
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Smooth Animation */
-    opacity: 0;
-    pointer-events: none;
-    max-width: 90%;
-    width: 450px;
-}
-
-/* Pop-up එක active වුණාම පහලට පාත් වෙන හැඩය */
-.feature-pop-up.show {
-    top: 25px; /* උඩ ඉඳන් 25px පහලට එනවා */
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.pop-up-content {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-}
-.pop-up-emoji {
-    font-size: 1.5rem;
-    animation: floatEmoji 2s infinite ease-in-out;
-}
-.pop-up-content h4 {
-    margin: 0;
-    color: #0f172a;
-    font-size: 0.95rem;
-    font-weight: 700;
-}
-.pop-up-content p {
-    margin: 2px 0 0 0;
-    color: #64748b;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-/* ඉමෝජි එක ගැස්සෙන ඇනිමේෂන් එක */
-@keyframes floatEmoji {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-}
-
-    <!--pop-up notification code end-->
-
     <!--trying to create a slideshow-->
 
 <div id="home-slideshow-wrapper">
@@ -628,32 +457,7 @@
         dots[slideIndex-1].className += " active";
     }
 </script>
-    <div id="feature-notification" class="feature-pop-up">
-    <div class="pop-up-content">
-        <span class="pop-up-emoji">✨</span>
-        <div>
-            <h4>New Feature Added!</h4>
-            <p>You can now view live TradingView charts directly inside the blog!</p>
-        </div>
-    </div>
-</div>
-<script>
-    // 🔔 Pop-up Notification Control Logic
-document.addEventListener("DOMContentLoaded", function() {
-    const notification = document.getElementById("feature-notification");
-
-    // සයිට් එක ලෝඩ් වෙලා තත්පර 1කින් Notification එක පෙන්වීම
-    setTimeout(() => {
-        notification.classList.add("show");
-
-        // එතැන් සිට හරියටම තත්පර 5කින් (5000ms) එය නැවත වසා දැමීම
-        setTimeout(() => {
-            notification.classList.remove("show");
-        }, 5000);
-
-    }, 1000); 
-});
-</script>
+    
     <!--end of the code for slideshow-->
     
 <!--adding s&p and other indexes-->
@@ -1544,244 +1348,89 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     </script>
 
-    <!--start of the code for footer-->
+    <footer class="site-disclaimer-footer">
+        <div class="footer-disclaimer-content">
+            <p>
+                <span class="disclaimer-badge">Disclaimer</span> 
+                The information provided on this platform is for educational and informational purposes only and should not be construed as professional financial or investment advice. Financial markets involve inherent risks. <strong>Investment decisions are at your own risk.</strong>
+            </p>
+            <p class="copyright-text">© 2026 Finance Insight. All Rights Reserved.</p>
+        </div>
+ </footer>
 
-  <footer class="site-disclaimer-footer">
-    <div class="footer-layout-flex">
         
-        <div class="footer-left-side-content">
-            
-            <div class="floating-contact-flexbox">
-                
-                <a href="mailto:your-email@example.com" class="floating-card email-card">
-                    <div class="card-glow-bg"></div>
-                    <div class="card-icon-area">📧</div>
-                    <div class="card-info-area">
-                        <span>Email Us</span>
-                        <p>support@financeinsight.com</p>
-                    </div>
-                </a>
-
-                <a href="https://t.me/yourchannel" target="_blank" class="floating-card telegram-card">
-                    <div class="card-glow-bg"></div>
-                    <div class="card-icon-area">💬</div>
-                    <div class="card-info-area">
-                        <span>Telegram Channel</span>
-                        <p>Join Community</p>
-                    </div>
-                </a>
-
-                <a href="https://www.linkedin.com/in/avishka-shehan-828ba13a6/" class="floating-card linkedin-card">
-                    <div class="card-glow-bg"></div>
-                    <div class="card-icon-area">🌐</div>
-                    <div class="card-info-area">
-                        <span>LinkedIn</span>
-                        <p>Connect Regionally</p>
-                    </div>
-                </a>
-
+        <div class="modern-form-container" style="max-width: 600px; margin: 50px auto 60px auto; position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
+        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
+        <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px;">අප වෙත අදහස් යොමු කරන්න 💬</h3>
+        <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.9rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ කණ්ඩායම වෙතට යොමු කරන්න.</p>
+        
+        <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="position: relative;">
+                <input type="text" id="formName" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                <label class="floating-label">ඔබගේ නම (Name)</label>
             </div>
-
-            <div class="footer-disclaimer-content">
-                <p class="disclaimer-text-left">
-                    <span class="disclaimer-badge">Disclaimer</span> 
-                    The information provided on this platform is for educational and informational purposes only and should not be construed as professional financial or investment advice. Financial markets involve inherent risks. <strong>Investment decisions are at your own risk.</strong>
-                </p>
-                <p class="copyright-text">© 2026 Finance Insight. All Rights Reserved.</p>
+            <div style="position: relative;">
+                <input type="email" id="formEmail" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                <label class="floating-label">විද්‍යුත් ලිපිය (Email)</label>
             </div>
-
-        </div>
-
-        <div class="modern-form-container" style="max-width: 600px; width: 100%; position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
-            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
-            <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px;">අප වෙත අදහස් යොමු කරන්න 💬</h3>
-            <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.9rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ කණ්ඩායම වෙතට යොමු කරන්න.</p>
-            
-            <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="position: relative;">
-                    <input type="text" id="formName" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">ඔබගේ නම (Name)</label>
-                </div>
-                <div style="position: relative;">
-                    <input type="email" id="formEmail" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">විද්‍යුත් ලිපිය (Email)</label>
-                </div>
-                <div style="position: relative;">
-                    <input type="text" id="formSubject" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">විෂය (Subject)</label>
-                </div>
-                 <div style="position: relative;">
-                    <input type="tel" id="formPhone" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">දුරකථන අංකය (Phone Number)</label>
-                </div>
-                <div style="position: relative;">
-                    <textarea id="formMessage" rows="4" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
-                    <label class="floating-label">පණිවිඩය (Message)</label>
-                </div>
-                <button type="submit" class="submit-glow-btn" style="background: linear-gradient(90deg, #00d2ff 0%, #00a6ff 100%); color: #0f172a; padding: 14px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 255, 0.3);">පණිවිඩය යවන්න 🚀</button>
-            </form>
-            <p id="formStatus" style="margin-top: 15px; display: none; font-weight: bold; text-align: center; font-size: 0.95rem;"></p>
-        </div>
+            <div style="position: relative;">
+                <input type="text" id="formSubject" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                <label class="floating-label">විෂය (Subject)</label>
+            </div>
+             <div style="position: relative;">
+                <input type="tel" id="formPhone" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                <label class="floating-label">දුරකථන අංකය (Phone Number)</label>
+            </div>
+            <div style="position: relative;">
+                <textarea id="formMessage" rows="4" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
+                <label class="floating-label">පණිවිඩය (Message)</label>
+            </div>
+            <button type="submit" class="submit-glow-btn" style="background: linear-gradient(90deg, #00d2ff 0%, #00a6ff 100%); color: #0f172a; padding: 14px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 255, 0.3);">පණිවිඩය යවන්න 🚀</button>
+        </form>
+        <p id="formStatus" style="margin-top: 15px; display: none; font-weight: bold; text-align: center; font-size: 0.95rem;"></p>
     </div>
-</footer>
 
-<style>
-    /* 🌍 Main Footer Box */
-    .site-disclaimer-footer { 
-        background: #090f1c; 
-        color: #b3b3b3; 
-        padding: 60px 20px; 
-        border-top: 1px solid #1e293b; 
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        margin-top: 70px; 
-    }
-    .footer-layout-flex {
-        max-width: 1250px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start; /* මුල ඉඳන්ම සමාන්තරව තියන්න */
-        gap: 60px;
-    }
-
-    /* 👈 Left Side Area */
-    .footer-left-side-content {
-        flex: 1.2;
-        display: flex;
-        flex-direction: column;
-        gap: 40px; /* පාවෙන Cards සහ Disclaimer අතර පරතරය */
-    }
-
-    /* ☁️ 🚀 FLOATING CONTACT CARDS FLEXBOX */
-    .floating-contact-flexbox {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        width: 100%;
-    }
-    
-    /* Individual Card Core Style */
-    .floating-card {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        background: rgba(30, 41, 59, 0.4); /* Glassmorphism translucent effect */
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 16px 20px;
-        text-decoration: none;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        
-        /* 🎈 පාවෙන (Floating) Soft Animation එක */
-        animation: smoothFloat 4s infinite ease-in-out;
-    }
-    
-    /* පාවෙන ඇනිමේෂන් එක කාඩ් එකෙන් කාඩ් එකට වෙනස් වෙලාවන් දීම (Delays) */
-    .floating-card.email-card { animation-delay: 0s; }
-    .floating-card.telegram-card { animation-delay: 0.8s; }
-    .floating-card.linkedin-card { animation-delay: 1.6s; }
-
-    /* Hover Effects */
-    .floating-card:hover {
-        transform: translateY(-5px) scale(1.02);
-        background: rgba(30, 41, 59, 0.7);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-    }
-    .floating-card.email-card:hover { border-color: rgba(56, 189, 248, 0.4); }
-    .floating-card.telegram-card:hover { border-color: rgba(0, 166, 255, 0.4); }
-    .floating-card.linkedin-card:hover { border-color: rgba(10, 102, 194, 0.4); }
-
-    /* Card Elements Inside */
-    .card-icon-area {
-        font-size: 1.6rem;
-        z-index: 2;
-    }
-    .card-info-area {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        z-index: 2;
-    }
-    .card-info-area span {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        color: #64748b;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-    }
-    .card-info-area p {
-        margin: 0;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #f1f5f9;
-        transition: color 0.3s;
-    }
-    .floating-card:hover .card-info-area p {
-        color: #38bdf8; /* Hover වුණාම අකුරු ලස්සනට නිල් වෙනවා */
-    }
-
-    /* 🎈 Floating Keyframe Animation Definition */
-    @keyframes smoothFloat {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-6px); } /* හීනියට උඩට පාවෙන ගතිය */
-    }
-
-    /* 📝 Disclaimer Styles */
-    .footer-disclaimer-content { text-align: left; }
-    .disclaimer-text-left { font-size: 13px !important; line-height: 1.7; margin: 0 0 15px 0; text-align: left !important; color: #94a3b8; }
-    .disclaimer-badge { background: #d9534f; color: white; padding: 3px 7px; font-size: 10px; text-transform: uppercase; font-weight: bold; border-radius: 3px; margin-right: 5px; display: inline-block; vertical-align: middle; }
-    .footer-disclaimer-content strong { color: #ffffff; }
-    .copyright-text { font-size: 11px !important; color: #475569 !important; margin-top: 15px !important; text-align: left !important; }
-
-    /* 👉 Form Element Overrides & Floating Labels (පරණ ඒවා එලෙසමයි) */
+    <style>
     #contactForm input:focus, #contactForm textarea:focus { border-color: #38bdf8 !important; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); background: #0f172a !important; }
     .floating-label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; transition: all 0.25s ease; background: #1e293b; padding: 0 5px; border-radius: 4px; }
     #contactForm textarea ~ .floating-label { top: 25px; }
     #contactForm input:focus ~ .floating-label, #contactForm input:not(:placeholder-shown) ~ .floating-label, #contactForm textarea:focus ~ .floating-label, #contactForm textarea:not(:placeholder-shown) ~ .floating-label { top: 0; font-size: 0.8rem; color: #38bdf8; font-weight: bold; }
     .submit-glow-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0, 166, 255, 0.6); letter-spacing: 0.5px; }
+    </style>
 
-    /* 📱 Responsive Mobile Adjustments */
-    @media (max-width: 950px) {
-        .footer-layout-flex {
-            flex-direction: column;
-            gap: 45px;
-        }
-        .footer-left-side-content {
-            width: 100%;
-        }
-        .footer-disclaimer-content, .disclaimer-text-left, .copyright-text {
-            text-align: center !important;
-        }
-    }
-</style>
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const statusText = document.getElementById('formStatus');
+        statusText.style.display = 'block'; statusText.style.color = '#38bdf8';
+        statusText.innerText = '⏳ දත්ත ඇතුළත් කරමින්... කරුණාකර රැඳී සිටින්න.';
+        
+        const formData = {
+            name: document.getElementById('formName').value,
+            email: document.getElementById('formEmail').value,
+            subject: document.getElementById('formSubject').value,
+            phone: document.getElementById('formPhone').value,
+            message: document.getElementById('formMessage').value
+        };
+        
+        const webAppUrl = 'https://script.google.com/macros/s/AKfycbwUEKdDmW1Jrz8d4oE7ZgwyiGEa2FTgyZxkh9itR1vSq1lFl2Z-YO-nYonADscWbuohJQ/exec';
+        
+        fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+        .then(() => { statusText.style.color = '#4ade80'; statusText.innerText = '🎉 ස්תූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅'; document.getElementById('contactForm').reset(); })
+        .catch(() => { statusText.style.color = '#ef4444'; statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.'; });
+    });
+    </script>
+        
+   
 
-<script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const statusText = document.getElementById('formStatus');
-    statusText.style.display = 'block'; statusText.style.color = '#38bdf8';
-    statusText.innerText = '⏳ දත්ත ඇතුළත් කරමින්... කරුණාකර රැඳී සිටින්න.';
-    
-    const formData = {
-        name: document.getElementById('formName').value,
-        email: document.getElementById('formEmail').value,
-        subject: document.getElementById('formSubject').value,
-        phone: document.getElementById('formPhone').value,
-        message: document.getElementById('formMessage').value
-    };
-    
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbwUEKdDmW1Jrz8d4oE7ZgwyiGEa2FTgyZxkh9itR1vSq1lFl2Z-YO-nYonADscWbuohJQ/exec';
-    
-    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
-    .then(() => { statusText.style.color = '#4ade80'; statusText.innerText = '🎉 ස්තූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅'; document.getElementById('contactForm').reset(); })
-    .catch(() => { statusText.style.color = '#ef4444'; statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.'; });
-});
-</script>
-
-    <!--end of the code for footer-->
+    <style>
+    .site-disclaimer-footer { background: #1a1a1a; color: #b3b3b3; padding: 25px 20px; text-align: center; border-top: 1px solid #333333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 50px; }
+    .footer-disclaimer-content { max-width: 800px; margin: 0 auto; }
+    .footer-disclaimer-content p { font-size: 12px; line-height: 1.6; margin: 0 0 10px 0; text-align: center; }
+    .disclaimer-badge { background: #d9534f; color: white; padding: 2px 6px; font-size: 10px; text-transform: uppercase; font-weight: bold; border-radius: 3px; margin-right: 5px; display: inline-block; vertical-align: middle; }
+    .footer-disclaimer-content strong { color: #ffffff; }
+    .copyright-text { font-size: 11px !important; color: #666666 !important; margin-top: 15px !important; }
+    </style>
     
 </body>
 </html>
