@@ -20,102 +20,6 @@
 
         /*start the code for smooth cursor effect*/
 
-       <svg class="magic-ui-arrow-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.27 2.451a.993.993 0 0 0-.916.319.967.967 0 0 0-.214.938l4.43 16.54c.125.467.542.791 1.018.794a.994.994 0 0 0 .973-.66l2.87-7.61 7.61-2.87a.99.99 0 0 0 .666-.967c-.003-.476-.327-.893-.794-1.017L3.382 3.51a.986.986 0 0 0-.853-.223l1.741-.836z" fill="#00d2ff"/>
-</svg>
-
-<style>
-    /* ⚡ ලැප්ටොප් සහ PC වලට විතරක් Cursor එක පෙන්වීම (Phones වලට Disable කරයි) */
-    @media (min-width: 769px) {
-        /* සයිට් එකේ පරණ ඩිෆෝල්ට් මවුස් කූර හැංගීම */
-        html, body, a, button, input, textarea, .floating-card {
-            cursor: none !important;
-        }
-
-        /* 🏹 MagicUI Real Arrow Cursor එක හැඩගැන්වීම */
-        .magic-ui-arrow-cursor {
-            width: 20px;
-            height: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999999;
-            pointer-events: none; /* සයිට් එකේ ක්ලික්ස් බ්ලොක් නොවීමට */
-            
-            /* නියෝන් සයන් පාටින් ලස්සනට දිලිසෙන ගතිය (Static Glow) */
-            filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.6));
-            
-            /* MagicUI ස්මූත් ෆිසික්ස් ගතිය එන්න දෙන ට්‍රාන්සිෂන් එක */
-            transition: transform 0.06s cubic-bezier(0.215, 0.610, 0.355, 1),
-                        width 0.2s ease,
-                        height 0.2s ease;
-            
-            /* ඇරෝ එකක් නිසා සාමාන්‍යයෙන් තියෙන අංශක 0 පිහිටීම */
-            transform: translate(0, 0) rotate(0deg);
-            transform-origin: top left;
-        }
-
-        /* 🧲 ලින්ක්ස් හෝ බටන්ස් උඩට ගියාම කර්සර් එක පොඩ්ඩක් ලොකු වෙලා ගැම්මට පේන්න */
-        .magic-ui-arrow-cursor.hovered {
-            width: 26px;
-            height: 26px;
-            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.9));
-        }
-    }
-
-    /* ෆෝන් වලදී Custom මවුස් එක සම්පූර්ණයෙන්ම ඩිසේබල් කිරීම */
-    @media (max-width: 768px) {
-        .magic-ui-arrow-cursor {
-            display: none !important;
-        }
-    }
-</style>
-
-<script>
-    // පරිගණක තිර වලට විතරක් ලොජික් එක ක්‍රියාත්මක කිරීම
-    if (window.innerWidth > 768) {
-        const arrowCursor = document.querySelector('.magic-ui-arrow-cursor');
-
-        // මවුස් එකේ නියමිත පිහිටීම්
-        let mouseX = 0, mouseY = 0;
-        // පස්සෙන් ඇදිලා එන ඇරෝ එකේ පිහිටීම්
-        let arrowX = 0, arrowY = 0;
-
-        // 1. මවුස් එක හොල්ලනකොට පිහිටීම ලබාගැනීම
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // 2. MagicUI Physics Lerp Animation Loop
-        function renderSmoothCursor() {
-            // 🏹 0.16 ක වේගයකින් ඇරෝ එක මවුස් එක පස්සෙන් ස්මූත් එකේ ඇදිලා එනවා
-            arrowX += (mouseX - arrowX) * 0.16;
-            arrowY += (mouseY - arrowY) * 0.16;
-
-            // ඇරෝ කූරේ පිහිටීම තිරය මත අප්ඩේට් කිරීම
-            arrowCursor.style.left = arrowX + 'px';
-            arrowCursor.style.top = arrowY + 'px';
-
-            // දිගටම ලූප් එක රන් කිරීම
-            requestAnimationFrame(renderSmoothCursor);
-        }
-        // ඇනිමේෂන් ලූප් එක ස්ටාර්ට් කිරීම
-        requestAnimationFrame(renderSmoothCursor);
-
-        // 🧲 3. බ්ලොග් එකේ Links/Buttons උඩට ගියාම වෙනස් වන හැඩය (Hover Effects)
-        const clickableItems = document.querySelectorAll('a, button, input, textarea, .floating-card');
-        
-        clickableItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                arrowCursor.classList.add('hovered');
-            });
-            item.addEventListener('mouseleave', () => {
-                arrowCursor.classList.remove('hovered');
-            });
-        });
-    }
-</script>
         
         /*end of the code for smooth cursor effect*/
         
@@ -140,9 +44,7 @@
 
     <header>
         <h1><b>Finance Insight 📊</b></h1>
-        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
-    </header>
-
+        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට ස
     <!--adding search bar code-->
 
     <div class="fluid-search-container">
