@@ -313,6 +313,65 @@
 </script>
     <!--end of the code for search bar-->
 
+    <!--pop-up notification code started-->
+    <style>
+/* 🔔 Pop-up Styling */
+.feature-pop-up {
+    position: fixed;
+    top: -100px; /* මුලින්ම තිරයෙන් උඩ හැංගිලා තියෙන්නේ */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    border: 2px solid #0284c7; /* Premium Blue Border */
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
+    border-radius: 30px; /* Dynamic Island Capsule Shape */
+    padding: 10px 24px;
+    z-index: 10000; /* හැමදේටම උඩින් පෙනෙන්න */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Smooth Animation */
+    opacity: 0;
+    pointer-events: none;
+    max-width: 90%;
+    width: 450px;
+}
+
+/* Pop-up එක active වුණාම පහලට පාත් වෙන හැඩය */
+.feature-pop-up.show {
+    top: 25px; /* උඩ ඉඳන් 25px පහලට එනවා */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pop-up-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+.pop-up-emoji {
+    font-size: 1.5rem;
+    animation: floatEmoji 2s infinite ease-in-out;
+}
+.pop-up-content h4 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+.pop-up-content p {
+    margin: 2px 0 0 0;
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ඉමෝජි එක ගැස්සෙන ඇනිමේෂන් එක */
+@keyframes floatEmoji {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+    <!--pop-up notification code end-->
+
     <!--trying to create a slideshow-->
 
 <div id="home-slideshow-wrapper">
@@ -467,7 +526,32 @@
         dots[slideIndex-1].className += " active";
     }
 </script>
-    
+    <div id="feature-notification" class="feature-pop-up">
+    <div class="pop-up-content">
+        <span class="pop-up-emoji">✨</span>
+        <div>
+            <h4>New Feature Added!</h4>
+            <p>You can now view live TradingView charts directly inside the blog!</p>
+        </div>
+    </div>
+</div>
+<script>
+    // 🔔 Pop-up Notification Control Logic
+document.addEventListener("DOMContentLoaded", function() {
+    const notification = document.getElementById("feature-notification");
+
+    // සයිට් එක ලෝඩ් වෙලා තත්පර 1කින් Notification එක පෙන්වීම
+    setTimeout(() => {
+        notification.classList.add("show");
+
+        // එතැන් සිට හරියටම තත්පර 5කින් (5000ms) එය නැවත වසා දැමීම
+        setTimeout(() => {
+            notification.classList.remove("show");
+        }, 5000);
+
+    }, 1000); 
+});
+</script>
     <!--end of the code for slideshow-->
     
 <!--adding s&p and other indexes-->
