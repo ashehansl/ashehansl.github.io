@@ -1,124 +1,35 @@
 <!DOCTYPE html>
 <html lang="si">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y2M178G7Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-7Y2M178G7Y');
-</script>
-    <!--Goodgle tag end-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y2M178G7Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7Y2M178G7Y');
+    </script>
     <link rel="icon" type="image/x-icon" href="Gemini_Generated_Image_jtxx2mjtxx2mjtxx.png">
     <meta name="google-adsense-account" content="ca-pub-3669554087716015">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Finance Insight</title>
+    
     <style>
-
-        /*start the code for smooth cursor effect*/
-        <svg class="magic-ui-perfect-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2L3 22l9-4 9 4-9-20z" fill="#000000" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
-</svg>
-
-<style>
-    @media (min-width: 769px) {
-        /* බ්ලොග් එකේ ඩිෆෝල්ට් පොයින්ටර්ස් හැංගීම */
-        html, body, a, button, input, textarea, .floating-card {
-            cursor: none !important;
+        :root { 
+            --bg-color: #0f172a; 
+            --card-bg: #1e293b; 
+            --text-main: #f8fafc; 
+            --text-muted: #94a3b8; 
+            --accent: #38bdf8; 
         }
-
-        .magic-ui-perfect-cursor {
-            width: 22px;
-            height: 22px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999999;
-            pointer-events: none;
-            
-            /* කළු පාටට කැපිලා පේන Shadow එක */
-            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
-            
-            /* ඇරෝ එකේ උල් තුඩ (Top/Tip) කේන්ද්‍ර කරගෙනම කැරකෙන්න (Center Top Origin) */
-            transform-origin: 12px 2px; 
-            
-            /* වේගය වෙනස් වෙද්දී සිනිදුවට සයිස් එක මාරු වෙන්න */
-            transition: width 0.2s ease, height 0.2s ease;
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            position: relative;
         }
-
-        /* Hover වුණාම ලස්සනට ලොකු වීම */
-        .magic-ui-perfect-cursor.hovered {
-            width: 28px;
-            height: 28px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .magic-ui-perfect-cursor { display: none !important; }
-    }
-</style>
-
-<script>
-    if (window.innerWidth > 768) {
-        const cursor = document.querySelector('.magic-ui-perfect-cursor');
-
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        let currentAngle = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function renderPerfectCursor() {
-            // 🌊 Lerp Velocity - මවුස් එක යන පස්සෙන් එන Fluid වේගය (0.15)
-            let vx = mouseX - cursorX;
-            let vy = mouseY - cursorY;
-            
-            cursorX += vx * 0.15;
-            cursorY += vy * 0.15;
-
-            // 🔄 මවුස් එක චලනය වන දිශාව නූලටම සෙවීම (Direction Detection)
-            if (Math.abs(vx) > 0.2 || Math.abs(vy) > 0.2) {
-                // Math.atan2 මඟින් ඛණ්ඩාංක අනුව නියම කෝණය ලබා ගනී.
-                // ඇරෝ එක උඩ බලාගෙන (90° offset) නිසා අංශක 90ක් එකතු කරනවා.
-                let targetAngle = Math.atan2(vy, vx) * (180 / Math.PI) + 90;
-                
-                // ඇරෝ එක කැරකෙද්දී එකපාරටම ගැස්සෙන්නේ නැතුව සිනිදුවට හැරෙන්න දෙන ලොජික් එක
-                let angleDiff = targetAngle - currentAngle;
-                
-                while (angleDiff < -180) angleDiff += 360;
-                while (angleDiff > 180) angleDiff -= 360;
-                
-                // 0.25 ක වේගයකින් කෝණය ස්මූත් එකේ කැරකේ
-                currentAngle += angleDiff * 0.25; 
-            }
-
-            // 🚀 ඇරෝ එකේ මුදුන (Top) නියමිත Co-ordinates වලට සෙට් කර කැරකවීම
-            // translate3d පාවිච්චි කරපු නිසා GPU එකෙන් රන් වෙලා පට්ටම සිනිදුවට පෙනේ.
-            cursor.style.transform = `translate3d(${cursorX - 12}px, ${cursorY - 2}px, 0) rotate(${currentAngle}deg)`;
-
-            requestAnimationFrame(renderPerfectCursor);
-        }
-        requestAnimationFrame(renderPerfectCursor);
-
-        // Links / Buttons Hover Controls
-        const clickables = document.querySelectorAll('a, button, input, textarea, .floating-card');
-        clickables.forEach(elem => {
-            elem.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            elem.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
-    }
-</script>
-        
-        /*end of the code for smooth cursor effect*/
-        
-        :root { --bg-color: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; }
         header { background-color: var(--card-bg); padding: 20px; text-align: center; border-bottom: 2px solid #334155; }
         header h1 { margin: 0; color: var(--accent); font-size: 2.2rem; }
         header p { margin: 5px 0 0 0; color: var(--text-muted); }
@@ -132,1792 +43,490 @@
         .back-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 20px; }
         .back-btn:hover { background: var(--accent); color: var(--bg-color); }
         .article-content { white-space: pre-wrap; line-height: 1.7; font-size: 1.1rem; }
+
+        /* 🌊 Fluid Background Layer */
+        .neon-fluid-bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1000; 
+            pointer-events: none;
+            background: linear-gradient(135deg, #070b19, #0f172a, #1a163f, #090d16);
+            background-size: 400% 400%;
+            animation: neonFluidFlow 16s ease infinite;
+        }
+        @keyframes neonFluidFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 🏹 ISOLATED VECTOR CURSOR STYLE */
+        @media (min-width: 769px) {
+            html, body, a, button, input, textarea, .custom-card, .floating-card, .result-item, .dot, .prev, .next {
+                cursor: none !important;
+            }
+            .pure-isolated-vector-cursor {
+                width: 20px;
+                height: 20px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 99999999 !important; 
+                pointer-events: none !important;
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) !important;
+                transform-origin: 12px 2px !important; 
+                transition: width 0.15s ease, height 0.15s ease !important;
+                will-change: transform;
+                transform: translate3d(-100px, -100px, 0) rotate(0deg);
+            }
+            .pure-isolated-vector-cursor.cursor-hovered-state {
+                width: 26px !important;
+                height: 26px !important;
+            }
+        }
+        @media (max-width: 768px) {
+            .pure-isolated-vector-cursor { display: none !important; }
+        }
     </style>
 </head>
 <body>
 
+    <svg class="pure-isolated-vector-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L4 22l8-4 8 4-8-20z" fill="#000000" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
 
-    <!--start the code for smooth cursor pointer-->
-<div class="neon-fluid-bg-layer"></div>
-
-    <style>
-    /* 🌍 ප්‍රධාන body එක සාමාන්‍ය විදිහට තැබීම */
-body {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    background-color: #0f172a; /* ඩිෆෝල්ට් පසුබිම */
-}
-
-/* 🌊 සයිට් එකේ හැම දේකටම යටින් දිවෙන ස්මූත් නියෝන් ලේයර් එක */
-.neon-fluid-bg-layer {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    /* ඔයාගේ සයිට් එකේ දත්ත වලට යටින්ම තියන්න z-index එක -1000 කරමු */
-    z-index: -1000; 
-    pointer-events: none; /* ක්ලික්ස් වලට බාධා නොවීම සඳහා */
-    
-    /* නියෝන් Fluid කලවම් Gradient එක */
-    background: linear-gradient(135deg, #070b19, #0f172a, #1a163f, #090d16);
-    background-size: 400% 400%;
-    
-    /* තත්පර 16ක අතිශය සිනිදු ඇනිමේෂන් එක */
-    animation: neonFluidFlow 16s ease infinite;
-}
-
-/* 🌀 වතුර රැල්ලක් වගේ ගලාගෙන යන ලොජික් එක */
-@keyframes neonFluidFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-        </style>
-
-    <svg class="magic-ui-arrow-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M4.27 2.451a.993.993 0 0 0-.916.319.967.967 0 0 0-.214.938l4.43 16.54c.125.467.542.791 1.018.794a.994.994 0 0 0 .973-.66l2.87-7.61 7.61-2.87a.99.99 0 0 0 .666-.967c-.003-.476-.327-.893-.794-1.017L3.382 3.51a.986.986 0 0 0-.853-.223l1.741-.836z" fill="#00d2ff"/>
-</svg>
-
-<style>
-    /* ⚡ ලැප්ටොප් සහ PC වලට විතරක් Cursor එක පෙන්වීම (Phones වලට Disable කරයි) */
-    @media (min-width: 769px) {
-        /* සයිට් එකේ පරණ ඩිෆෝල්ට් මවුස් කූර හැංගීම */
-        html, body, a, button, input, textarea, .floating-card {
-            cursor: none !important;
-        }
-
-        /* 🏹 MagicUI Real Arrow Cursor එක හැඩගැන්වීම */
-        .magic-ui-arrow-cursor {
-            width: 20px;
-            height: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999999;
-            pointer-events: none; /* සයිට් එකේ ක්ලික්ස් බ්ලොක් නොවීමට */
-            
-            /* නියෝන් සයන් පාටින් ලස්සනට දිලිසෙන ගතිය (Static Glow) */
-            filter: drop-shadow(0 0 6px rgba(0, 210, 255, 0.6));
-            
-            /* MagicUI ස්මූත් ෆිසික්ස් ගතිය එන්න දෙන ට්‍රාන්සිෂන් එක */
-            transition: transform 0.06s cubic-bezier(0.215, 0.610, 0.355, 1),
-                        width 0.2s ease,
-                        height 0.2s ease;
-            
-            /* ඇරෝ එකක් නිසා සාමාන්‍යයෙන් තියෙන අංශක 0 පිහිටීම */
-            transform: translate(0, 0) rotate(0deg);
-            transform-origin: top left;
-        }
-
-        /* 🧲 ලින්ක්ස් හෝ බටන්ස් උඩට ගියාම කර්සර් එක පොඩ්ඩක් ලොකු වෙලා ගැම්මට පේන්න */
-        .magic-ui-arrow-cursor.hovered {
-            width: 26px;
-            height: 26px;
-            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.9));
-        }
-    }
-
-    /* ෆෝන් වලදී Custom මවුස් එක සම්පූර්ණයෙන්ම ඩිසේබල් කිරීම */
-    @media (max-width: 768px) {
-        .magic-ui-arrow-cursor {
-            display: none !important;
-        }
-    }
-</style>
-
-<script>
-    // පරිගණක තිර වලට විතරක් ලොජික් එක ක්‍රියාත්මක කිරීම
-    if (window.innerWidth > 768) {
-        const arrowCursor = document.querySelector('.magic-ui-arrow-cursor');
-
-        // මවුස් එකේ නියමිත පිහිටීම්
-        let mouseX = 0, mouseY = 0;
-        // පස්සෙන් ඇදිලා එන ඇරෝ එකේ පිහිටීම්
-        let arrowX = 0, arrowY = 0;
-
-        // 1. මවුස් එක හොල්ලනකොට පිහිටීම ලබාගැනීම
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // 2. MagicUI Physics Lerp Animation Loop
-        function renderSmoothCursor() {
-            // 🏹 0.16 ක වේගයකින් ඇරෝ එක මවුස් එක පස්සෙන් ස්මූත් එකේ ඇදිලා එනවා
-            arrowX += (mouseX - arrowX) * 0.16;
-            arrowY += (mouseY - arrowY) * 0.16;
-
-            // ඇරෝ කූරේ පිහිටීම තිරය මත අප්ඩේට් කිරීම
-            arrowCursor.style.left = arrowX + 'px';
-            arrowCursor.style.top = arrowY + 'px';
-
-            // දිගටම ලූප් එක රන් කිරීම
-            requestAnimationFrame(renderSmoothCursor);
-        }
-        // ඇනිමේෂන් ලූප් එක ස්ටාර්ට් කිරීම
-        requestAnimationFrame(renderSmoothCursor);
-
-        // 🧲 3. බ්ලොග් එකේ Links/Buttons උඩට ගියාම වෙනස් වන හැඩය (Hover Effects)
-        const clickableItems = document.querySelectorAll('a, button, input, textarea, .floating-card');
-        
-        clickableItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                arrowCursor.classList.add('hovered');
-            });
-            item.addEventListener('mouseleave', () => {
-                arrowCursor.classList.remove('hovered');
-            });
-        });
-    }
-</script>
-    
-    <!--end of the code for smooth cursor point-->
+    <div class="neon-fluid-bg-layer"></div>
     
     <header>
         <h1><b>Finance Insight 📊</b></h1>
-        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට ස
-    <!--adding search bar code-->
+        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සරලව...</p>
+    </header>
 
     <div class="fluid-search-container">
-    <div class="fluid-capsule" id="search-capsule">
-        <div class="search-inner-content">
-            <span class="fluid-search-icon" onclick="focusSearch()">🔍</span>
-            <input 
-                type="text" 
-                id="blog-search-input" 
-                placeholder="Type CSE Company Name or Ticker (e.g., JKH, COMB, SAMP)..." 
-                oninput="searchCseCompanies()"
-                onfocus="expandCapsule()"
-                autocomplete="off"
-            >
-            <button id="clear-search-btn" onmousedown="clearSearch(event)">✕</button>
+        <div class="fluid-capsule" id="search-capsule">
+            <div class="search-inner-content">
+                <span class="fluid-search-icon" onclick="focusSearch()">🔍</span>
+                <input 
+                    type="text" 
+                    id="blog-search-input" 
+                    placeholder="Type CSE Company Name or Ticker (e.g., JKH, COMB, SAMP)..." 
+                    oninput="searchCseCompanies()"
+                    onfocus="expandCapsule()"
+                    autocomplete="off"
+                >
+                <button id="clear-search-btn" onmousedown="clearSearch(event)">✕</button>
+            </div>
+        </div>
+        <div id="search-results-dropdown" class="fluid-results-box" style="display: none;"></div>
+    </div>
+
+    <div class="chart-section-wrapper" id="chart-section" style="display: none;">
+        <div class="chart-header">
+            <h3 id="selected-company-name">John Keells Holdings PLC (JKH)</h3>
+            <button class="close-chart-btn" onclick="closeChart()">✕ Close Chart</button>
+        </div>
+        <div id="tradingview-widget-container"></div>
+    </div>
+
+    <style>
+        .fluid-search-container { max-width: 1100px; margin: 20px auto; position: relative; display: flex; justify-content: center; font-family: 'Segoe UI', sans-serif; }
+        .fluid-capsule { width: 220px; height: 46px; background: #1e293b; border-radius: 30px; padding: 0 16px; display: flex; align-items: center; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); overflow: hidden; border: 1px solid #334155; }
+        .fluid-capsule.expanded { width: 100%; background: #ffffff; border: 2px solid #0284c7; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15); }
+        .search-inner-content { display: flex; align-items: center; width: 100%; height: 100%; }
+        .fluid-search-icon { font-size: 1.2rem; color: #94a3b8; cursor: pointer; margin-right: 12px; }
+        .fluid-capsule.expanded .fluid-search-icon { color: #0284c7; }
+        #blog-search-input { border: none; outline: none; width: 100%; font-size: 1rem; font-weight: 600; background: transparent; color: #ffffff; }
+        .fluid-capsule.expanded #blog-search-input { color: #0f172a; }
+        #blog-search-input::placeholder { color: #64748b; }
+        #clear-search-btn { background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; display: none; }
+        .fluid-results-box { position: absolute; top: 100%; left: 0; right: 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; margin-top: 12px; max-height: 300px; overflow-y: auto; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); z-index: 9999; animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
+        @keyframes fluidOpen { 0% { transform: translateY(-10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; text-decoration: none; color: #1e293b; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.2s; }
+        .result-item:hover { background: #f0f9ff; }
+        .result-title { font-size: 0.95rem; font-weight: 600; color: #0f172a; }
+        .result-ticker { font-size: 0.8rem; color: #64748b; font-weight: 700; }
+        .badge-cse { background: #e0f2fe; color: #0369a1; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+        .chart-section-wrapper { max-width: 1100px; margin: 30px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', sans-serif; animation: fluidOpen 0.5s ease; }
+        .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .chart-header h3 { margin: 0; color: #0f172a; font-size: 1.2rem; font-weight: 700; }
+        .close-chart-btn { background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; padding: 6px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .close-chart-btn:hover { background: #dc2626; color: #ffffff; }
+        #tradingview-widget-container { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; }
+    </style>
+
+    <div id="home-slideshow-wrapper">
+        <div class="slideshow-area">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 5</div>
+                <img src="https://gestaltadvisory.com/wp-content/uploads/2023/04/Gestalt-Advisory-Image-04.jpg" alt="Slide 1">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 5</div>
+                <img src="https://media.licdn.com/dms/image/v2/C5612AQG8sXTu3xj0vg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1629388451625?e=2147483647&v=beta&t=IAvoJuIjvvA_x2WNALrheEtTQPL6Pjrd2ypsOKJKbQs" alt="Slide 2">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 5</div>
+                <img src="https://storage.e.jimdo.com/cdn-cgi/image/quality=85,fit=crop,format=auto,width=1028.5714285714284,height=540/image/183802841/51da2ad7-5b3a-44df-a713-ff19957c7068.jpg" alt="Slide 3">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 5</div>
+                <img src="https://mf-journal.com/public/journals/1/slider_image_jpgHzgfmM.jpg" alt="Slide 4">
+            </div>
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 5</div>
+                <img src="https://personalefinance.com/wp-content/uploads/Top-Characteristics-of-Finance-FAQ-What-are-Finance-Characteristics-Frequently-Asked-Questions.webp" alt="Slide 5">
+            </div>
+            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+            <button class="next" onclick="plusSlides(1)">&#10095;</button>
+        </div>
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+            <span class="dot" onclick="currentSlide(5)"></span> 
         </div>
     </div>
-    
-    <div id="search-results-dropdown" class="fluid-results-box" style="display: none;"></div>
-</div>
 
-<div class="chart-section-wrapper" id="chart-section" style="display: none;">
-    <div class="chart-header">
-        <h3 id="selected-company-name">John Keells Holdings PLC (JKH)</h3>
-        <button class="close-chart-btn" onclick="closeChart()">✕ Close Chart</button>
+    <div id="feature-notification" class="feature-pop-up">
+        <div class="pop-up-content">
+            <span class="pop-up-emoji">✨</span>
+            <div>
+                <h4>New Feature Added!</h4>
+                <p>You can now view live TradingView charts directly inside the blog!</p>
+            </div>
+        </div>
     </div>
-    <div id="tradingview-widget-container"></div>
-</div>
 
-<style>
-    .fluid-search-container {
-        max-width: 1100px;
-        margin: 20px auto;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        font-family: 'Segoe UI', Tahoma, sans-serif;
-    }
-    /* 💧 වතුර බින්දුවක් වැනි කැප්සියුල හැඩය */
-    .fluid-capsule {
-        width: 220px;
-        height: 46px;
-        background: #0f172a;
-        border-radius: 30px;
-        padding: 0 16px;
-        display: flex;
-        align-items: center;
-        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Bounce Animation */
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-    }
-    .fluid-capsule.expanded {
-        width: 100%;
-        background: #ffffff;
-        border: 2px solid #0284c7;
-        box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15);
-    }
-    .search-inner-content { display: flex; align-items: center; width: 100%; height: 100%; }
-    .fluid-search-icon { font-size: 1.2rem; color: #94a3b8; cursor: pointer; margin-right: 12px; }
-    .fluid-capsule.expanded .fluid-search-icon { color: #0284c7; }
-    #blog-search-input {
-        border: none; outline: none; width: 100%; font-size: 1rem;
-        font-weight: 600; background: transparent; color: #ffffff;
-    }
-    .fluid-capsule.expanded #blog-search-input { color: #0f172a; }
-    #blog-search-input::placeholder { color: #64748b; }
-    #clear-search-btn { background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; display: none; }
-
-    /* Results Dropdown Box */
-    .fluid-results-box {
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;
-        margin-top: 12px; max-height: 300px; overflow-y: auto;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); z-index: 9999;
-        animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    }
-    @keyframes fluidOpen { 0% { transform: translateY(-10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-    
-    .result-item {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 14px 18px; text-decoration: none; color: #1e293b;
-        border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.2s;
-    }
-    .result-item:hover { background: #f0f9ff; }
-    .result-title { font-size: 0.95rem; font-weight: 600; color: #0f172a; }
-    .result-ticker { font-size: 0.8rem; color: #64748b; font-weight: 700; }
-    .badge-cse { background: #e0f2fe; color: #0369a1; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-
-    /* 📊 TradingView Chart Box Styles */
-    .chart-section-wrapper {
-        max-width: 1100px; margin: 30px auto;
-        background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;
-        padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        font-family: 'Segoe UI', sans-serif;
-        animation: fluidOpen 0.5s ease;
-    }
-    .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-    .chart-header h3 { margin: 0; color: #0f172a; font-size: 1.2rem; font-weight: 700; }
-    .close-chart-btn {
-        background: #fee2e2; border: 1px solid #fecaca; color: #dc2626;
-        padding: 6px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s;
-    }
-    .close-chart-btn:hover { background: #dc2626; color: #ffffff; }
-    #tradingview-widget-container { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; }
-</style>
-
-<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-
-<script>
-    // 🏢 CSE Listed Companies සම්පූර්ණ දත්ත ලැයිස්තුව
-    const cseDatabase = [
-        { name: "John Keells Holdings PLC", ticker: "JKH" },
-        { name: "Commercial Bank of Ceylon PLC", ticker: "COMB" },
-        { name: "Sampath Bank PLC", ticker: "SAMP" },
-        { name: "HNB - Hatton National Bank PLC", ticker: "HNB" },
-        { name: "Hayleys PLC", ticker: "HAYL" },
-        { name: "LOLC Holdings PLC", ticker: "LOLC" },
-        { name: "Dialog Axiata PLC", ticker: "DIAL" },
-        { name: "Melstacorp PLC", ticker: "MELS" },
-        { name: "Distilleries Company of Sri Lanka PLC", ticker: "DIST" },
-        { name: "Aitken Spence PLC", ticker: "SPEN" },
-        { name: "Brown & Company PLC", ticker: "BRWN" },
-        { name: "Galadari Hotels (Lanka) PLC", ticker: "GHLL" },
-        { name: "Acme Printing & Packaging PLC", ticker: "ACME" },
-        { name: "Ceylon Tobacco Company PLC", ticker: "CTC" },
-        { name: "Chevron Lubricants Lanka PLC", ticker: "LLUB" },
-        { name: "National Development Bank PLC", ticker: "NDB" },
-        { name: "DFCC Bank PLC", ticker: "DFCC" },
-        { name: "Seylan Bank PLC", ticker: "SEYB" },
-        { name: "Pan Asia Banking Corporation PLC", ticker: "PABC" },
-        { name: "Nations Trust Bank PLC", ticker: "NTB" },
-        { name: "Access Engineering PLC", ticker: "AEL" },
-        { name: "Hemas Holdings PLC", ticker: "HHL" },
-        { name: "Expolanka Holdings PLC", ticker: "EXPO" },
-        { name: "Richard Pieris & Company PLC", ticker: "RICH" },
-        { name: "Vallibel One PLC", ticker: "VONE" },
-        { name: "Royal Ceramics Lanka PLC", ticker: "RCL" },
-        { name: "Lanka TILES PLC", ticker: "TILE" },
-        { name: "Lanka WALLTILES PLC", ticker: "LWL" },
-        { name: "Softlogic Holdings PLC", ticker: "SHL" },
-        { name: "Singer (Sri Lanka) PLC", ticker: "SINS" },
-        { name: "Ceylon Cold Stores PLC", ticker: "CCS" },
-        { name: "John Keells Hotels PLC", ticker: "KHL" },
-        { name: "Aitken Spence Hotel Holdings PLC", ticker: "AHUN" },
-        { name: "Amaya Leisure PLC", ticker: "CONN" },
-        { name: "Asiri Hospital Holdings PLC", ticker: "ASIR" },
-        { name: "Nawaloka Hospitals PLC", ticker: "NHL" },
-        { name: "Lanka Hospitals Corporation PLC", ticker: "LHCL" },
-        { name: "Ceylon Grain Elevators PLC", ticker: "GRAN" },
-        { name: "Three Acre Farms PLC", ticker: "TAFL" },
-        { name: "Watawala Plantations PLC", ticker: "WATA" },
-        { name: "Agalawatte Plantations PLC", ticker: "AGAL" },
-        { name: "Kelani Valley Plantations PLC", ticker: "KVAL" },
-        { name: "Elpitiya Plantations PLC", ticker: "ELPL" },
-        { name: "Hatton Plantations PLC", ticker: "HPL" },
-        { name: "Tea Smallholder Factories PLC", ticker: "TSML" },
-        { name: "Tokyo Cement Company (Lanka) PLC", ticker: "TKYO" },
-        { name: "Lanka Aluminium Industries PLC", ticker: "LALU" },
-        { name: "Kelani Cables PLC", ticker: "KCAB" },
-        { name: "Sierra Cables PLC", ticker: "SIRA" },
-        { name: "ACL Cables PLC", ticker: "ACL" },
-        { name: "Lanka IOC PLC", ticker: "LIOC" },
-        { name: "LAUGFS Gas PLC", ticker: "LGL" }
-    ];
-
-    const capsule = document.getElementById('search-capsule');
-    const dropdown = document.getElementById('search-results-dropdown');
-    const searchInput = document.getElementById('blog-search-input');
-    const clearBtn = document.getElementById('clear-search-btn');
-
-    function expandCapsule() { capsule.classList.add('expanded'); }
-    function focusSearch() { searchInput.focus(); }
-
-    function searchCseCompanies() {
-        const query = searchInput.value.trim().toLowerCase();
-        
-        if (query.length < 1) {
-            dropdown.style.display = 'none';
-            clearBtn.style.display = 'none';
-            return;
+    <style>
+        .feature-pop-up {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 2px solid #0284c7;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
+            border-radius: 30px;
+            padding: 10px 24px;
+            z-index: 10000;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            pointer-events: none;
+            max-width: 90%;
+            width: 450px;
         }
-        clearBtn.style.display = 'block';
+        .feature-pop-up.show { top: 25px; opacity: 1; pointer-events: auto; }
+        .pop-up-content { display: flex; align-items: center; gap: 14px; font-family: 'Segoe UI', sans-serif; }
+        .pop-up-emoji { font-size: 1.5rem; animation: floatEmoji 2s infinite ease-in-out; }
+        .pop-up-content h4 { margin: 0; color: #0f172a; font-size: 0.95rem; font-weight: 700; }
+        .pop-up-content p { margin: 2px 0 0 0; color: #64748b; font-size: 0.8rem; font-weight: 600; }
+        @keyframes floatEmoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    </style>
 
-        const filtered = cseDatabase.filter(item => 
-            item.name.toLowerCase().includes(query) || item.ticker.toLowerCase().includes(query)
-        );
+    <div class="cse-ticker-container">
+        <div class="ticker-box indices-box">
+            <div class="index-item">
+                <div class="index-name">ASPI</div>
+                <div class="index-value" id="aspi-val">21,744.13</div>
+                <div class="index-change down" id="aspi-chg">-16.18 (-0.07%)</div>
+            </div>
+            <div class="vertical-divider"></div>
+            <div class="index-item">
+                <div class="index-name">S&P SL20</div>
+                <div class="index-value" id="spsl-val">6,024.00</div>
+                <div class="index-change down" id="spsl-chg">-7.73 (-0.13%)</div>
+            </div>
+        </div>
+        
+        <div class="ticker-box stats-box">
+            <div class="stats-top">
+                <div class="stat-group">
+                    <span class="stat-label">Market</span>
+                    <span class="market-status closed" id="market-status">Market Closed</span>
+                </div>
+                <div class="stat-group">
+                    <span class="stat-label">Date</span>
+                    <span class="stat-data-text" id="market-date">Jun 07, 2026</span>
+                </div>
+                <div class="market-time" id="market-time">21:26:46</div>
+            </div>
+            <div class="horizontal-divider"></div>
+            <div class="stats-bottom">
+                <div class="stat-mini">
+                    <div class="stat-label">Share Volume</div>
+                    <div class="stat-num" id="market-volume">112,648,193</div>
+                </div>
+                <div class="stat-mini">
+                    <div class="stat-label">Number of Trades</div>
+                    <div class="stat-num" id="market-trades">19,168</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        if (filtered.length > 0) {
-            let htmlContent = '';
-            filtered.slice(0, 8).forEach(item => {
-                htmlContent += `
-                    <div class="result-item" onclick="openTradingViewChart('${item.ticker}', '${item.name}')">
-                        <div>
-                            <div class="result-title">${item.name}</div>
-                            <div class="result-ticker">Ticker: ${item.ticker} | COLOMBO</div>
+    <style>
+        .cse-ticker-container { max-width: 1100px; margin: 20px auto; display: flex; gap: 20px; flex-wrap: wrap; font-family: 'Segoe UI', sans-serif; }
+        .ticker-box { background: var(--card-bg); border: 1px solid #334155; border-radius: 14px; padding: 16px; flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .indices-box { display: flex; justify-content: space-around; align-items: center; }
+        .index-item { text-align: center; }
+        .index-name { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+        .index-value { font-size: 1.5rem; font-weight: 700; margin: 4px 0; color: var(--text-main); }
+        .index-change { font-size: 0.85rem; font-weight: 600; }
+        .index-change.down { color: #ef4444; }
+        .vertical-divider { width: 1px; height: 50px; background: #334155; }
+        .stats-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .stat-group { display: flex; flex-direction: column; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        .market-status.closed { color: #ef4444; font-weight: 700; font-size: 0.9rem; }
+        .stat-data-text { color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
+        .market-time { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+        .horizontal-divider { height: 1px; background: #334155; margin: 8px 0; }
+        .stats-bottom { display: flex; justify-content: space-between; }
+        .stat-mini { flex: 1; }
+        .stat-num { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-top: 2px; }
+    </style>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+    <script>
+        const cseDatabase = [
+            { name: "John Keells Holdings PLC", ticker: "JKH" },
+            { name: "Commercial Bank of Ceylon PLC", ticker: "COMB" },
+            { name: "Sampath Bank PLC", ticker: "SAMP" },
+            { name: "HNB - Hatton National Bank PLC", ticker: "HNB" },
+            { name: "Hayleys PLC", ticker: "HAYL" },
+            { name: "LOLC Holdings PLC", ticker: "LOLC" },
+            { name: "Dialog Axiata PLC", ticker: "DIAL" },
+            { name: "Melstacorp PLC", ticker: "MELS" },
+            { name: "Distilleries Company of Sri Lanka PLC", ticker: "DIST" },
+            { name: "Aitken Spence PLC", ticker: "SPEN" },
+            { name: "Brown & Company PLC", ticker: "BRWN" },
+            { name: "Galadari Hotels (Lanka) PLC", ticker: "GHLL" },
+            { name: "Acme Printing & Packaging PLC", ticker: "ACME" },
+            { name: "Ceylon Tobacco Company PLC", ticker: "CTC" },
+            { name: "Chevron Lubricants Lanka PLC", ticker: "LLUB" },
+            { name: "National Development Bank PLC", ticker: "NDB" },
+            { name: "DFCC Bank PLC", ticker: "DFCC" },
+            { name: "Seylan Bank PLC", ticker: "SEYB" },
+            { name: "Pan Asia Banking Corporation PLC", ticker: "PABC" },
+            { name: "Nations Trust Bank PLC", ticker: "NTB" },
+            { name: "Access Engineering PLC", ticker: "AEL" },
+            { name: "Hemas Holdings PLC", ticker: "HHL" },
+            { name: "Expolanka Holdings PLC", ticker: "EXPO" },
+            { name: "Richard Pieris & Company PLC", ticker: "RICH" },
+            { name: "Vallibel One PLC", ticker: "VONE" },
+            { name: "Royal Ceramics Lanka PLC", ticker: "RCL" },
+            { name: "Lanka TILES PLC", ticker: "TILE" },
+            { name: "Lanka WALLTILES PLC", ticker: "LWL" },
+            { name: "Softlogic Holdings PLC", ticker: "SHL" },
+            { name: "Singer (Sri Lanka) PLC", ticker: "SINS" },
+            { name: "Ceylon Cold Stores PLC", ticker: "CCS" },
+            { name: "John Keells Hotels PLC", ticker: "KHL" },
+            { name: "Aitken Spence Hotel Holdings PLC", ticker: "AHUN" },
+            { name: "Amaya Leisure PLC", ticker: "CONN" },
+            { name: "Asiri Hospital Holdings PLC", ticker: "ASIR" },
+            { name: "Nawaloka Hospitals PLC", ticker: "NHL" },
+            { name: "Lanka Hospitals Corporation PLC", ticker: "LHCL" },
+            { name: "Ceylon Grain Elevators PLC", ticker: "GRAN" },
+            { name: "Three Acre Farms PLC", ticker: "TAFL" },
+            { name: "Watawala Plantations PLC", ticker: "WATA" },
+            { name: "Agalawatte Plantations PLC", ticker: "AGAL" },
+            { name: "Kelani Valley Plantations PLC", ticker: "KVAL" },
+            { name: "Elpitiya Plantations PLC", ticker: "ELPL" },
+            { name: "Hatton Plantations PLC", ticker: "HPL" },
+            { name: "Tea Smallholder Factories PLC", ticker: "TSML" },
+            { name: "Tokyo Cement Company (Lanka) PLC", ticker: "TKYO" },
+            { name: "Lanka Aluminium Industries PLC", ticker: "LALU" },
+            { name: "Kelani Cables PLC", ticker: "KCAB" },
+            { name: "Sierra Cables PLC", ticker: "SIRA" },
+            { name: "ACL Cables PLC", ticker: "ACL" },
+            { name: "Lanka IOC PLC", ticker: "LIOC" },
+            { name: "LAUGFS Gas PLC", ticker: "LGL" }
+        ];
+
+        const capsule = document.getElementById('search-capsule');
+        const dropdown = document.getElementById('search-results-dropdown');
+        const searchInput = document.getElementById('blog-search-input');
+        const clearBtn = document.getElementById('clear-search-btn');
+
+        function expandCapsule() { capsule.classList.add('expanded'); }
+        function focusSearch() { searchInput.focus(); }
+
+        function searchCseCompanies() {
+            const query = searchInput.value.trim().toLowerCase();
+            if (query.length < 1) {
+                dropdown.style.display = 'none';
+                clearBtn.style.display = 'none';
+                return;
+            }
+            clearBtn.style.display = 'block';
+
+            const filtered = cseDatabase.filter(item => 
+                item.name.toLowerCase().includes(query) || item.ticker.toLowerCase().includes(query)
+            );
+
+            if (filtered.length > 0) {
+                let htmlContent = '';
+                filtered.slice(0, 8).forEach(item => {
+                    htmlContent += `
+                        <div class="result-item" onclick="openTradingViewChart('${item.ticker}', '${item.name}')">
+                            <div>
+                                <div class="result-title">${item.name}</div>
+                                <div class="result-ticker">Ticker: ${item.ticker} | COLOMBO</div>
+                            </div>
+                            <span class="badge-cse">CSE Stock</span>
                         </div>
-                        <span class="badge-cse">CSE Stock</span>
+                    `;
+                });
+                dropdown.innerHTML = htmlContent;
+                dropdown.style.display = 'block';
+            } else {
+                const customTicker = query.toUpperCase();
+                dropdown.innerHTML = `
+                    <div class="result-item" onclick="openTradingViewChart('${customTicker}', 'Custom Search')">
+                        <div>
+                            <div class="result-title">Search custom ticker "${customTicker}" on TradingView</div>
+                            <div class="result-ticker">Ticker: ${customTicker}</div>
+                        </div>
+                        <span class="badge-cse" style="background:#f1f5f9; color:#475569;">Direct Chart</span>
                     </div>
                 `;
-            });
-            dropdown.innerHTML = htmlContent;
-            dropdown.style.display = 'block';
-        } else {
-            const customTicker = query.toUpperCase();
-            dropdown.innerHTML = `
-                <div class="result-item" onclick="openTradingViewChart('${customTicker}', 'Custom Search')">
-                    <div>
-                        <div class="result-title">Search custom ticker "${customTicker}" on TradingView</div>
-                        <div class="result-ticker">Ticker: ${customTicker}</div>
-                    </div>
-                    <span class="badge-cse" style="background:#f1f5f9; color:#475569;">Direct Chart</span>
-                </div>
-            `;
-            dropdown.style.display = 'block';
-        }
-    }
-
-    // 📊 CHART EMBED FUNCTION WITH 'CSE:' REFIX FIXED
-    function openTradingViewChart(ticker, companyName) {
-        dropdown.style.display = 'none';
-        document.getElementById('selected-company-name').innerText = `${companyName} (${ticker})`;
-        document.getElementById('chart-section').style.display = 'block';
-
-        new TradingView.widget({
-            "width": "100%",
-            "height": 500,
-            "symbol": `CSE:${ticker}`, // 👈 නියමෙටම වැඩ කරන්න මෙතන CSE: කියා නිවැරදි කළා මචං!
-            "interval": "D",
-            "timezone": "Asia/Colombo",
-            "theme": "light",
-            "style": "1",
-            "locale": "en",
-            "toolbar_bg": "#f1f5f9",
-            "enable_publishing": false,
-            "hide_side_toolbar": false,
-            "allow_symbol_change": false,
-            "container_id": "tradingview-widget-container",
-            "studies": [
-                "RSI@tv-basicstudies",
-                "MASimple@tv-basicstudies"
-            ]
-        });
-
-        capsule.classList.remove('expanded');
-    }
-
-    function closeChart() {
-        document.getElementById('chart-section').style.display = 'none';
-        searchInput.value = '';
-        clearBtn.style.display = 'none';
-    }
-
-    function clearSearch(event) {
-        event.preventDefault();
-        searchInput.value = '';
-        dropdown.style.display = 'none';
-        clearBtn.style.display = 'none';
-        searchInput.focus();
-    }
-
-    document.addEventListener('click', function(event) {
-        const container = document.querySelector('.fluid-search-container');
-        if (!container.contains(event.target)) {
-            dropdown.style.display = 'none';
-            if (searchInput.value.trim().length === 0) {
-                capsule.classList.remove('expanded');
+                dropdown.style.display = 'block';
             }
         }
-    });
-</script>
-    <!--end of the code for search bar-->
 
-    <!--pop-up notification code started-->
-    <style>
-/* 🔔 Pop-up Styling */
-.feature-pop-up {
-    position: fixed;
-    top: -100px; /* මුලින්ම තිරයෙන් උඩ හැංගිලා තියෙන්නේ */
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
-    border: 2px solid #0284c7; /* Premium Blue Border */
-    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
-    border-radius: 30px; /* Dynamic Island Capsule Shape */
-    padding: 10px 24px;
-    z-index: 10000; /* හැමදේටම උඩින් පෙනෙන්න */
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Elastic Smooth Animation */
-    opacity: 0;
-    pointer-events: none;
-    max-width: 90%;
-    width: 450px;
-}
+        function openTradingViewChart(ticker, companyName) {
+            dropdown.style.display = 'none';
+            document.getElementById('selected-company-name').innerText = `${companyName} (${ticker})`;
+            document.getElementById('chart-section').style.display = 'block';
 
-/* Pop-up එක active වුණාම පහලට පාත් වෙන හැඩය */
-.feature-pop-up.show {
-    top: 25px; /* උඩ ඉඳන් 25px පහලට එනවා */
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.pop-up-content {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-}
-.pop-up-emoji {
-    font-size: 1.5rem;
-    animation: floatEmoji 2s infinite ease-in-out;
-}
-.pop-up-content h4 {
-    margin: 0;
-    color: #0f172a;
-    font-size: 0.95rem;
-    font-weight: 700;
-}
-.pop-up-content p {
-    margin: 2px 0 0 0;
-    color: #64748b;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-/* ඉමෝජි එක ගැස්සෙන ඇනිමේෂන් එක */
-@keyframes floatEmoji {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-}
-
-    <!--pop-up notification code end-->
-
-    <!--trying to create a slideshow-->
-
-<div id="home-slideshow-wrapper">
-    <div class="slideshow-area">
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 5</div>
-            <img src="https://gestaltadvisory.com/wp-content/uploads/2023/04/Gestalt-Advisory-Image-04.jpg" alt="Slide 1">
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 5</div>
-            <img src="https://media.licdn.com/dms/image/v2/C5612AQG8sXTu3xj0vg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1629388451625?e=2147483647&v=beta&t=IAvoJuIjvvA_x2WNALrheEtTQPL6Pjrd2ypsOKJKbQs" alt="Slide 2">
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 5</div>
-            <img src="https://storage.e.jimdo.com/cdn-cgi/image/quality=85,fit=crop,format=auto,width=1028.5714285714284,height=540/image/183802841/51da2ad7-5b3a-44df-a713-ff19957c7068.jpg" alt="Slide 3">
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">4 / 5</div>
-            <img src="https://mf-journal.com/public/journals/1/slider_image_jpgHzgfmM.jpg" alt="Slide 4">
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">5 / 5</div>
-            <img src="https://personalefinance.com/wp-content/uploads/Top-Characteristics-of-Finance-FAQ-What-are-Finance-Characteristics-Frequently-Asked-Questions.webp" alt="Slide 5">
-        </div>
-        
-        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-        <button class="next" onclick="plusSlides(1)">&#10095;</button>
-    </div>
-
-    <div class="dots-container">
-        <span class="dot" onclick="currentSlide(1)"></span> 
-        <span class="dot" onclick="currentSlide(2)"></span> 
-        <span class="dot" onclick="currentSlide(3)"></span> 
-        <span class="dot" onclick="currentSlide(4)"></span> 
-        <span class="dot" onclick="currentSlide(5)"></span> 
-    </div>
-</div>
-
-
-<style>
-    #home-slideshow-wrapper {
-        max-width: 1100px;
-        width: 100%;
-        margin: 30px auto 10px auto;
-        font-family: 'Segoe UI', sans-serif;
-    }
-    .slideshow-area {
-        position: relative;
-        overflow: hidden;
-        border-radius: 16px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        background-color: #1e293b;
-    }
-    .mySlides { 
-        display: none; 
-    }
-    .mySlides img { 
-        vertical-align: middle; 
-        width: 100%; 
-        height: 350px; 
-        object-fit: cover; 
-    }
-    .prev, .next { 
-        cursor: pointer; 
-        position: absolute; 
-        top: 50%; 
-        width: auto; 
-        padding: 16px; 
-        margin-top: -22px; 
-        color: white; 
-        font-weight: bold; 
-        font-size: 20px; 
-        transition: 0.6s ease; 
-        background-color: rgba(0,0,0,0.3); 
-        border: none; 
-        z-index: 10; 
-    }
-    .next { 
-        right: 0; 
-    }
-    .prev:hover, .next:hover { 
-        background-color: #38bdf8; 
-        color: #0f172a; 
-    }
-    .numbertext { 
-        color: #f2f2f2; 
-        font-size: 12px; 
-        padding: 8px 12px; 
-        position: absolute; 
-        top: 0; 
-        background-color: rgba(0,0,0,0.5); 
-        border-radius: 0 0 8px 0; 
-    }
-    .dots-container { 
-        text-align: center; 
-        margin-top: 15px;
-        margin-bottom: 30px; 
-    }
-    .dot { 
-        cursor: pointer; 
-        height: 10px; 
-        width: 10px; 
-        margin: 0 4px; 
-        background-color: #334155; 
-        border-radius: 50%; 
-        display: inline-block; 
-        transition: background-color 0.6s ease; 
-    }
-    .active, .dot:hover { 
-        background-color: #38bdf8; 
-    }
-    .fade { 
-        animation-name: slideshowFade; 
-        animation-duration: 1s; 
-    }
-    @keyframes slideshowFade { 
-        from { opacity: .4 } 
-        to { opacity: 1 } 
-    }
-</style>
-
-
-<script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) { 
-        showSlides(slideIndex += n); 
-    }
-    
-    function currentSlide(n) { 
-        showSlides(slideIndex = n); 
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        
-        if (slides.length === 0) return;
-        if (n > slides.length) { slideIndex = 1 }    
-        if (n < 1) { slideIndex = slides.length }
-        
-        for (i = 0; i < slides.length; i++) { 
-            slides[i].style.display = "none"; 
-        }
-        for (i = 0; i < dots.length; i++) { 
-            dots[i].className = dots[i].className.replace(" active", ""); 
-        }
-        
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-    }
-</script>
-    <div id="feature-notification" class="feature-pop-up">
-    <div class="pop-up-content">
-        <span class="pop-up-emoji">✨</span>
-        <div>
-            <h4>New Feature Added!</h4>
-            <p>You can now view live TradingView charts directly inside the blog!</p>
-        </div>
-    </div>
-</div>
-<script>
-    // 🔔 Pop-up Notification Control Logic
-document.addEventListener("DOMContentLoaded", function() {
-    const notification = document.getElementById("feature-notification");
-
-    // සයිට් එක ලෝඩ් වෙලා තත්පර 1කින් Notification එක පෙන්වීම
-    setTimeout(() => {
-        notification.classList.add("show");
-
-        // එතැන් සිට හරියටම තත්පර 5කින් (5000ms) එය නැවත වසා දැමීම
-        setTimeout(() => {
-            notification.classList.remove("show");
-        }, 5000);
-
-    }, 1000); 
-});
-</script>
-    <!--end of the code for slideshow-->
-    
-<!--adding s&p and other indexes-->
-    <div class="cse-ticker-container">
-    
-    <div class="ticker-box indices-box">
-        <div class="index-item">
-            <div class="index-name">ASPI</div>
-            <div class="index-value" id="aspi-val">21,744.13</div>
-            <div class="index-change down" id="aspi-chg">-16.18 (-0.07%)</div>
-        </div>
-        
-        <div class="vertical-divider"></div>
-        
-        <div class="index-item">
-            <div class="index-name">S&P SL20</div>
-            <div class="index-value" id="spsl-val">6,024.00</div>
-            <div class="index-change down" id="spsl-chg">-7.73 (-0.13%)</div>
-        </div>
-    </div>
-    
-    <div class="ticker-box stats-box">
-        <div class="stats-top">
-            <div class="stat-group">
-                <span class="stat-label">Market</span>
-                <span class="market-status closed" id="market-status">Market Closed</span>
-            </div>
-            <div class="stat-group">
-                <span class="stat-label">Date</span>
-                <span class="stat-data-text" id="market-date">Jun 07, 2026</span>
-            </div>
-            <div class="market-time" id="market-time">21:26:46</div>
-        </div>
-        
-        <div class="horizontal-divider"></div>
-        
-        <div class="stats-bottom">
-            <div class="stat-mini">
-                <div class="stat-label">Share Volume</div>
-                <div class="stat-num" id="market-volume">112,648,193</div>
-            </div>
-            <div class="stat-mini">
-                <div class="stat-label">Number of Trades</div>
-                <div class="stat-num" id="market-trades">19,168</div>
-            </div>
-            <div class="stat-mini">
-                <div class="stat-label">Turnover</div>
-                <div class="stat-num" id="market-turnover">2,976,435,001</div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<style>
-    .cse-ticker-container {
-        display: flex;
-        gap: 20px;
-        max-width: 1100px;
-        margin: 20px auto;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #1e293b; /* ප්‍රධාන අකුරු සේරම තද කළු/අළු පාටින් */
-    }
-    .ticker-box {
-        background-color: #f8fafc; /* ලා සුදු/අළු පසුබිම (Slate 50) */
-        border: 1px solid #e2e8f0; /* ලස්සන ලා පාට border එකක් */
-        border-radius: 12px;
-        padding: 20px;
-        flex: 1;
-        display: flex;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* සැහැල්ලු shadow එකක් */
-    }
-    /* Indices Box (Left) */
-    .indices-box {
-        align-items: center;
-        justify-content: space-around;
-    }
-    .index-item {
-        display: flex;
-        flex-direction: column;
-    }
-    .index-name {
-        font-size: 0.9rem;
-        font-weight: 800;
-        color: #64748b; /* මාතෘකා ලා කළු පාටින් */
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    .index-value {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin: 5px 0;
-        color: #0f172a; /* අගයන් තද කළු පාටින් */
-    }
-    .index-change {
-        font-size: 1rem;
-        font-weight: 600;
-    }
-    /* 📈 / 📉 පාටවල් වෙනස් වන තැන් */
-    .index-change.up { color: #16a34a; }   /* සාමාන්‍ය කොළ පාට */
-    .index-change.down { color: #dc2626; } /* අවශ්‍ය තැනට තද රතු පාට */
-    
-    .vertical-divider {
-        width: 1px;
-        height: 70%;
-        background-color: #e2e8f0;
-    }
-
-    /* Stats Box (Right) */
-    .stats-box {
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .stats-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .stat-group {
-        display: flex;
-        flex-direction: column;
-    }
-    .stat-label {
-        font-size: 0.8rem;
-        color: #64748b;
-        font-weight: 600;
-        margin-bottom: 2px;
-    }
-    .market-status {
-        font-weight: 700;
-        font-size: 0.95rem;
-    }
-    .market-status.open { color: #16a34a; }
-    .market-status.closed { color: #dc2626; } /* Market Closed එකට රතු පාට */
-    
-    .stat-data-text {
-        font-weight: 600;
-        font-size: 0.95rem;
-        color: #0f172a;
-    }
-    .market-time {
-        border: 1px solid #cbd5e1;
-        border-radius: 6px;
-        padding: 4px 10px;
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: #0f172a;
-        background-color: #f1f5f9;
-    }
-    
-    .horizontal-divider {
-        height: 1px;
-        background-color: #e2e8f0;
-        margin: 12px 0;
-    }
-    .stats-bottom {
-        display: flex;
-        justify-content: space-between;
-    }
-    .stat-mini {
-        display: flex;
-        flex-direction: column;
-    }
-    .stat-num {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-top: 2px;
-        color: #0f172a;
-    }
-
-    /* Responsive Grid for Mobile Devices */
-    @media (max-width: 768px) {
-        .cse-ticker-container {
-            flex-direction: column;
-            padding: 0 10px;
-        }
-        .ticker-box { width: 100%; box-sizing: border-box; }
-    }
-</style>
-
-<script>
-    function updateLiveClock() {
-        const now = new Date();
-        
-        let hours = String(now.getHours()).padStart(2, '0');
-        let minutes = String(now.getMinutes()).padStart(2, '0');
-        let seconds = String(now.getSeconds()).padStart(2, '0');
-        document.getElementById('market-time').innerText = `${hours}:${minutes}:${seconds}`;
-        
-        const options = { month: 'short', day: '2-digit', year: 'numeric' };
-        document.getElementById('market-date').innerText = now.toLocaleDateString('en-US', options);
-        
-        const day = now.getDay();
-        const hrs = now.getHours();
-        const mins = now.getMinutes();
-        const timeInMins = (hrs * 60) + mins;
-        
-        const isOpen = (day >= 1 && day <= 5) && (timeInMins >= 570 && timeInMins <= 870);
-        const statusEl = document.getElementById('market-status');
-        
-        if(isOpen) {
-            statusEl.innerText = "Market Open";
-            statusEl.className = "market-status open";
-        } else {
-            statusEl.innerText = "Market Closed";
-            statusEl.className = "market-status closed";
-        }
-    }
-    
-    setInterval(updateLiveClock, 1000);
-    updateLiveClock();
-</script>
-
-    <!--end of the code for indexes-->
-
-    <!--start the code for real time data charts and data-->
-<div class="cse-dashboard-container">
-    
-    <div class="chart-card">
-        <div class="card-header">
-            <h2>ASPI Statistics</h2>
-            <span class="trend-arrow down">🔽</span>
-        </div>
-        
-        <div class="live-data-group">
-            <div class="main-price" id="aspi-current">21,744.13</div>
-            <div class="price-change down" id="aspi-change">-16.18 (-0.07%)</div>
-        </div>
-
-        <div class="chart-wrapper">
-            <canvas id="aspiChart"></canvas>
-        </div>
-
-        <div class="return-table">
-            <div class="return-row">
-                <span>Return for ASPI for the year</span>
-                <span class="ret-val down" id="aspi-ytd">-1.25% 🔽</span>
-            </div>
-            <div class="return-row">
-                <span>Total Return for ASPI for the year</span>
-                <span class="ret-val down" id="aspi-total">-0.98% 🔽</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="chart-card">
-        <div class="card-header">
-            <h2>S&P SL20 Statistics</h2>
-            <span class="trend-arrow down">🔽</span>
-        </div>
-        
-        <div class="live-data-group">
-            <div class="main-price" id="spsl-current">6,024.00</div>
-            <div class="price-change down" id="spsl-change">-7.73 (-0.13%)</div>
-        </div>
-
-        <div class="chart-wrapper">
-            <canvas id="spslChart"></canvas>
-        </div>
-
-        <div class="return-table">
-            <div class="return-row">
-                <span>Return for S&P SL20 for the year</span>
-                <span class="ret-val down" id="spsl-ytd">-3.45% 🔽</span>
-            </div>
-            <div class="return-row">
-                <span>Total Return for S&P SL20 for the year</span>
-                <span class="ret-val up" id="spsl-total">+2.10% 🔼</span>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-<style>
-    .cse-dashboard-container {
-        display: flex;
-        gap: 30px;
-        max-width: 1100px;
-        margin: 30px auto;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #1e293b;
-    }
-    .chart-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 24px;
-        flex: 1;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        display: flex;
-        flex-direction: column;
-    }
-    .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-    }
-    .card-header h2 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin: 0;
-        color: #0f172a;
-    }
-    .trend-arrow {
-        font-size: 1.2rem;
-        padding: 6px;
-        border-radius: 50%;
-        background: #fecdd3;
-        color: #dc2626;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .trend-arrow.up {
-        background: #bbf7d0;
-        color: #16a34a;
-    }
-    
-    /* Live Price Styling */
-    .live-data-group {
-        margin-bottom: 20px;
-    }
-    .main-price {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color: #0f172a;
-    }
-    .price-change {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-top: 4px;
-    }
-    .price-change.up { color: #16a34a; }
-    .price-change.down { color: #dc2626; }
-
-    /* Chart Container */
-    .chart-wrapper {
-        position: relative;
-        width: 100%;
-        height: 250px;
-        margin-bottom: 25px;
-    }
-    
-    /* Bottom Statistics Tables */
-    .return-table {
-        background: #f8fafc;
-        border-radius: 12px;
-        padding: 8px 16px;
-        border: 1px solid #f1f5f9;
-    }
-    .return-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 0;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #475569;
-    }
-    .return-row:not(:last-child) {
-        border-bottom: 1px solid #e2e8f0;
-    }
-    .ret-val {
-        font-weight: 700;
-    }
-    .ret-val.up { color: #16a34a; }
-    .ret-val.down { color: #dc2626; }
-
-    /* Responsive Grid for Mobile */
-    @media (max-width: 768px) {
-        .cse-dashboard-container {
-            flex-direction: column;
-            padding: 0 15px;
-        }
-    }
-</style>
-
-
-<script>
-    // 📊 Sample Data සකස් කිරීම (Yahoo API එකෙන් එනකම් Chart එක පෙන්වන්න)
-    const timeLabels = ['09:30 AM', '10:30 AM', '11:30 AM', '12:30 PM', '01:30 PM', '02:30 PM'];
-    const dummyASPIData = [21800, 21850, 21780, 21790, 21750, 21744];
-    const dummySPSLData = [6040, 6065, 6035, 6045, 6050, 6024];
-
-    // Chart.js මඟින් රතු පාට Area Charts ඇඳීමේ Config එක
-    function createCseChart(ctxId, labels, dataPoints, isUp) {
-        const ctx = document.getElementById(ctxId).getContext('2d');
-        
-        // Gradient Color පිරවීම (රූපයේ පරිදි යට කොටස ලා පාට කරන්න)
-        const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-        if (isUp) {
-            gradient.addColorStop(0, 'rgba(22, 163, 74, 0.3)');
-            gradient.addColorStop(1, 'rgba(22, 163, 74, 0.0)');
-        } else {
-            gradient.addColorStop(0, 'rgba(220, 38, 38, 0.3)');
-            gradient.addColorStop(1, 'rgba(220, 38, 38, 0.0)');
+            new TradingView.widget({
+                "width": "100%",
+                "height": 500,
+                "symbol": `CSE:${ticker}`,
+                "interval": "D",
+                "timezone": "Asia/Colombo",
+                "theme": "light",
+                "style": "1",
+                "locale": "en",
+                "toolbar_bg": "#f1f5f9",
+                "enable_publishing": false,
+                "hide_side_toolbar": false,
+                "allow_symbol_change": false,
+                "container_id": "tradingview-widget-container",
+                "studies": [
+                    "RSI@tv-basicstudies",
+                    "MASimple@tv-basicstudies"
+                ]
+            });
+            capsule.classList.remove('expanded');
         }
 
-        return new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: dataPoints,
-                    borderColor: isUp ? '#16a34a' : '#dc2626',
-                    borderWidth: 2,
-                    pointRadius: 0, // Dots නැතුව Smooth රේඛාවක් ගන්න
-                    pointHoverRadius: 5,
-                    fill: true,
-                    backgroundColor: gradient,
-                    tension: 0.3 // Curve එක සුදුවට ගන්න
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 10 } } },
-                    y: { grid: { color: '#f1f5f9' }, ticks: { color: '#94a3b8', font: { size: 10 } } }
+        function closeChart() {
+            document.getElementById('chart-section').style.display = 'none';
+            searchInput.value = '';
+            clearBtn.style.display = 'none';
+        }
+
+        function clearSearch(event) {
+            event.preventDefault();
+            searchInput.value = '';
+            dropdown.style.display = 'none';
+            clearBtn.style.display = 'none';
+            searchInput.focus();
+        }
+
+        document.addEventListener('click', function(event) {
+            const container = document.querySelector('.fluid-search-container');
+            if (container && !container.contains(event.target)) {
+                dropdown.style.display = 'none';
+                if (searchInput.value.trim().length === 0) {
+                    capsule.classList.remove('expanded');
                 }
             }
         });
-    }
 
-    // 🌐 Real-time Data Fetching Function (Yahoo Finance Proxy)
-    async function updateDashboardData() {
-        try {
-            // ASPI ටිකර් එක ^CSE සහ S&P SL20 ටිකර් එක ^CSESPMI විදිහට තමයි Yahoo එකේ තියෙන්නේ
-            const response = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/^CSE');
-            const data = await response.json();
-            
-            // සර්වර් එකෙන් Live දත්ත සාර්ථකව ආවොත් ඒවා Chart එකට Update කරන ලොජික් එක
-            if(data.chart && data.chart.result) {
-                console.log("Yahoo Live Data Loaded Successfully!");
-                // මෙතනින් ඉදිරියට ඔයාගේ සජීවී දත්ත DOM එකට සම්බන්ධ වෙනවා මචං
-            }
-        } catch (error) {
-            console.log("Real-time API connection failed, using offline fallback data.");
+        // Slideshow Index Controls
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function currentSlide(n) { showSlides(slideIndex = n); }
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (slides.length === 0) return;
+            if (n > slides.length) { slideIndex = 1 }    
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
         }
-    }
 
-    // සයිට් එක රන් වෙද්දීම Charts දෙක නිර්මාණය කිරීම
-    document.addEventListener("DOMContentLoaded", function() {
-        createCseChart('aspiChart', timeLabels, dummyASPIData, false); // ASPI Chart (Down)
-        createCseChart('spslChart', timeLabels, dummySPSLData, false); // S&P SL20 Chart (Down)
-        updateDashboardData();
-    });
-</script>
+        // Pop-up Alert
+        document.addEventListener("DOMContentLoaded", function() {
+            const notification = document.getElementById("feature-notification");
+            if (notification) {
+                setTimeout(() => {
+                    notification.classList.add("show");
+                    setTimeout(() => { notification.classList.remove("show"); }, 5000);
+                }, 1000); 
+            }
+        });
 
-    <!--end of the code for real time data charts and data-->
-    
-    
-    
-    <div class="main-container">
-        <div id="main-view">
-            <h2 id="view-title">ප්‍රධාන විෂය පථයන් (Main Topics)</h2>
-            <div id="menu-grid" class="grid-view"></div>
-        </div>
+        // 🏹 ANTI-RESET DIRECTION ENGINE FOR MOUSE
+        if (window.innerWidth > 768) {
+            const customPointer = document.querySelector('.pure-isolated-vector-cursor');
+            let targetX = 0, targetY = 0;   
+            let currentX = 0, currentY = 0; 
+            let lastValidAngle = 0;         
 
-        <div id="article-view" class="content-section">
-            <button id="back-btn" class="back-btn">← ආපසු</button>
-            <div id="post-body" class="article-content">ලෝඩ් වෙමින්...</div>
-        </div>
-    </div>
+            window.addEventListener('mousemove', (event) => {
+                targetX = event.clientX;
+                targetY = event.clientY;
+            });
 
-
-    <!--start the code for cse news widget for my dear users-->
-
-   <div class="news-widget-wrapper">
-    <div class="news-widget-header">
-        <div class="news-title-area">
-            <h2>Financial & Business News Feed 🔔</h2>
-            <p class="news-subtitle">Live updates from BBC Sinhala, Reuters & Market Sources</p>
-        </div>
-        <button class="news-refresh-btn" onclick="fetchLiveBusinessNews()">
-            <span class="refresh-icon">🔄</span> Refresh
-        </button>
-    </div>
-
-    <div id="news-feed-container" class="news-feed-body">
-        <div class="news-loading">⚡ Loading latest business news...</div>
-    </div>
-</div>
-
-<style>
-    .news-widget-wrapper {
-        max-width: 1100px;
-        margin: 30px auto;
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 24px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    }
-    .news-widget-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid #f1f5f9;
-        padding-bottom: 16px;
-        margin-bottom: 20px;
-    }
-    .news-title-area h2 {
-        font-size: 1.3rem;
-        color: #0f172a;
-        margin: 0;
-        font-weight: 700;
-    }
-    .news-subtitle {
-        font-size: 0.85rem;
-        color: #64748b;
-        margin: 4px 0 0 0;
-        font-weight: 500;
-    }
-    .news-refresh-btn {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        background: #f1f5f9;
-        border: 1px solid #cbd5e1;
-        color: #334155;
-        padding: 8px 16px;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.85rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    .news-refresh-btn:hover {
-        background: #e2e8f0;
-        color: #0f172a;
-    }
-    .news-feed-body {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        max-height: 500px; /* ලිස්ට් එක දිග වැඩි වුණොත් Scroll වෙන්න */
-        overflow-y: auto;
-        padding-right: 6px;
-    }
-    
-    /* Individual News Card */
-    .news-card {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        padding: 14px 18px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        text-decoration: none;
-        transition: all 0.2s ease;
-    }
-    .news-card:hover {
-        background: #f0f9ff;
-        border-color: #bae6fd;
-        transform: translateX(4px); /* Hover වෙද්දී පොඩ්ඩක් දකුණට ඇදෙනවා */
-    }
-    .news-card-meta {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    /* Source Badges */
-    .source-badge {
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 3px 8px;
-        border-radius: 4px;
-        text-transform: uppercase;
-    }
-    .source-badge.bbc { background: #fee2e2; color: #b91c1c; } /* BBC රතු */
-    .source-badge.reuters { background: #ffedd5; color: #c2410c; } /* Reuters තැඹිලි */
-    
-    .news-time {
-        font-size: 0.75rem;
-        color: #94a3b8;
-        font-weight: 500;
-    }
-    .news-card-title {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #1e293b;
-        margin: 0;
-        line-height: 1.4;
-    }
-    .news-card-desc {
-        font-size: 0.85rem;
-        color: #64748b;
-        margin: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* පේළි 2කට වඩා වැඩි නම් තිත් (...) තබයි */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-    
-    /* Loading & Errors */
-    .news-loading { padding: 30px; text-align: center; color: #64748b; font-weight: 600; }
-    .news-error { padding: 30px; text-align: center; color: #ef4444; font-weight: 600; }
-</style>
-
-<script>
-    // බ්ලොග් එක ලෝඩ් වෙද්දීම News ටිකත් ලෝඩ් වෙන්න සෙට් කිරීම
-    document.addEventListener("DOMContentLoaded", function() {
-        fetchLiveBusinessNews();
-    });
-
-    async function fetchLiveBusinessNews() {
-        const container = document.getElementById('news-feed-container');
-        container.innerHTML = '<div class="news-loading">⚡ Fetching latest updates from BBC Sinhala & Reuters...</div>';
-
-        // CORS Error එක bypass කරන්න පාවිච්චි කරන නොමිලේ දෙන Proxy එකක්
-        const proxyUrl = "https://api.allorigins.win/get?url=";
-        
-        // 📡 BBC Sinhala Business සහ Reuters Business RSS Feeds
-        const bbcFeed = "https://feeds.bbci.co.uk/sinhala/news/business/rss.xml";
-        const reutersFeed = "https://www.reutersagency.com/feed/?best-topics=business&post_type=best";
-
-        try {
-            // Feeds දෙකම එකපාර Fetch කර ගැනීම
-            const [bbcResponse, reutersResponse] = await Promise.all([
-                fetch(proxyUrl + encodeURIComponent(bbcFeed)),
-                fetch(proxyUrl + encodeURIComponent(reutersFeed))
-            ]);
-
-            const bbcData = await bbcResponse.json();
-            const reutersData = await reutersResponse.json();
-
-            let allNewsItems = [];
-
-            // 1. BBC Sinhala පුවත් Parse කිරීම
-            if (bbcData.contents) {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(bbcData.contents, "text/xml");
-                const items = xmlDoc.querySelectorAll("item");
+            function updateDynamicCursor() {
+                let velocityX = targetX - currentX;
+                let velocityY = targetY - currentY;
                 
-                items.forEach(item => {
-                    allNewsItems.push({
-                        title: item.querySelector("title")?.textContent || "",
-                        link: item.querySelector("link")?.textContent || "#",
-                        desc: item.querySelector("description")?.textContent || "",
-                        pubDate: new Date(item.querySelector("pubDate")?.textContent || Date.now()),
-                        source: "BBC Sinhala",
-                        badgeClass: "bbc"
-                    });
+                currentX += velocityX * 0.16;
+                currentY += velocityY * 0.16;
+
+                if (Math.abs(velocityX) > 0.4 || Math.abs(velocityY) > 0.4) {
+                    let calculatedAngle = Math.atan2(velocityY, velocityX) * (180 / Math.PI) + 90;
+                    let angleDifference = calculatedAngle - lastValidAngle;
+                    
+                    while (angleDifference < -180) angleDifference += 360;
+                    while (angleDifference > 180) angleDifference -= 360;
+                    
+                    lastValidAngle += angleDifference * 0.22; 
+                }
+
+                if (customPointer) {
+                    customPointer.style.transform = `translate3d(${currentX - 12}px, ${currentY - 2}px, 0) rotate(${lastValidAngle}deg)`;
+                }
+                requestAnimationFrame(updateDynamicCursor);
+            }
+            requestAnimationFrame(updateDynamicCursor);
+
+            // Universal Element Hover Setup
+            const interactableSelectors = 'a, button, input, textarea, .custom-card, .floating-card, .result-item, .dot, .prev, .next';
+            function setupCursorHovers() {
+                const elements = document.querySelectorAll(interactableSelectors);
+                elements.forEach(element => {
+                    element.addEventListener('mouseenter', () => customPointer.classList.add('cursor-hovered-state'));
+                    element.addEventListener('mouseleave', () => customPointer.classList.remove('cursor-hovered-state'));
                 });
             }
-
-            // 2. Reuters Global Business පුවත් Parse කිරීම
-            if (reutersData.contents) {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(reutersData.contents, "text/xml");
-                const items = xmlDoc.querySelectorAll("item");
-                
-                items.forEach(item => {
-                    allNewsItems.push({
-                        title: item.querySelector("title")?.textContent || "",
-                        link: item.querySelector("link")?.textContent || "#",
-                        desc: item.querySelector("description")?.textContent || "",
-                        pubDate: new Date(item.querySelector("pubDate")?.textContent || Date.now()),
-                        source: "Reuters",
-                        badgeClass: "reuters"
-                    });
-                });
-            }
-
-            // 🔀 පුවත් සේරම අලුත්ම වෙලාව අනුව පිළිවෙලට සැකසීම (Sort by Date)
-            allNewsItems.sort((a, b) => b.pubDate - a.pubDate);
-
-            // 📊 උපරිම පුවත් 12ක් විතරක් බ්ලොග් එකේ පෙන්වීමට කපා ගැනීම
-            const displayNews = allNewsItems.slice(0, 12);
-
-            if (displayNews.length === 0) {
-                container.innerHTML = '<div class="news-error">❌ No recent news articles found.</div>';
-                return;
-            }
-
-            // HTML එකට Render කිරීම
-            let htmlContent = "";
-            displayNews.forEach(news => {
-                // වෙලාව ලස්සනට පෙන්වීමට format කිරීම
-                const formattedTime = news.pubDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' | ' + news.pubDate.toLocaleDateString();
-                
-                htmlContent += `
-                    <a href="${news.link}" target="_blank" class="news-card">
-                        <div class="news-card-meta">
-                            <span class="source-badge ${news.badgeClass}">${news.source}</span>
-                            <span class="news-time">🕒 ${formattedTime}</span>
-                        </div>
-                        <h4 class="news-card-title">${news.title}</h4>
-                        <p class="news-card-desc">${news.desc}</p>
-                    </a>
-                `;
-            });
-
-            container.innerHTML = htmlContent;
-
-        } catch (error) {
-            console.error("News Fetch Error:", error);
-            container.innerHTML = `
-                <div class="news-error" style="color: #ef4444; padding: 20px; text-align: center;">
-                    ❌ පුවත් ලෝඩ් කිරීමට නොහැකි විය. (CORS Proxy Timeout). <br>
-                    <span style="font-size: 0.85rem; color: #94a3b8; font-weight: 500;">කරුණාකර Refresh බොත්තම ඔබා නැවත උත්සාහ කරන්න.</span>
-                </div>`;
-        }
-    }
-</script>
-    <!--end of the code for cse real time news for my dear users-->
-
-    
-    <script>
-        let siteData = {};
-        let currentLevel = 'main'; 
-        let currentTopicId = '';
-
-        fetch('site-menu.txt')
-            .then(res => res.json())
-            .then(data => {
-                siteData = data;
-                renderMainMenu();
-            })
-            .catch(() => {
-                document.getElementById('menu-grid').innerHTML = "<p style='color:red;'>site-menu.txt ෆයිල් එක කියවීමට නොහැක!</p>";
-            });
-
-        function renderMainMenu() {
-            currentLevel = 'main';
-            document.getElementById('article-view').style.display = 'none';
-            document.getElementById('main-view').style.display = 'block';
-            document.getElementById('view-title').innerText = "ප්‍රධාන විෂය පථයන් (Main Topics)";
-            
-            let html = '';
-            for (let id in siteData) {
-                html += `
-                    <div class="custom-card" onclick="renderSubMenu('${id}')">
-                        <h3>${siteData[id].title}</h3>
-                        <p>${siteData[id].desc}</p>
-                    </div>`;
-            }
-            document.getElementById('menu-grid').innerHTML = html;
-        }
-
-        function renderSubMenu(topicId) {
-            currentLevel = 'sub';
-            currentTopicId = topicId;
-            document.getElementById('view-title').innerText = siteData[topicId].title + " - ලිපි ලැයිස්තුව";
-            
-            let html = `<button class="back-btn" onclick="renderMainMenu()">← :ප්‍රධාන Topics වෙත</button><br><br>`;
-            let articles = siteData[topicId].articles;
-            
-            articles.forEach(art => {
-                html += `
-                    <div class="custom-card" style="margin-bottom:15px;" onclick="loadArticle('${art.file}')">
-                        <h3>${art.name}</h3>
-                        <p>${art.short}</p>
-                    </div>`;
-            });
-            document.getElementById('menu-grid').innerHTML = html;
-        }
-
-        function loadArticle(fileName) {
-            document.getElementById('main-view').style.display = 'none';
-            document.getElementById('article-view').style.display = 'block';
-            
-            document.getElementById('back-btn').onclick = function() {
-                document.getElementById('article-view').style.display = 'none';
-                document.getElementById('main-view').style.display = 'block';
-                renderSubMenu(currentTopicId);
-            };
-
-            fetch(fileName)
-                .then(res => { if(!res.ok) throw new Error(); return res.text(); })
-                .then(text => { document.getElementById('post-body').innerHTML = text; })
-                .catch(() => { document.getElementById('post-body').innerHTML = "<h3 style='color:red;'>ලිපිය තවම ලියා නැත!</h3><p>GitHub එකේ " + fileName + " නමින් ෆයිල් එකක් සාදන්න.</p>"; });
+            setupCursorHovers();
+            setTimeout(setupCursorHovers, 2000); 
         }
     </script>
-
-    
-
-    <div id="chat-icon" onclick="toggleChat()">💬</div>
-
-    <div id="chat-widget">
-        <div class="chat-header">
-            <span>Support Assistant</span>
-            <span onclick="toggleChat()" style="cursor:pointer">✕</span>
-        </div>
-        <div id="chat-messages">
-            <p class="bot-msg">Howdy there 👋<br>I'm your personal AI assistant. How can I help?</p>
-        </div>
-        <div class="chat-input-area">
-            <input type="text" id="user-input" placeholder="Ask anything..." onkeypress="if(event.key === 'Enter') sendMessage()">
-            <button onclick="sendMessage()">➤</button>
-        </div>
-    </div>
-
-    <style>
-    #chat-icon { position:fixed; bottom:20px; right:20px; background:#fff; padding:15px; border-radius:50%; box-shadow:0 4px 10px rgba(0,0,0,0.2); cursor:pointer; font-size:24px; z-index:9999; }
-    #chat-widget { display:none; position:fixed; bottom:80px; right:20px; width:320px; height:400px; background:#fff; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.2); z-index:9999; flex-direction:column; border:1px solid #ddd; }
-    .chat-header { background:#007bff; color:white; padding:15px; display:flex; justify-content:space-between; font-weight:bold; }
-    #chat-messages { flex:1; padding:15px; overflow-y:auto; font-size:14px; color: black; }
-    .bot-msg { background:#f1f3f4; padding:10px; border-radius:8px; margin-bottom:10px; color:black; text-align: left; }
-    .user-msg { text-align:right; color:#007bff; margin-bottom:10px; background: #e3f2fd; padding: 10px; border-radius: 8px; }
-    .chat-input-area { display:flex; border-top:1px solid #eee; padding:5px; }
-    #user-input { border:none; padding:10px; outline:none; flex:1; color: black; }
-    button { background:none; border:none; color:#007bff; font-weight:bold; padding:10px; cursor:pointer; font-size:18px; }
-    </style>
-
-    <script>
-    function toggleChat() {
-        const w = document.getElementById('chat-widget');
-        w.style.display = (w.style.display === 'flex') ? 'none' : 'flex';
-    }
-
-    async function sendMessage() {
-        const input = document.getElementById('user-input');
-        const msgs = document.getElementById('chat-messages');
-        if(!input.value.trim()) return;
-
-        const userQuery = input.value;
-        msgs.innerHTML += `<div class="user-msg"><b>You:</b> ${userQuery}</div>`;
-        input.value = '';
-        msgs.scrollTop = msgs.scrollHeight;
-        
-        try {
-            const res = await fetch('https://ashehansl-github-io-7mrkhtyoi-avishka-shehan-s-projects.vercel.app/api/chat', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ message: userQuery })
-            });
-            const data = await res.json();
-            
-            if(data.candidates && data.candidates[0].content.parts[0].text) {
-                let botReply = data.candidates[0].content.parts[0].text;
-                msgs.innerHTML += `<div class="bot-msg"><b>Bot:</b> ${botReply}</div>`;
-            } else {
-                msgs.innerHTML += `<div class="bot-msg" style="color:red;"><b>Bot:</b> ලැබුණු දත්ත කියවීමට නොහැක.</div>`;
-            }
-        } catch(e) {
-            msgs.innerHTML += `<div class="bot-msg" style="color:red;"><b>Bot:</b> Error: Server connection failed.</div>`;
-        }
-        msgs.scrollTop = msgs.scrollHeight;
-    }
-    </script>
-
-    <div id="disclaimer-popup" class="disclaimer-overlay">
-        <div class="disclaimer-box">
-            <h3>⚠️ Disclaimer</h3>
-            <p>
-                The information provided on this blog is for educational and informational purposes only. 
-                It should not be considered as financial or investment advice. Investing in financial markets 
-                and various assets involves significant risk. Please consult with a certified financial 
-                advisor before making any investment decisions. 
-                <br><br>
-                <strong>Investment decisions are at your own risk.</strong>
-            </p>
-            <button onclick="closeDisclaimer()" class="disclaimer-btn">I Understand & Agree</button>
-        </div>
-    </div>
-
-    <style>
-    .disclaimer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 99999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
-    .disclaimer-overlay.show { opacity: 1; pointer-events: auto; }
-    .disclaimer-box { background: #ffffff; padding: 30px; border-radius: 12px; max-width: 500px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); text-align: center; transform: translateY(-20px); transition: transform 0.4s ease; }
-    .disclaimer-overlay.show .disclaimer-box { transform: translateY(0); }
-    .disclaimer-box h3 { margin-top: 0; color: #d9534f; font-size: 22px; }
-    .disclaimer-box p { color: #333333; font-size: 14px; line-height: 1.6; text-align: justify; margin: 20px 0; }
-    .disclaimer-btn { background: #28a745; color: white; border: none; padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; width: 100%; }
-    .disclaimer-btn:hover { background: #218838; }
-    </style>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        if (!localStorage.getItem("disclaimerAccepted")) {
-            setTimeout(function() { document.getElementById("disclaimer-popup").classList.add("show"); }, 1000);
-        }
-    });
-    function closeDisclaimer() {
-        document.getElementById("disclaimer-popup").classList.remove("show");
-        localStorage.setItem("disclaimerAccepted", "true");
-    }
-    </script>
-
-    <!--start of the code for footer-->
-
-  <footer class="site-disclaimer-footer">
-    <div class="footer-layout-flex">
-        
-        <div class="footer-left-side-content">
-            
-            <div class="floating-contact-flexbox">
-                
-                <a href="mailto:your-email@example.com" class="floating-card email-card">
-                    <div class="card-glow-bg"></div>
-                    <div class="card-icon-area">📧</div>
-                    <div class="card-info-area">
-                        <span>Email Us</span>
-                        <p>support@financeinsight.com</p>
-                    </div>
-                </a>
-
-                <a href="https://t.me/yourchannel" target="_blank" class="floating-card telegram-card">
-                    <div class="card-glow-bg"></div>
-                    <div class="card-icon-area">💬</div>
-                    <div class="card-info-area">
-                        <span>Telegram Channel</span>
-                        <p>Join Community</p>
-                    </div>
-                </a>
-
-                <a href="https://www.linkedin.com/in/avishka-shehan-828ba13a6/" class="floating-card linkedin-card">
-                    <div class="card-glow-bg"></div>
-                    <div class="card-icon-area">🌐</div>
-                    <div class="card-info-area">
-                        <span>LinkedIn</span>
-                        <p>Connect Regionally</p>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="footer-disclaimer-content">
-                <p class="disclaimer-text-left">
-                    <span class="disclaimer-badge">Disclaimer</span> 
-                    The information provided on this platform is for educational and informational purposes only and should not be construed as professional financial or investment advice. Financial markets involve inherent risks. <strong>Investment decisions are at your own risk.</strong>
-                </p>
-                <p class="copyright-text">© 2026 Finance Insight. All Rights Reserved.</p>
-            </div>
-
-        </div>
-
-        <div class="modern-form-container" style="max-width: 600px; width: 100%; position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
-            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
-            <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px;">අප වෙත අදහස් යොමු කරන්න 💬</h3>
-            <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.9rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ කණ්ඩායම වෙතට යොමු කරන්න.</p>
-            
-            <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="position: relative;">
-                    <input type="text" id="formName" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">ඔබගේ නම (Name)</label>
-                </div>
-                <div style="position: relative;">
-                    <input type="email" id="formEmail" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">විද්‍යුත් ලිපිය (Email)</label>
-                </div>
-                <div style="position: relative;">
-                    <input type="text" id="formSubject" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">විෂය (Subject)</label>
-                </div>
-                 <div style="position: relative;">
-                    <input type="tel" id="formPhone" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                    <label class="floating-label">දුරකථන අංකය (Phone Number)</label>
-                </div>
-                <div style="position: relative;">
-                    <textarea id="formMessage" rows="4" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
-                    <label class="floating-label">පණිවිඩය (Message)</label>
-                </div>
-                <button type="submit" class="submit-glow-btn" style="background: linear-gradient(90deg, #00d2ff 0%, #00a6ff 100%); color: #0f172a; padding: 14px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 255, 0.3);">පණිවිඩය යවන්න 🚀</button>
-            </form>
-            <p id="formStatus" style="margin-top: 15px; display: none; font-weight: bold; text-align: center; font-size: 0.95rem;"></p>
-        </div>
-    </div>
-</footer>
-
-<style>
-    /* 🌍 Main Footer Box */
-    .site-disclaimer-footer { 
-        background: #090f1c; 
-        color: #b3b3b3; 
-        padding: 60px 20px; 
-        border-top: 1px solid #1e293b; 
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        margin-top: 70px; 
-    }
-    .footer-layout-flex {
-        max-width: 1250px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start; /* මුල ඉඳන්ම සමාන්තරව තියන්න */
-        gap: 60px;
-    }
-
-    /* 👈 Left Side Area */
-    .footer-left-side-content {
-        flex: 1.2;
-        display: flex;
-        flex-direction: column;
-        gap: 40px; /* පාවෙන Cards සහ Disclaimer අතර පරතරය */
-    }
-
-    /* ☁️ 🚀 FLOATING CONTACT CARDS FLEXBOX */
-    .floating-contact-flexbox {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        width: 100%;
-    }
-    
-    /* Individual Card Core Style */
-    .floating-card {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        background: rgba(30, 41, 59, 0.4); /* Glassmorphism translucent effect */
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 16px 20px;
-        text-decoration: none;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        
-        /* 🎈 පාවෙන (Floating) Soft Animation එක */
-        animation: smoothFloat 4s infinite ease-in-out;
-    }
-    
-    /* පාවෙන ඇනිමේෂන් එක කාඩ් එකෙන් කාඩ් එකට වෙනස් වෙලාවන් දීම (Delays) */
-    .floating-card.email-card { animation-delay: 0s; }
-    .floating-card.telegram-card { animation-delay: 0.8s; }
-    .floating-card.linkedin-card { animation-delay: 1.6s; }
-
-    /* Hover Effects */
-    .floating-card:hover {
-        transform: translateY(-5px) scale(1.02);
-        background: rgba(30, 41, 59, 0.7);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-    }
-    .floating-card.email-card:hover { border-color: rgba(56, 189, 248, 0.4); }
-    .floating-card.telegram-card:hover { border-color: rgba(0, 166, 255, 0.4); }
-    .floating-card.linkedin-card:hover { border-color: rgba(10, 102, 194, 0.4); }
-
-    /* Card Elements Inside */
-    .card-icon-area {
-        font-size: 1.6rem;
-        z-index: 2;
-    }
-    .card-info-area {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        z-index: 2;
-    }
-    .card-info-area span {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        color: #64748b;
-        font-weight: 700;
-        letter-spacing: 0.5px;
-    }
-    .card-info-area p {
-        margin: 0;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #f1f5f9;
-        transition: color 0.3s;
-    }
-    .floating-card:hover .card-info-area p {
-        color: #38bdf8; /* Hover වුණාම අකුරු ලස්සනට නිල් වෙනවා */
-    }
-
-    /* 🎈 Floating Keyframe Animation Definition */
-    @keyframes smoothFloat {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-6px); } /* හීනියට උඩට පාවෙන ගතිය */
-    }
-
-    /* 📝 Disclaimer Styles */
-    .footer-disclaimer-content { text-align: left; }
-    .disclaimer-text-left { font-size: 13px !important; line-height: 1.7; margin: 0 0 15px 0; text-align: left !important; color: #94a3b8; }
-    .disclaimer-badge { background: #d9534f; color: white; padding: 3px 7px; font-size: 10px; text-transform: uppercase; font-weight: bold; border-radius: 3px; margin-right: 5px; display: inline-block; vertical-align: middle; }
-    .footer-disclaimer-content strong { color: #ffffff; }
-    .copyright-text { font-size: 11px !important; color: #475569 !important; margin-top: 15px !important; text-align: left !important; }
-
-    /* 👉 Form Element Overrides & Floating Labels (පරණ ඒවා එලෙසමයි) */
-    #contactForm input:focus, #contactForm textarea:focus { border-color: #38bdf8 !important; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); background: #0f172a !important; }
-    .floating-label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; transition: all 0.25s ease; background: #1e293b; padding: 0 5px; border-radius: 4px; }
-    #contactForm textarea ~ .floating-label { top: 25px; }
-    #contactForm input:focus ~ .floating-label, #contactForm input:not(:placeholder-shown) ~ .floating-label, #contactForm textarea:focus ~ .floating-label, #contactForm textarea:not(:placeholder-shown) ~ .floating-label { top: 0; font-size: 0.8rem; color: #38bdf8; font-weight: bold; }
-    .submit-glow-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0, 166, 255, 0.6); letter-spacing: 0.5px; }
-
-    /* 📱 Responsive Mobile Adjustments */
-    @media (max-width: 950px) {
-        .footer-layout-flex {
-            flex-direction: column;
-            gap: 45px;
-        }
-        .footer-left-side-content {
-            width: 100%;
-        }
-        .footer-disclaimer-content, .disclaimer-text-left, .copyright-text {
-            text-align: center !important;
-        }
-    }
-</style>
-
-<script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const statusText = document.getElementById('formStatus');
-    statusText.style.display = 'block'; statusText.style.color = '#38bdf8';
-    statusText.innerText = '⏳ දත්ත ඇතුළත් කරමින්... කරුණාකර රැඳී සිටින්න.';
-    
-    const formData = {
-        name: document.getElementById('formName').value,
-        email: document.getElementById('formEmail').value,
-        subject: document.getElementById('formSubject').value,
-        phone: document.getElementById('formPhone').value,
-        message: document.getElementById('formMessage').value
-    };
-    
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbwUEKdDmW1Jrz8d4oE7ZgwyiGEa2FTgyZxkh9itR1vSq1lFl2Z-YO-nYonADscWbuohJQ/exec';
-    
-    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
-    .then(() => { statusText.style.color = '#4ade80'; statusText.innerText = '🎉 ස්තූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅'; document.getElementById('contactForm').reset(); })
-    .catch(() => { statusText.style.color = '#ef4444'; statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.'; });
-});
-</script>
-
-    <!--end of the code for footer-->
-    
 </body>
 </html>
