@@ -6,6 +6,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-7Y2M178G7Y');
     </script>
     <link rel="icon" type="image/x-icon" href="Gemini_Generated_Image_jtxx2mjtxx2mjtxx.png">
@@ -44,7 +45,35 @@
         .back-btn:hover { background: var(--accent); color: var(--bg-color); }
         .article-content { white-space: pre-wrap; line-height: 1.7; font-size: 1.1rem; }
 
-        /* 🌊 Fluid Background Layer */
+        /* 🏹 BLACK VECTOR CURSOR CSS STYLE */
+        @media (min-width: 769px) {
+            html, body, a, button, input, textarea, .custom-card, .floating-card, .result-item, .dot, .prev, .next {
+                cursor: none !important;
+            }
+            .magic-ui-perfect-cursor {
+                width: 22px;
+                height: 22px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 99999999 !important;
+                pointer-events: none;
+                filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+                transform-origin: 12px 2px; 
+                transition: width 0.2s ease, height 0.2s ease;
+                will-change: transform;
+                transform: translate3d(-100px, -100px, 0) rotate(0deg);
+            }
+            .magic-ui-perfect-cursor.hovered {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        @media (max-width: 768px) {
+            .magic-ui-perfect-cursor { display: none !important; }
+        }
+
+        /* 🌊 NEON FLUID BACKGROUND LAYER STYLE */
         .neon-fluid-bg-layer {
             position: fixed;
             top: 0;
@@ -52,7 +81,7 @@
             width: 100vw;
             height: 100vh;
             z-index: -1000; 
-            pointer-events: none;
+            pointer-events: none; 
             background: linear-gradient(135deg, #070b19, #0f172a, #1a163f, #090d16);
             background-size: 400% 400%;
             animation: neonFluidFlow 16s ease infinite;
@@ -63,43 +92,85 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 🏹 ISOLATED VECTOR CURSOR STYLE */
-        @media (min-width: 769px) {
-            html, body, a, button, input, textarea, .custom-card, .floating-card, .result-item, .dot, .prev, .next {
-                cursor: none !important;
-            }
-            .pure-isolated-vector-cursor {
-                width: 20px;
-                height: 20px;
-                position: fixed;
-                top: 0;
-                left: 0;
-                z-index: 99999999 !important; 
-                pointer-events: none !important;
-                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)) !important;
-                transform-origin: 12px 2px !important; 
-                transition: width 0.15s ease, height 0.15s ease !important;
-                will-change: transform;
-                transform: translate3d(-100px, -100px, 0) rotate(0deg);
-            }
-            .pure-isolated-vector-cursor.cursor-hovered-state {
-                width: 26px !important;
-                height: 26px !important;
-            }
-        }
-        @media (max-width: 768px) {
-            .pure-isolated-vector-cursor { display: none !important; }
-        }
+        /* 🔍 SEARCH & TRADINGVIEW STYLES */
+        .fluid-search-container { max-width: 1100px; margin: 20px auto; position: relative; display: flex; justify-content: center; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        .fluid-capsule { width: 220px; height: 46px; background: #0f172a; border-radius: 30px; padding: 0 16px; display: flex; align-items: center; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); overflow: hidden; }
+        .fluid-capsule.expanded { width: 100%; background: #ffffff; border: 2px solid #0284c7; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15); }
+        .search-inner-content { display: flex; align-items: center; width: 100%; height: 100%; }
+        .fluid-search-icon { font-size: 1.2rem; color: #94a3b8; cursor: pointer; margin-right: 12px; }
+        .fluid-capsule.expanded .fluid-search-icon { color: #0284c7; }
+        #blog-search-input { border: none; outline: none; width: 100%; font-size: 1rem; font-weight: 600; background: transparent; color: #ffffff; }
+        .fluid-capsule.expanded #blog-search-input { color: #0f172a; }
+        #blog-search-input::placeholder { color: #64748b; }
+        #clear-search-btn { background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; display: none; }
+        .fluid-results-box { position: absolute; top: 100%; left: 0; right: 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; margin-top: 12px; max-height: 300px; overflow-y: auto; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); z-index: 9999; animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
+        @keyframes fluidOpen { 0% { transform: translateY(-10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; text-decoration: none; color: #1e293b; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.2s; }
+        .result-item:hover { background: #f0f9ff; }
+        .result-title { font-size: 0.95rem; font-weight: 600; color: #0f172a; }
+        .result-ticker { font-size: 0.8rem; color: #64748b; font-weight: 700; }
+        .badge-cse { background: #e0f2fe; color: #0369a1; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+        .chart-section-wrapper { max-width: 1100px; margin: 30px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', sans-serif; animation: fluidOpen 0.5s ease; }
+        .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .chart-header h3 { margin: 0; color: #0f172a; font-size: 1.2rem; font-weight: 700; }
+        .close-chart-btn { background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; padding: 6px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .close-chart-btn:hover { background: #dc2626; color: #ffffff; }
+        #tradingview-widget-container { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; }
+
+        /* 🔔 POP-UP ALERT NOTIFICATION STYLE */
+        .feature-pop-up { position: fixed; top: -100px; left: 50%; transform: translateX(-50%); background: #ffffff; border: 2px solid #0284c7; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2); border-radius: 30px; padding: 10px 24px; z-index: 10000; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; pointer-events: none; max-width: 90%; width: 450px; }
+        .feature-pop-up.show { top: 25px; opacity: 1; pointer-events: auto; }
+        .pop-up-content { display: flex; align-items: center; gap: 14px; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        .pop-up-emoji { font-size: 1.5rem; animation: floatEmoji 2s infinite ease-in-out; }
+        .pop-up-content h4 { margin: 0; color: #0f172a; font-size: 0.95rem; font-weight: 700; }
+        .pop-up-content p { margin: 2px 0 0 0; color: #64748b; font-size: 0.8rem; font-weight: 600; }
+        @keyframes floatEmoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+        /* 🖼️ SLIDESHOW AREA STYLE */
+        #home-slideshow-wrapper { max-width: 1100px; width: 100%; margin: 30px auto 10px auto; font-family: 'Segoe UI', sans-serif; }
+        .slideshow-area { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); background-color: #1e293b; }
+        .mySlides { display: none; }
+        .mySlides img { vertical-align: middle; width: 100%; height: 350px; object-fit: cover; }
+        .prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 20px; transition: 0.6s ease; background-color: rgba(0,0,0,0.3); border: none; z-index: 10; }
+        .next { right: 0; }
+        .prev:hover, .next:hover { background-color: #38bdf8; color: #0f172a; }
+        .numbertext { color: #f2f2f2; font-size: 12px; padding: 8px 12px; position: absolute; top: 0; background-color: rgba(0,0,0,0.5); border-radius: 0 0 8px 0; }
+        .dots-container { text-align: center; margin-top: 15px; margin-bottom: 30px; }
+        .dot { cursor: pointer; height: 10px; width: 10px; margin: 0 4px; background-color: #334155; border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+        .active, .dot:hover { background-color: #38bdf8; }
+        .fade { animation-name: slideshowFade; animation-duration: 1s; }
+        @keyframes slideshowFade { from { opacity: .4 } to { opacity: 1 } }
+
+        /* 📊 S&P AND ASPI MARKET TICKER LAYOUT STYLES */
+        .cse-ticker-container { max-width: 1100px; margin: 20px auto; display: flex; gap: 20px; flex-wrap: wrap; font-family: 'Segoe UI', sans-serif; }
+        .ticker-box { background: var(--card-bg); border: 1px solid #334155; border-radius: 14px; padding: 16px; flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .indices-box { display: flex; justify-content: space-around; align-items: center; }
+        .index-item { text-align: center; }
+        .index-name { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
+        .index-value { font-size: 1.5rem; font-weight: 700; margin: 4px 0; color: var(--text-main); }
+        .index-change { font-size: 0.85rem; font-weight: 600; }
+        .index-change.down { color: #ef4444; }
+        .vertical-divider { width: 1px; height: 50px; background: #334155; }
+        .stats-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .stat-group { display: flex; flex-direction: column; }
+        .stat-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        .market-status.closed { color: #ef4444; font-weight: 700; font-size: 0.9rem; }
+        .stat-data-text { color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
+        .market-time { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+        .horizontal-divider { height: 1px; background: #334155; margin: 8px 0; }
+        .stats-bottom { display: flex; justify-content: space-between; }
+        .stat-mini { flex: 1; }
+        .stat-num { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-top: 2px; }
     </style>
 </head>
 <body>
 
-    <svg class="pure-isolated-vector-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L4 22l8-4 8 4-8-20z" fill="#000000" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-
     <div class="neon-fluid-bg-layer"></div>
-    
+
+    <svg class="magic-ui-perfect-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L3 22l9-4 9 4-9-20z" fill="#000000" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+	
     <header>
         <h1><b>Finance Insight 📊</b></h1>
         <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සරලව...</p>
@@ -130,32 +201,6 @@
         </div>
         <div id="tradingview-widget-container"></div>
     </div>
-
-    <style>
-        .fluid-search-container { max-width: 1100px; margin: 20px auto; position: relative; display: flex; justify-content: center; font-family: 'Segoe UI', sans-serif; }
-        .fluid-capsule { width: 220px; height: 46px; background: #1e293b; border-radius: 30px; padding: 0 16px; display: flex; align-items: center; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); overflow: hidden; border: 1px solid #334155; }
-        .fluid-capsule.expanded { width: 100%; background: #ffffff; border: 2px solid #0284c7; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15); }
-        .search-inner-content { display: flex; align-items: center; width: 100%; height: 100%; }
-        .fluid-search-icon { font-size: 1.2rem; color: #94a3b8; cursor: pointer; margin-right: 12px; }
-        .fluid-capsule.expanded .fluid-search-icon { color: #0284c7; }
-        #blog-search-input { border: none; outline: none; width: 100%; font-size: 1rem; font-weight: 600; background: transparent; color: #ffffff; }
-        .fluid-capsule.expanded #blog-search-input { color: #0f172a; }
-        #blog-search-input::placeholder { color: #64748b; }
-        #clear-search-btn { background: none; border: none; color: #94a3b8; font-size: 1.1rem; cursor: pointer; display: none; }
-        .fluid-results-box { position: absolute; top: 100%; left: 0; right: 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; margin-top: 12px; max-height: 300px; overflow-y: auto; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); z-index: 9999; animation: fluidOpen 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1); }
-        @keyframes fluidOpen { 0% { transform: translateY(-10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-        .result-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; text-decoration: none; color: #1e293b; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.2s; }
-        .result-item:hover { background: #f0f9ff; }
-        .result-title { font-size: 0.95rem; font-weight: 600; color: #0f172a; }
-        .result-ticker { font-size: 0.8rem; color: #64748b; font-weight: 700; }
-        .badge-cse { background: #e0f2fe; color: #0369a1; font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-        .chart-section-wrapper { max-width: 1100px; margin: 30px auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', sans-serif; animation: fluidOpen 0.5s ease; }
-        .chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .chart-header h3 { margin: 0; color: #0f172a; font-size: 1.2rem; font-weight: 700; }
-        .close-chart-btn { background: #fee2e2; border: 1px solid #fecaca; color: #dc2626; padding: 6px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .close-chart-btn:hover { background: #dc2626; color: #ffffff; }
-        #tradingview-widget-container { width: 100%; height: 500px; border-radius: 12px; overflow: hidden; }
-    </style>
 
     <div id="home-slideshow-wrapper">
         <div class="slideshow-area">
@@ -201,32 +246,6 @@
         </div>
     </div>
 
-    <style>
-        .feature-pop-up {
-            position: fixed;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ffffff;
-            border: 2px solid #0284c7;
-            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
-            border-radius: 30px;
-            padding: 10px 24px;
-            z-index: 10000;
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-            pointer-events: none;
-            max-width: 90%;
-            width: 450px;
-        }
-        .feature-pop-up.show { top: 25px; opacity: 1; pointer-events: auto; }
-        .pop-up-content { display: flex; align-items: center; gap: 14px; font-family: 'Segoe UI', sans-serif; }
-        .pop-up-emoji { font-size: 1.5rem; animation: floatEmoji 2s infinite ease-in-out; }
-        .pop-up-content h4 { margin: 0; color: #0f172a; font-size: 0.95rem; font-weight: 700; }
-        .pop-up-content p { margin: 2px 0 0 0; color: #64748b; font-size: 0.8rem; font-weight: 600; }
-        @keyframes floatEmoji { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-    </style>
-
     <div class="cse-ticker-container">
         <div class="ticker-box indices-box">
             <div class="index-item">
@@ -268,31 +287,10 @@
         </div>
     </div>
 
-    <style>
-        .cse-ticker-container { max-width: 1100px; margin: 20px auto; display: flex; gap: 20px; flex-wrap: wrap; font-family: 'Segoe UI', sans-serif; }
-        .ticker-box { background: var(--card-bg); border: 1px solid #334155; border-radius: 14px; padding: 16px; flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .indices-box { display: flex; justify-content: space-around; align-items: center; }
-        .index-item { text-align: center; }
-        .index-name { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); }
-        .index-value { font-size: 1.5rem; font-weight: 700; margin: 4px 0; color: var(--text-main); }
-        .index-change { font-size: 0.85rem; font-weight: 600; }
-        .index-change.down { color: #ef4444; }
-        .vertical-divider { width: 1px; height: 50px; background: #334155; }
-        .stats-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .stat-group { display: flex; flex-direction: column; }
-        .stat-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
-        .market-status.closed { color: #ef4444; font-weight: 700; font-size: 0.9rem; }
-        .stat-data-text { color: var(--text-main); font-weight: 600; font-size: 0.9rem; }
-        .market-time { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
-        .horizontal-divider { height: 1px; background: #334155; margin: 8px 0; }
-        .stats-bottom { display: flex; justify-content: space-between; }
-        .stat-mini { flex: 1; }
-        .stat-num { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-top: 2px; }
-    </style>
-
     <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 
     <script>
+        // --- 🏢 CSE DATABASE ---
         const cseDatabase = [
             { name: "John Keells Holdings PLC", ticker: "JKH" },
             { name: "Commercial Bank of Ceylon PLC", ticker: "COMB" },
@@ -450,25 +448,30 @@
             }
         });
 
-        // Slideshow Index Controls
+        // --- 🖼️ SLIDESHOW LOGIC ---
         let slideIndex = 1;
         showSlides(slideIndex);
+
         function plusSlides(n) { showSlides(slideIndex += n); }
         function currentSlide(n) { showSlides(slideIndex = n); }
+
         function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("mySlides");
             let dots = document.getElementsByClassName("dot");
+            
             if (slides.length === 0) return;
             if (n > slides.length) { slideIndex = 1 }    
             if (n < 1) { slideIndex = slides.length }
+            
             for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
             for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
+            
             slides[slideIndex-1].style.display = "block";  
             dots[slideIndex-1].className += " active";
         }
 
-        // Pop-up Alert
+        // --- 🔔 POP-UP ALERTS CONTROL ---
         document.addEventListener("DOMContentLoaded", function() {
             const notification = document.getElementById("feature-notification");
             if (notification) {
@@ -479,53 +482,53 @@
             }
         });
 
-        // 🏹 ANTI-RESET DIRECTION ENGINE FOR MOUSE
+        // --- 🏹 FLUID PERFECT ORIENTED VECTOR CURSOR ENGINE ---
         if (window.innerWidth > 768) {
-            const customPointer = document.querySelector('.pure-isolated-vector-cursor');
-            let targetX = 0, targetY = 0;   
-            let currentX = 0, currentY = 0; 
-            let lastValidAngle = 0;         
+            const cursor = document.querySelector('.magic-ui-perfect-cursor');
 
-            window.addEventListener('mousemove', (event) => {
-                targetX = event.clientX;
-                targetY = event.clientY;
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let currentAngle = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
             });
 
-            function updateDynamicCursor() {
-                let velocityX = targetX - currentX;
-                let velocityY = targetY - currentY;
+            function renderPerfectCursor() {
+                let vx = mouseX - cursorX;
+                let vy = mouseY - cursorY;
                 
-                currentX += velocityX * 0.16;
-                currentY += velocityY * 0.16;
+                cursorX += vx * 0.15;
+                cursorY += vy * 0.15;
 
-                if (Math.abs(velocityX) > 0.4 || Math.abs(velocityY) > 0.4) {
-                    let calculatedAngle = Math.atan2(velocityY, velocityX) * (180 / Math.PI) + 90;
-                    let angleDifference = calculatedAngle - lastValidAngle;
+                if (Math.abs(vx) > 0.2 || Math.abs(vy) > 0.2) {
+                    let targetAngle = Math.atan2(vy, vx) * (180 / Math.PI) + 90;
+                    let angleDiff = targetAngle - currentAngle;
                     
-                    while (angleDifference < -180) angleDifference += 360;
-                    while (angleDifference > 180) angleDifference -= 360;
+                    while (angleDiff < -180) angleDiff += 360;
+                    while (angleDiff > 180) angleDiff -= 360;
                     
-                    lastValidAngle += angleDifference * 0.22; 
+                    currentAngle += angleDiff * 0.25; 
                 }
 
-                if (customPointer) {
-                    customPointer.style.transform = `translate3d(${currentX - 12}px, ${currentY - 2}px, 0) rotate(${lastValidAngle}deg)`;
+                if (cursor) {
+                    cursor.style.transform = `translate3d(${cursorX - 12}px, ${cursorY - 2}px, 0) rotate(${currentAngle}deg)`;
                 }
-                requestAnimationFrame(updateDynamicCursor);
+                requestAnimationFrame(renderPerfectCursor);
             }
-            requestAnimationFrame(updateDynamicCursor);
+            requestAnimationFrame(renderPerfectCursor);
 
-            // Universal Element Hover Setup
-            const interactableSelectors = 'a, button, input, textarea, .custom-card, .floating-card, .result-item, .dot, .prev, .next';
-            function setupCursorHovers() {
-                const elements = document.querySelectorAll(interactableSelectors);
-                elements.forEach(element => {
-                    element.addEventListener('mouseenter', () => customPointer.classList.add('cursor-hovered-state'));
-                    element.addEventListener('mouseleave', () => customPointer.classList.remove('cursor-hovered-state'));
+            // Setup Hovers dynamically across elements
+            function assignHovers() {
+                const clickables = document.querySelectorAll('a, button, input, textarea, .custom-card, .floating-card, .result-item, .dot, .prev, .next');
+                clickables.forEach(elem => {
+                    elem.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                    elem.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
                 });
             }
-            setupCursorHovers();
-            setTimeout(setupCursorHovers, 2000); 
+            assignHovers();
+            setTimeout(assignHovers, 1500); // Fail-safe re-apply
         }
     </script>
 </body>
