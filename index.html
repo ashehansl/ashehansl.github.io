@@ -1442,89 +1442,139 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     </script>
 
-    <footer class="site-disclaimer-footer">
+   <footer class="site-disclaimer-footer">
+    <div class="footer-layout-flex">
+        
         <div class="footer-disclaimer-content">
-            <p>
+            <p class="disclaimer-text-left">
                 <span class="disclaimer-badge">Disclaimer</span> 
                 The information provided on this platform is for educational and informational purposes only and should not be construed as professional financial or investment advice. Financial markets involve inherent risks. <strong>Investment decisions are at your own risk.</strong>
             </p>
             <p class="copyright-text">© 2026 Finance Insight. All Rights Reserved.</p>
         </div>
- </footer>
 
-        
-        <div class="modern-form-container" style="max-width: 600px; margin: 50px auto 60px auto; position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
-        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
-        <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px;">අප වෙත අදහස් යොමු කරන්න 💬</h3>
-        <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.9rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ කණ්ඩායම වෙතට යොමු කරන්න.</p>
-        
-        <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
-            <div style="position: relative;">
-                <input type="text" id="formName" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                <label class="floating-label">ඔබගේ නම (Name)</label>
-            </div>
-            <div style="position: relative;">
-                <input type="email" id="formEmail" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                <label class="floating-label">විද්‍යුත් ලිපිය (Email)</label>
-            </div>
-            <div style="position: relative;">
-                <input type="text" id="formSubject" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                <label class="floating-label">විෂය (Subject)</label>
-            </div>
-             <div style="position: relative;">
-                <input type="tel" id="formPhone" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
-                <label class="floating-label">දුරකථන අංකය (Phone Number)</label>
-            </div>
-            <div style="position: relative;">
-                <textarea id="formMessage" rows="4" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
-                <label class="floating-label">පණිවිඩය (Message)</label>
-            </div>
-            <button type="submit" class="submit-glow-btn" style="background: linear-gradient(90deg, #00d2ff 0%, #00a6ff 100%); color: #0f172a; padding: 14px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 255, 0.3);">පණිවිඩය යවන්න 🚀</button>
-        </form>
-        <p id="formStatus" style="margin-top: 15px; display: none; font-weight: bold; text-align: center; font-size: 0.95rem;"></p>
+        <div class="modern-form-container" style="max-width: 600px; width: 100%; position: relative; background: linear-gradient(145deg, #1e293b, #0f172a); padding: 35px; border-radius: 24px; border: 1px solid rgba(56, 189, 248, 0.25); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.05)';">
+            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
+            <h3 style="color: var(--accent); margin-top: 0; font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px;">අප වෙත අදහස් යොමු කරන්න 💬</h3>
+            <p style="color: var(--text-muted); margin: -5px 0 25px 0; font-size: 0.9rem;">ඔබේ අදහස් හෝ ගැටලු සෘජුවම අපගේ කණ්ඩායම වෙතට යොමු කරන්න.</p>
+            
+            <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="position: relative;">
+                    <input type="text" id="formName" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                    <label class="floating-label">ඔබගේ නම (Name)</label>
+                </div>
+                <div style="position: relative;">
+                    <input type="email" id="formEmail" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                    <label class="floating-label">විද්‍යුත් ලිපිය (Email)</label>
+                </div>
+                <div style="position: relative;">
+                    <input type="text" id="formSubject" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                    <label class="floating-label">විෂය (Subject)</label>
+                </div>
+                 <div style="position: relative;">
+                    <input type="tel" id="formPhone" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none;">
+                    <label class="floating-label">දුරකථන අංකය (Phone Number)</label>
+                </div>
+                <div style="position: relative;">
+                    <textarea id="formMessage" rows="4" required placeholder=" " style="width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #334155; background: rgba(15, 23, 42, 0.6); color: var(--text-main); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; outline: none; resize: vertical;"></textarea>
+                    <label class="floating-label">පණිවිඩය (Message)</label>
+                </div>
+                <button type="submit" class="submit-glow-btn" style="background: linear-gradient(90deg, #00d2ff 0%, #00a6ff 100%); color: #0f172a; padding: 14px; border: none; border-radius: 12px; font-size: 1.05rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 166, 255, 0.3);">පණිවිඩය යවන්න 🚀</button>
+            </form>
+            <p id="formStatus" style="margin-top: 15px; display: none; font-weight: bold; text-align: center; font-size: 0.95rem;"></p>
+        </div>
     </div>
+</footer>
 
-    <style>
+<style>
+    /* 🌍 Footer එක ඇතුළේ දෙපැත්ත බෙදන ප්‍රධාන Flexbox Layout එක */
+    .site-disclaimer-footer { 
+        background: #121824; /* ඔයාගේ Form එකේ පසුබිමට ගැලපෙන අඳුරු Premium නිල් පාටක් දුන්නා මචං */
+        color: #b3b3b3; 
+        padding: 60px 20px; 
+        border-top: 1px solid #1e293b; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        margin-top: 70px; 
+    }
+    .footer-layout-flex {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* දෙකම එකම මට්ටමක තියන්න */
+        gap: 50px;
+    }
+
+    /* 👈 Disclaimer එකට 45% ක වගේ ඉඩක් දීලා වම් පැත්තට බර කිරීම */
+    .footer-disclaimer-content { 
+        flex: 1;
+        text-align: left; /* Center තිබ්බ එක වමට කළා මචං */
+    }
+    .disclaimer-text-left { 
+        font-size: 13px !important; 
+        line-height: 1.7; 
+        margin: 0 0 15px 0; 
+        text-align: left !important; /* Text එක වමට පෙළගැසීම */
+    }
+    .disclaimer-badge { 
+        background: #d9534f; 
+        color: white; 
+        padding: 3px 7px; 
+        font-size: 10px; 
+        text-transform: uppercase; 
+        font-weight: bold; 
+        border-radius: 3px; 
+        margin-right: 5px; 
+        display: inline-block; 
+        vertical-align: middle; 
+    }
+    .footer-disclaimer-content strong { color: #ffffff; }
+    .copyright-text { font-size: 11px !important; color: #55657e !important; margin-top: 20px !important; text-align: left !important; }
+
+    /* 👉 Form එකේ styles සහ Floating Label Styles ඒ විදිහටමයි මචං */
     #contactForm input:focus, #contactForm textarea:focus { border-color: #38bdf8 !important; box-shadow: 0 0 12px rgba(56, 189, 248, 0.4); background: #0f172a !important; }
     .floating-label { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; transition: all 0.25s ease; background: #1e293b; padding: 0 5px; border-radius: 4px; }
     #contactForm textarea ~ .floating-label { top: 25px; }
     #contactForm input:focus ~ .floating-label, #contactForm input:not(:placeholder-shown) ~ .floating-label, #contactForm textarea:focus ~ .floating-label, #contactForm textarea:not(:placeholder-shown) ~ .floating-label { top: 0; font-size: 0.8rem; color: #38bdf8; font-weight: bold; }
     .submit-glow-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(0, 166, 255, 0.6); letter-spacing: 0.5px; }
-    </style>
 
-    <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const statusText = document.getElementById('formStatus');
-        statusText.style.display = 'block'; statusText.style.color = '#38bdf8';
-        statusText.innerText = '⏳ දත්ත ඇතුළත් කරමින්... කරුණාකර රැඳී සිටින්න.';
-        
-        const formData = {
-            name: document.getElementById('formName').value,
-            email: document.getElementById('formEmail').value,
-            subject: document.getElementById('formSubject').value,
-            phone: document.getElementById('formPhone').value,
-            message: document.getElementById('formMessage').value
-        };
-        
-        const webAppUrl = 'https://script.google.com/macros/s/AKfycbwUEKdDmW1Jrz8d4oE7ZgwyiGEa2FTgyZxkh9itR1vSq1lFl2Z-YO-nYonADscWbuohJQ/exec';
-        
-        fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
-        .then(() => { statusText.style.color = '#4ade80'; statusText.innerText = '🎉 ස්תූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅'; document.getElementById('contactForm').reset(); })
-        .catch(() => { statusText.style.color = '#ef4444'; statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.'; });
-    });
-    </script>
-        
-   
+    /* 📱 මොබයිල් ෆෝන් වලදී සයිට් එක කැඩෙන්නේ නැතුව එකක් යටට එකක් ලස්සනට සෙට් වෙන්න */
+    @media (max-width: 900px) {
+        .footer-layout-flex {
+            flex-direction: column;
+            gap: 40px;
+        }
+        .footer-disclaimer-content {
+            text-align: center;
+        }
+        .disclaimer-text-left, .copyright-text {
+            text-align: center !important;
+        }
+    }
+</style>
 
-    <style>
-    .site-disclaimer-footer { background: #1a1a1a; color: #b3b3b3; padding: 25px 20px; text-align: center; border-top: 1px solid #333333; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: 50px; }
-    .footer-disclaimer-content { max-width: 800px; margin: 0 auto; }
-    .footer-disclaimer-content p { font-size: 12px; line-height: 1.6; margin: 0 0 10px 0; text-align: center; }
-    .disclaimer-badge { background: #d9534f; color: white; padding: 2px 6px; font-size: 10px; text-transform: uppercase; font-weight: bold; border-radius: 3px; margin-right: 5px; display: inline-block; vertical-align: middle; }
-    .footer-disclaimer-content strong { color: #ffffff; }
-    .copyright-text { font-size: 11px !important; color: #666666 !important; margin-top: 15px !important; }
-    </style>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const statusText = document.getElementById('formStatus');
+    statusText.style.display = 'block'; statusText.style.color = '#38bdf8';
+    statusText.innerText = '⏳ දත්ත ඇතුළත් කරමින්... කරුණාකර රැඳී සිටින්න.';
+    
+    const formData = {
+        name: document.getElementById('formName').value,
+        email: document.getElementById('formEmail').value,
+        subject: document.getElementById('formSubject').value,
+        phone: document.getElementById('formPhone').value,
+        message: document.getElementById('formMessage').value
+    };
+    
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbwUEKdDmW1Jrz8d4oE7ZgwyiGEa2FTgyZxkh9itR1vSq1lFl2Z-YO-nYonADscWbuohJQ/exec';
+    
+    fetch(webAppUrl, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) })
+    .then(() => { statusText.style.color = '#4ade80'; statusText.innerText = '🎉 ස්තූතියි! ඔබගේ දත්ත සාර්ථකව අප වෙත ලැබුණි. ✅'; document.getElementById('contactForm').reset(); })
+    .catch(() => { statusText.style.color = '#ef4444'; statusText.innerText = '❌ දත්ත යැවීමේදී දෝෂයක් මතුවිය.නැවත උත්සාහ කරන්න.'; });
+});
+</script>
     
 </body>
 </html>
