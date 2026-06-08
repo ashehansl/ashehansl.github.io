@@ -19,7 +19,101 @@
     <style>
 
         /*start the code for smooth cursor effect*/
+        <svg class="magic-ui-perfect-cursor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L3 22l9-4 9 4-9-20z" fill="#000000" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>
 
+<style>
+    @media (min-width: 769px) {
+        /* බ්ලොග් එකේ ඩිෆෝල්ට් පොයින්ටර්ස් හැංගීම */
+        html, body, a, button, input, textarea, .floating-card {
+            cursor: none !important;
+        }
+
+        .magic-ui-perfect-cursor {
+            width: 22px;
+            height: 22px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999999;
+            pointer-events: none;
+            
+            /* කළු පාටට කැපිලා පේන Shadow එක */
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.4));
+            
+            /* ඇරෝ එකේ උල් තුඩ (Top/Tip) කේන්ද්‍ර කරගෙනම කැරකෙන්න (Center Top Origin) */
+            transform-origin: 12px 2px; 
+            
+            /* වේගය වෙනස් වෙද්දී සිනිදුවට සයිස් එක මාරු වෙන්න */
+            transition: width 0.2s ease, height 0.2s ease;
+        }
+
+        /* Hover වුණාම ලස්සනට ලොකු වීම */
+        .magic-ui-perfect-cursor.hovered {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .magic-ui-perfect-cursor { display: none !important; }
+    }
+</style>
+
+<script>
+    if (window.innerWidth > 768) {
+        const cursor = document.querySelector('.magic-ui-perfect-cursor');
+
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        let currentAngle = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function renderPerfectCursor() {
+            // 🌊 Lerp Velocity - මවුස් එක යන පස්සෙන් එන Fluid වේගය (0.15)
+            let vx = mouseX - cursorX;
+            let vy = mouseY - cursorY;
+            
+            cursorX += vx * 0.15;
+            cursorY += vy * 0.15;
+
+            // 🔄 මවුස් එක චලනය වන දිශාව නූලටම සෙවීම (Direction Detection)
+            if (Math.abs(vx) > 0.2 || Math.abs(vy) > 0.2) {
+                // Math.atan2 මඟින් ඛණ්ඩාංක අනුව නියම කෝණය ලබා ගනී.
+                // ඇරෝ එක උඩ බලාගෙන (90° offset) නිසා අංශක 90ක් එකතු කරනවා.
+                let targetAngle = Math.atan2(vy, vx) * (180 / Math.PI) + 90;
+                
+                // ඇරෝ එක කැරකෙද්දී එකපාරටම ගැස්සෙන්නේ නැතුව සිනිදුවට හැරෙන්න දෙන ලොජික් එක
+                let angleDiff = targetAngle - currentAngle;
+                
+                while (angleDiff < -180) angleDiff += 360;
+                while (angleDiff > 180) angleDiff -= 360;
+                
+                // 0.25 ක වේගයකින් කෝණය ස්මූත් එකේ කැරකේ
+                currentAngle += angleDiff * 0.25; 
+            }
+
+            // 🚀 ඇරෝ එකේ මුදුන (Top) නියමිත Co-ordinates වලට සෙට් කර කැරකවීම
+            // translate3d පාවිච්චි කරපු නිසා GPU එකෙන් රන් වෙලා පට්ටම සිනිදුවට පෙනේ.
+            cursor.style.transform = `translate3d(${cursorX - 12}px, ${cursorY - 2}px, 0) rotate(${currentAngle}deg)`;
+
+            requestAnimationFrame(renderPerfectCursor);
+        }
+        requestAnimationFrame(renderPerfectCursor);
+
+        // Links / Buttons Hover Controls
+        const clickables = document.querySelectorAll('a, button, input, textarea, .floating-card');
+        clickables.forEach(elem => {
+            elem.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+            elem.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+        });
+    }
+</script>
         
         /*end of the code for smooth cursor effect*/
         
