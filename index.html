@@ -36,12 +36,6 @@ function googleTranslateElementInit() {
 </script>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <!--end of the code for language translatr(google translator)-->
-
-    <header>
-        <h1><b>Finance Insight 📊</b></h1>
-        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
-    </header>
 
     <style>
         .custom-translate {
@@ -62,7 +56,46 @@ function googleTranslateElementInit() {
     border-radius: 5px;
     cursor: pointer;
 }
+
+    /* "Powered by" කොටස සැඟවීමට */
+.goog-te-banner-frame.skiptranslate,
+.goog-logo-link, 
+.goog-te-gadget span {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+    font-size: 0px !important;
+}
+
+/* මෙනුව නැවතත් පැහැදිලිව පෙන්වීමට */
+.goog-te-combo {
+    color: #333 !important;
+    font-size: 16px !important;
+    padding: 5px !important;
+}
+
+/* ඔබ කලින් තැබූ custom-translate style එක මෙසේ තබා ගන්න */
+.custom-translate {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: #fff;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
         </style>
+    <!--end of the code for language translatr(google translator)-->
+
+    <header>
+        <h1><b>Finance Insight 📊</b></h1>
+        <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
+    </header>
+
+    
     
     <!--adding search bar code-->
 
