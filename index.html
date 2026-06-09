@@ -29,77 +29,54 @@
     <!--add language translator(google translate)-->
 <div id="google_translate_element" class="custom-translate"></div>
 
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,si,ta'}, 'google_translate_element');
-}
-</script>
-    
-    <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en', 
-    includedLanguages: 'en,si,ta',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    autoDisplay: false // මෙය වැදගත්: මෙය මගින් උඩ පේළිය නොපෙන්වා සිටීමට උපකාරී වේ
-  }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
-</script>
-
     <style>
-        .custom-translate {
+        /* මෙනුව දකුණු කෙළවරේ තැබීම */
+.custom-translate {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 9999;
+    z-index: 99999;
     background: #fff;
-    padding: 5px;
+    padding: 2px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
-/* Google Translate ගේ default select box එක ලස්සන කිරීමට */
-.goog-te-combo {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-    /* "Powered by" කොටස සැඟවීමට */
+/* Google Translate ගේ අමතර දේවල් සැඟවීම */
 .goog-te-banner-frame.skiptranslate,
 .goog-logo-link, 
 .goog-te-gadget span {
     display: none !important;
 }
 
-.goog-te-gadget {
-    color: transparent !important;
-    font-size: 0px !important;
+body {
+    top: 0px !important;
 }
 
-/* මෙනුව නැවතත් පැහැදිලිව පෙන්වීමට */
+/* මෙනුව අලංකාර කිරීම */
 .goog-te-combo {
-    color: #333 !important;
-    font-size: 16px !important;
-    padding: 5px !important;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: sans-serif;
+    color: #333;
+    outline: none;
 }
+    </style>
 
-/* ඔබ කලින් තැබූ custom-translate style එක මෙසේ තබා ගන්න */
-.custom-translate {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    background: #fff;
-    padding: 5px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    <script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', 
+    includedLanguages: 'en,si,ta',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
 }
-        </style>
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!--end of the code for language translatr(google translator)-->
 
     <header>
