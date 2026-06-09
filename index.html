@@ -27,7 +27,7 @@
 <body>
 
     <!--add language translator(google translate)-->
-<div id="google_translate_element"></div>
+<div id="google_translate_element" class="custom-translate"></div>
 
 <script type="text/javascript">
 function googleTranslateElementInit() {
@@ -43,6 +43,27 @@ function googleTranslateElementInit() {
         <p>මූල්‍ය සහ දත්ත විශ්ලේෂණ දැනුම ඔබට සමීපම තැනකින්</p>
     </header>
 
+    <style>
+        .custom-translate {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    background: #fff;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Google Translate ගේ default select box එක ලස්සන කිරීමට */
+.goog-te-combo {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+        </style>
+    
     <!--adding search bar code-->
 
     <div class="fluid-search-container">
