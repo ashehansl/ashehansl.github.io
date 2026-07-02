@@ -40,6 +40,7 @@
     "desc": "Crypto වෙළෙඳපොළට අදාළව දැනුම මෙමඟින් ලබාගැනීමට ඔබට හැකිය.",
     "articles": [
       { "name": "1. Introduction to Crypto Market", "short": "crypto වෙළදපොල ගැන විස්තර මෙතනින් ", "file": "crypto1.txt" }
+      { "name": "2. The Ultimate Guide to Crypto Passive Income: Staking vs. Yield Farming", "short": "file": "crypto2.txt" }
     ]
   },
   "government-reports": {
