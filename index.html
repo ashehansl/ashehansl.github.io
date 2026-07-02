@@ -23,8 +23,34 @@
         .back-btn:hover { background: var(--accent); color: var(--bg-color); }
         .article-content { white-space: pre-wrap; line-height: 1.7; font-size: 1.1rem; }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js"></script>
 </head>
 <body>
+
+    <!--background smooth edit-->
+<div class="background blue-purple"></div>
+<div class="background green-blue"></div>
+
+<div class="svg-wrapper">
+  <svg id="carpenter-logo" width="273px" height="72px" viewBox="0 0 273 72">
+     </svg>
+</div>
+
+    <style>
+        #carpenter-logo path {
+  fill: none;
+  stroke: #ffffff; /* පාට තීරණය කරන්නේ මෙතනින් */
+  stroke-width: 1.25px;
+}    </style>
+
+    <script>
+  new Vivus('carpenter-logo', {
+      type: 'delayed', // එකින් එක අකුරු ලියවෙන විදිහට
+      duration: 200,   // වේගය (අඩු කරන තරමට වේගවත්)
+      animTimingFunction: Vivus.EASE_OUT
+  });
+</script>
+    <!--end of the code for background smooth edit-->
 
     <!--add language translator(google translate)-->
 
