@@ -45,6 +45,53 @@ body {
     overflow-x: hidden; /* තිරයෙන් පිටතට යන අමතර කොටස් සඟවා තබයි */
 }
     /*screen eka thula siyalla radavaa thabaa ganeeme css avasaanaya*/
+
+    /*article eke content eka lassana kireemata adaala css kotasa*/
+.article-content {
+    max-width: 750px; /* අන්තර්ගතය ඕනෑවට වඩා පළල් වීම වළක්වයි, කියවීමට පහසුයි */
+    margin: 0 auto; /* අන්තර්ගතය පිටුවේ මැදට ගනී */
+    font-family: 'Lora', serif; /* වඩාත් කියවීමට පහසු Serif ෆොන්ට් එකක් */
+    font-size: 19px; /* අකුරු ප්‍රමාණය තරමක් විශාල කරයි */
+    line-height: 1.8; /* පේළි අතර පරතරය වැඩි කරයි (කලින් තිබූ අවුල හදයි) */
+    color: #e0e0e0; /* අඳුරු පසුබිමක අකුරු වලට සුදුසු තරමක් අළු පැහැයක් */
+}
+
+.article-content h2 {
+    font-size: 32px; /* ප්‍රධාන මාතෘකා වල ප්‍රමාණය */
+    margin-top: 50px; /* මාතෘකාවට ඉහළින් පරතරය */
+    margin-bottom: 20px; /* මාතෘකාවට පහළින් පරතරය */
+    color: #ffffff; /* මාතෘකා සඳහා දීප්තිමත් සුදු පැහැය */
+}
+
+.article-content p {
+    margin-bottom: 25px; /* ඡේද අතර පරතරය */
+}
+
+.article-content ul {
+    margin-bottom: 25px;
+    padding-left: 20px; /* ලැයිස්තු සඳහා ඉඩ */
+}
+
+.article-content li {
+    margin-bottom: 10px; /* ලැයිස්තු අයිතම අතර පරතරය */
+    line-height: 1.6; /* ලැයිස්තු අයිතම වල පේළි පරතරය */
+}
+
+.article-content strong {
+    color: #ffffff; /* වැදගත් වචන සඳහා සුදු පැහැය */
+}
+
+/* කුඩා තිර (Mobile) සඳහා වෙනස්කම් */
+@media only screen and (max-width: 600px) {
+    .article-content {
+        font-size: 17px; /* මොබයිල් වලදී අකුරු ප්‍රමාණය තරමක් අඩු කරයි */
+        padding: 15px; /* අන්තර්ගතය කෙළවරට නොගැටෙන්න ඉඩ තබයි */
+    }
+    .article-content h2 {
+        font-size: 26px;
+    }
+}
+    /*article ekehi content beautify kireeme csshi avasaanaya*/
     
 .custom-translate-wrapper {
     position: fixed;
