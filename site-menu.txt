@@ -43,6 +43,14 @@
         { "name": "2. The Ultimate Guide to Crypto Passive Income: Staking vs. Yield Farming", "short": "Staking සහ Yield Farming ගැන.", "file": "crypto2.txt" }
       ]
   },
+"Trading": {
+    "title": "Trading ",
+    "desc": "You can get basic to advanced level trading knowledge in this section.",
+    "articles": [
+        { "name": "1. Introduction to Trading", "short": "What is Trading ?", "file": "trading1.txt" },
+        { "name": "2. Mastering Fundamental Trading: A Strategy for the Astute Investor", "short": "Understanding Fundamental Traders: The Value Seekers", "file": "trading2.txt" }
+      ]
+  },
   "government-reports": {
     "title": "Government Reports",
     "desc": "මුල්‍ය ක්ෂේත්‍රයට අදාළ රජයේ වාර්තා",
