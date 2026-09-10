@@ -868,6 +868,228 @@ function googleTranslateElementInit() {
     <footer class="site-disclaimer-footer">
 
 <!--trying to insert both contact-us box and message box-->
+
+        <!--start code for the second try for insert contact box as a flexbox-->
+<!-- ========================================== -->
+<!-- COMPLETE CONTACT FORM SECTION WITH CSS/JS  -->
+<!-- ========================================== -->
+
+<style>
+  /* Base Styles & Floating Card Container */
+  .feedback-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #0b0f19; /* Dark background matching your theme */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .feedback-card {
+    background: rgba(18, 26, 43, 0.75);
+    backdrop-filter: blur(12px); /* Glassmorphism Effect */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 750px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(0, 162, 255, 0.1);
+    
+    /* Floating Effect Animation */
+    animation: floatCard 6s ease-in-out infinite;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  /* Hovering boost */
+  .feedback-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 45px rgba(0, 0, 0, 0.6), 
+                0 0 30px rgba(0, 162, 255, 0.25);
+  }
+
+  /* Floating Animation Keyframes */
+  @keyframes floatCard {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  /* Section Title & Subtitle */
+  .feedback-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .feedback-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .feedback-subtitle {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Form Layout using Flexbox */
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 14px 18px;
+    background-color: rgba(10, 15, 26, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  .form-input::placeholder {
+    color: #64748b;
+  }
+
+  /* Smooth Glow Focus Effect */
+  .form-input:focus {
+    border-color: #00a2ff;
+    background-color: rgba(15, 23, 42, 0.95);
+    box-shadow: 0 0 12px rgba(0, 162, 255, 0.35);
+  }
+
+  textarea.form-input {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* Modern Submit Button */
+  .submit-btn {
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
+    margin-top: 10px;
+  }
+
+  .submit-btn:hover {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    box-shadow: 0 6px 20px rgba(0, 162, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 600px) {
+    .feedback-card {
+      padding: 25px 20px;
+    }
+    
+    .feedback-title {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+
+<!-- HTML Structure -->
+<section class="feedback-section">
+  <div class="feedback-card">
+    
+    <div class="feedback-header">
+      <h2 class="feedback-title">
+        අප වෙත අදහස් යොමු කරන්න 💬
+      </h2>
+      <p class="feedback-subtitle">
+        ඔබේ අදහස් හෝ ගැටලු කඩිනමින් අපගේ කණ්ඩායම වෙත යොමු කරන්න.
+      </p>
+    </div>
+
+    <form class="feedback-form" id="contactForm">
+      <div class="form-group">
+        <input type="text" class="form-input" placeholder="ඔබගේ නම (Name)" required />
+      </div>
+
+      <div class="form-group">
+        <input type="email" class="form-input" placeholder="විද්‍යුත් ලිපිනය (Email)" required />
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-input" placeholder="විෂය (Subject)" required />
+      </div>
+
+      <div class="form-group">
+        <input type="tel" class="form-input" placeholder="දුරකථන අංකය (Phone Number)" />
+      </div>
+
+      <div class="form-group">
+        <textarea class="form-input" placeholder="පණිවිඩය (Message)" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        පණිවිඩය යවන්න 🚀
+      </button>
+    </form>
+
+  </div>
+</section>
+
+<!-- JavaScript for Smooth Interactivity -->
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalText = submitBtn.innerHTML;
+    
+    // UI Feedback on Click
+    submitBtn.innerHTML = 'යවමින් පවතී... ⏳';
+    submitBtn.style.opacity = '0.7';
+    
+    setTimeout(() => {
+      alert('ඔබගේ පණිවිඩය සාර්ථකව යොමු කරන ලදී!');
+      this.reset();
+      submitBtn.innerHTML = originalText;
+      submitBtn.style.opacity = '1';
+    }, 1200);
+  });
+</script>
+        <!--end of the code for the second try for insert contact box as a flexbox-->
+        
 <div class="contact-main-wrapper">
     <div class="modern-form-container">
         <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(56, 189, 248, 0.15); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
